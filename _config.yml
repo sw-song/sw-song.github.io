@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "<h1>같이 개발 공부합시다!</h1>"
+title                    : "<b>코드네임 0601의 기술블로그</b>"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "seungwon"
@@ -93,7 +93,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "code name : 0601"
+  name             : "Code Name : 0601"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "코드를 사...사..좋아합니다"
   location         : "Seoul, Korea"
