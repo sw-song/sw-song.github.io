@@ -28,13 +28,13 @@ description: >-                        # used by seo meta and the atom feed
   and focuses on text presentation.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://seungson.github.io'
+url: 'https://sw-song.github.io'
 
 github:
-  username: seungson             # change to your github username
+  username: sw-song             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username:           # change to your twitter username
 
 social:
   # Change to your full name.
@@ -43,7 +43,7 @@ social:
   email: sw930601@gmail.com           # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://github.com/seungson       # change to your github homepage
+    - https://github.com/sw-song       # change to your github homepage
     - https://www.linkedin.com/in/seungwonsong
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
