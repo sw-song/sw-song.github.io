@@ -110,7 +110,6 @@ collections:
     output: true
     sort_by: order
 
-
 defaults:
   - scope:
       path: ''          # An empty string here means all files in the project
@@ -157,12 +156,12 @@ exclude:
   - '*.gem'
   - '*.gemspec'
   - tools
-  - docs
   - README.md
+  - CHANGELOG.md
   - LICENSE
   - gulpfile.js
   - node_modules
-  - package.json
+  - package*.json
 
 jekyll-archives:
   enabled: [categories, tags]
