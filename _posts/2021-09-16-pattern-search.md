@@ -143,7 +143,7 @@ for i in range(moving_cnt):
     # series에서 값만 추출
     compare_target = compare_target_r.values
     # 표준화
-    compare_target_norm = (compare_target - compare_target.mean()) / compare_target.std() 
+    compare_target_norm = (compare_target - compare_target.mean()) / compare_target.std()
     # array -> 1차원 리스트로 변환
     compare_target_norm = list(compare_target_norm)
 
@@ -183,7 +183,7 @@ sim_dict[min_sim]
 그래서 이때의 주가 패턴이 얼마나 현재 패턴과 유사한지 궁금할 것이다. 두 그래프를 동시에 그려보자. 단, 주 시점의 주가 차이를 상쇄하기 위해 앞에서 유사도를 계산할 때 표준화를 했던 것처럼 이번에도 역시 표준화를 진행하고 그래프를 그릴 것이다.
 
 ```python
-# 표준화된 기준 구간 데이터 
+# 표준화된 기준 구간 데이터
 compare_base_norm
 ```
 
