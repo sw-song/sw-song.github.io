@@ -7,7 +7,7 @@
 
 html:not([mode]),
 html[mode=light] {
-  @include light-syntax;
+  @include dark-syntax;
 }
 
 html[mode=dark] {
@@ -21,7 +21,7 @@ html[mode=dark] {
   }
 
   html[mode=light] {
-    @include light-syntax;
+    @include dark-syntax;
   }
 }
 
@@ -240,7 +240,6 @@ div {
     }
 
   }
-
 }
 
 @media all and (max-width: 576px) {
