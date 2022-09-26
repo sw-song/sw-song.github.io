@@ -18,9 +18,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Seungwon.log                 # the main title
+title: Defense 926             # the main title
 
-tagline: AI and Data Science   # it will display as the sub-title
+tagline: Data Science for crime analysis, prediction and prevention    # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -81,7 +81,7 @@ theme_mode: light # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/main/main-icon.jpeg
+avatar: assets/main/defense_926.png
 
 # boolean type, the global switch for ToC in posts.
 toc: true
