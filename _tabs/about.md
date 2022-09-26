@@ -9,4 +9,4 @@ Hi, I'm Seungwon Song, Head of AI at AI Start-up in South Korea. I majored in po
 
 My Mission in my life is to make our society more safer and just. For this, I want to use data science and ai to prevent crime like financial frauds, cyber attacks, terrorism by political extremists.
 
-This blog started from this story and will be filled with tutorials and my thoughts. Thank you.
+This blog started from above story and will be filled with tutorials and my thoughts. Thank you.
