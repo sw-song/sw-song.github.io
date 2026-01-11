@@ -14,8 +14,6 @@ date: 2019-10-25
 
 자바스크립트에서 모든 객체를 생성할 때 생성자 Object가 존재한다. 그리고 Object는 자신의 prototype에 객체들이 공유할만한 property들을 가지고 있다. 객체 원형이라 불리는 이 Object는 함수 객체인데, 이것이 바로 Function의 instance다. 정리하면 자바스크립트에서 **Object는 Function의 instance**, **Object 객체는 Object의 instance**이며 결국 모든 객체가 Function(함수)에서 파생된 함수 객체다.
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**

@@ -53,8 +53,6 @@ codepen.io
 
 codepen.io
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**

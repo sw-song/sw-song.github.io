@@ -84,8 +84,6 @@ form.addEventListener('isevent',popAlert);
 
 ![](/assets/images/posts/22-1.webp)
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**

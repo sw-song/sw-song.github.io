@@ -58,9 +58,7 @@ Is feature selected? [True, True, True, True, True, False, False, False, False, 
 Ranking of Features : [1, 1, 1, 1, 1, 6, 4, 3, 2, 5]
 ```
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

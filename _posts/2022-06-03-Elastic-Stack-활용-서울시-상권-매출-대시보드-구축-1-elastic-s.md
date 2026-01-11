@@ -75,9 +75,7 @@ Index pattern을 정상적으로 설정했다면 Discover 탭에서 timestamp에
 
 ![](/assets/images/posts/116-8.webp)
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

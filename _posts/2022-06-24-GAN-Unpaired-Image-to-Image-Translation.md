@@ -55,9 +55,7 @@ Unified Style Encoder
 * SDIT (ICM, 2019)
 * StarGAN v2 (arXiv, 2019)
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

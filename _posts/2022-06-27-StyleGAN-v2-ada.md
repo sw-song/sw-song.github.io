@@ -25,9 +25,7 @@ python projector.py --outdir=out \
                     --network=https://nvlabs-fi-cdn.nvidia.com/stylegan2-ada-pytorch/pretrained/ffhq.pkl
 ```
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

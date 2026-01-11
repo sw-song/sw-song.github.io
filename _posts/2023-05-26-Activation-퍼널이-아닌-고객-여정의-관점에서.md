@@ -73,9 +73,7 @@ toss - po session
 
 > [참고) 토스 리더가 말하는 유저를 끌어당기는 서비스 개선 | PO SESSION](https://www.youtube.com/watch?v=D9x7Tln2DI4)
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

@@ -66,9 +66,7 @@ print(df.reset_index(drop=True, inplace=True))
 2    0   1   1  0
 ```
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

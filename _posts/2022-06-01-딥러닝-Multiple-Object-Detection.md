@@ -130,9 +130,7 @@ CNN에서 추출된 Feature Map을 (height, width, channel)로 받아 3x3 Conv �
 
 Classification으로 얻은 확률 값을 정렬 후, 높은 순으로 K개의 앵커를 추려내고 Bounding Box Regression을 수행한다. 최종적으로 Non-Maximum-Suppression을 통해 RoI를 구한다.
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

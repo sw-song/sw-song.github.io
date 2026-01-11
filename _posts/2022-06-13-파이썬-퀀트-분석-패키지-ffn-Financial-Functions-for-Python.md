@@ -71,9 +71,7 @@ stats 객체(ffn.core.PerformanceStats)는 판다스 각 변수(자산 데이터
 
 ![](/assets/images/posts/119-12.webp)
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

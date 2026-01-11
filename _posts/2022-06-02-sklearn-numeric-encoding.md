@@ -93,9 +93,7 @@ array([[0,1,0,0,0],
 
 * LabelBinarizer()는 Default로 numpy 배열을 즉시 할당한다.
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

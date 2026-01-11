@@ -114,9 +114,7 @@ idinfo\_groupinfo
 
 각각의 id에 대해 정보를 표시하는 type과 count를 하나의 그룹 info\_group으로 묶었고, 그룹에 해당하는 값들을 info로 묶었다.
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

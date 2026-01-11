@@ -62,9 +62,7 @@ date: 2022-06-29
   + Discriminator는 gan-loss(==wgan-gp loss)와 class-loss(label)를 통해 학습
   + Generator는 gan-loss, class-loss, cycle-loss로 학습
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

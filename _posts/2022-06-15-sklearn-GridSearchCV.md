@@ -72,9 +72,7 @@ print('Final Accuracy : {:.4f}'.format(accuracy_score(y_test,pred))
 Final Accuracy : 0.9230
 ```
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 

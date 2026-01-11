@@ -145,9 +145,7 @@ df.fillna(method='ffill', axis=1) # Default : axis=0 (along the index)
 
 method='pad'는 mehod='ffill'과 완전히 동일한 기능을 한다. 내용은 생략한다.
 
-공유하기
 
-게시글 관리
 
 **관성을 이기는 데이터**
 
