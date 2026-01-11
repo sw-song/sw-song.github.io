@@ -2,7 +2,7 @@
 layout: post
 title: 주가 데이터 분석을 위한 로그 변환의 의미, ln(1+return)과 return의 실질적 근사(+파이썬 코드)
 date: 2023-04-06
-categories: ["Finance"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

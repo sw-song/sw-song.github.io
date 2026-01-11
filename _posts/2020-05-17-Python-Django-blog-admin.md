@@ -2,7 +2,7 @@
 layout: post
 title: Python Django - blog, admin
 date: 2020-05-17
-categories: ["Technology"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

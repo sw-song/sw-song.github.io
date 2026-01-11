@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - 6 원칙
 date: 2019-10-05
-categories: ["Web/JavaScript"]
+categories: ["1. 기술", "웹, 자바스크립트"]
 
 ---
 

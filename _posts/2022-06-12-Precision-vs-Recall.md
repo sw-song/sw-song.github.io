@@ -2,7 +2,7 @@
 layout: post
 title: Precision vs Recall
 date: 2022-06-12
-categories: ["Technology"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

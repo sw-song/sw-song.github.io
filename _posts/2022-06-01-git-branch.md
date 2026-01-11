@@ -2,7 +2,7 @@
 layout: post
 title: git - branch
 date: 2022-06-01
-categories: ["Server/Data/Cloud"]
+categories: ["1. 기술", "서버, 데이터, 클라우드"]
 
 ---
 

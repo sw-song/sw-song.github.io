@@ -2,7 +2,7 @@
 layout: post
 title: 딥러닝 Multiple-Object Detection
 date: 2022-06-01
-categories: ["Technology"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

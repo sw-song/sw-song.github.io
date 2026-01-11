@@ -2,7 +2,7 @@
 layout: post
 title: K-Nearest Neighbor Algorithm
 date: 2022-06-13
-categories: ["Technology"]
+categories: ["4. 실전", "계량 투자 분석"]
 
 ---
 

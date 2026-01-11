@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - 콜백
 date: 2019-11-05
-categories: ["Web/JavaScript"]
+categories: ["1. 기술", "웹, 자바스크립트"]
 
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: Activation,퍼널이 아닌 고객 여정의 관점에서
 date: 2023-05-26
-categories: ["Business Analytics Programming"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

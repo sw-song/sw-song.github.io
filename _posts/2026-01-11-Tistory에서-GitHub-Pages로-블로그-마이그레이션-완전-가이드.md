@@ -2,7 +2,8 @@
 layout: post
 title: Tistory에서 GitHub Pages로 블로그 마이그레이션 완전 가이드
 date: 2026-01-11
-categories: ["Technology"]
+categories: ["1. 기술", "서버, 데이터, 클라우드"]
+
 ---
 
 # Tistory에서 GitHub Pages로 블로그 마이그레이션 완전 가이드

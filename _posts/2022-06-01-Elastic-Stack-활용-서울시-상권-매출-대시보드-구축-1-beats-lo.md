@@ -2,7 +2,7 @@
 layout: post
 title: Elastic Stack 활용 서울시 상권 매출 대시보드 구축 - (1) beats, logstash
 date: 2022-06-01
-categories: ["Server/Data/Cloud"]
+categories: ["1. 기술", "서버, 데이터, 클라우드"]
 
 ---
 

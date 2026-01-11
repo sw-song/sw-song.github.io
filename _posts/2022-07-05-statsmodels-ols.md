@@ -2,7 +2,7 @@
 layout: post
 title: statsmodels - ols
 date: 2022-07-05
-categories: ["Technology"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

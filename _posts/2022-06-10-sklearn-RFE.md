@@ -2,7 +2,7 @@
 layout: post
 title: sklearn - RFE
 date: 2022-06-10
-categories: ["ML/DL"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: sklearn - classification_report()
 date: 2022-07-11
-categories: ["ML/DL"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

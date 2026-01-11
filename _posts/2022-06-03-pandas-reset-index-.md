@@ -2,7 +2,7 @@
 layout: post
 title: pandas - reset_index()
 date: 2022-06-03
-categories: ["Technology"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

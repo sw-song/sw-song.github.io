@@ -2,7 +2,7 @@
 layout: post
 title: pandas - forward fill
 date: 2022-06-06
-categories: ["Technology"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

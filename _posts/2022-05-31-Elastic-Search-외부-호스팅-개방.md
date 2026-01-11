@@ -2,7 +2,7 @@
 layout: post
 title: Elastic Search - 외부 호스팅 개방
 date: 2022-05-31
-categories: ["Server/Data/Cloud"]
+categories: ["1. 기술", "서버, 데이터, 클라우드"]
 
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: NodeJS - NPM, PM2
 date: 2019-09-23
-categories: ["Web/JavaScript"]
+categories: ["1. 기술", "웹, 자바스크립트"]
 
 ---
 

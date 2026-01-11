@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - Scope와 Closer
 date: 2019-10-19
-categories: ["Web/JavaScript"]
+categories: ["1. 기술", "웹, 자바스크립트"]
 
 ---
 
