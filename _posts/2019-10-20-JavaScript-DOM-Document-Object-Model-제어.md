@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - DOM(Document Object Model) 제어
 date: 2019-10-20
+categories: ["Web/JavaScript"]
+
 ---
 
 

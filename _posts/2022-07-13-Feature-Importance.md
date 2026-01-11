@@ -2,6 +2,8 @@
 layout: post
 title: Feature Importance
 date: 2022-07-13
+categories: ["Technology"]
+
 ---
 
 

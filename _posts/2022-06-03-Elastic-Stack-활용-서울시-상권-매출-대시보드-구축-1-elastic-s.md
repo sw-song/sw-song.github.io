@@ -2,6 +2,8 @@
 layout: post
 title: Elastic Stack 활용 서울시 상권 매출 대시보드 구축 - (1) elastic search, kibana
 date: 2022-06-03
+categories: ["Server/Data/Cloud"]
+
 ---
 
 

@@ -2,6 +2,8 @@
 layout: post
 title: Google Firestore로 경제 매크로 데이터 올리기
 date: 2023-01-13
+categories: ["Quantitative Investment"]
+
 ---
 
 

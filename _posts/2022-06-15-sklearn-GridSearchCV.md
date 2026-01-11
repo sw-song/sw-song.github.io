@@ -2,6 +2,8 @@
 layout: post
 title: sklearn - GridSearchCV
 date: 2022-06-15
+categories: ["ML/DL"]
+
 ---
 
 

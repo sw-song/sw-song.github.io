@@ -2,6 +2,8 @@
 layout: post
 title: sklearn - numeric encoding
 date: 2022-06-02
+categories: ["ML/DL"]
+
 ---
 
 

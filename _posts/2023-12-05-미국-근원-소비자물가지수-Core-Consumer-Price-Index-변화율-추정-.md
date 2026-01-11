@@ -2,6 +2,8 @@
 layout: post
 title: 미국 근원 소비자물가지수(Core Consumer Price Index) 변화율 추정 - Python 활용
 date: 2023-12-05
+categories: ["Finance"]
+
 ---
 
 

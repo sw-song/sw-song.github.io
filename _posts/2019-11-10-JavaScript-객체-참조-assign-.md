@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - '객체 참조', assign()
 date: 2019-11-10
+categories: ["Web/JavaScript"]
+
 ---
 
 

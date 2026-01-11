@@ -2,6 +2,8 @@
 layout: post
 title: pandas - corr()
 date: 2022-07-08
+categories: ["Technology"]
+
 ---
 
 

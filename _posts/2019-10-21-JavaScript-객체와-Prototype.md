@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - 객체와 Prototype
 date: 2019-10-21
+categories: ["Web/JavaScript"]
+
 ---
 
 

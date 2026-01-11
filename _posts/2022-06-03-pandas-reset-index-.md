@@ -2,6 +2,8 @@
 layout: post
 title: pandas - reset_index()
 date: 2022-06-03
+categories: ["Technology"]
+
 ---
 
 

@@ -2,6 +2,8 @@
 layout: post
 title: sklearn - confusion_matrix()
 date: 2022-06-05
+categories: ["ML/DL"]
+
 ---
 
 

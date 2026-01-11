@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - 가변인자, 클래스, 배열 순회
 date: 2019-11-02
+categories: ["Web/JavaScript"]
+
 ---
 
 

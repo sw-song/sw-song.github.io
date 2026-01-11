@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - 식, 그리고 문
 date: 2019-09-28
+categories: ["Web/JavaScript"]
+
 ---
 
 

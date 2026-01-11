@@ -2,6 +2,8 @@
 layout: post
 title: statsmodels - ols
 date: 2022-07-05
+categories: ["Technology"]
+
 ---
 
 

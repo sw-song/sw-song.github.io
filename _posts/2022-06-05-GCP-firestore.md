@@ -2,6 +2,8 @@
 layout: post
 title: GCP - firestore
 date: 2022-06-05
+categories: ["Server/Data/Cloud"]
+
 ---
 
 

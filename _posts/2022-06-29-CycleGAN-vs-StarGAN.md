@@ -2,6 +2,8 @@
 layout: post
 title: CycleGAN vs StarGAN
 date: 2022-06-29
+categories: ["ML/DL"]
+
 ---
 
 

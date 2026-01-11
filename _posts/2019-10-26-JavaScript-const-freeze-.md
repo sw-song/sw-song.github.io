@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - const(), freeze()
 date: 2019-10-26
+categories: ["Web/JavaScript"]
+
 ---
 
 

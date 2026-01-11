@@ -2,6 +2,8 @@
 layout: post
 title: git - branch
 date: 2022-06-01
+categories: ["Server/Data/Cloud"]
+
 ---
 
 

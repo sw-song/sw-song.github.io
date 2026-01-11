@@ -2,6 +2,8 @@
 layout: post
 title: 맥 zsh - conda install 에러, pip install로 대체
 date: 2020-05-16
+categories: ["Technology"]
+
 ---
 
 

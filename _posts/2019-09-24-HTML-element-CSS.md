@@ -2,6 +2,8 @@
 layout: post
 title: HTML element, CSS
 date: 2019-09-24
+categories: ["Web/JavaScript"]
+
 ---
 
 

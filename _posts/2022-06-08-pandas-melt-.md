@@ -2,6 +2,8 @@
 layout: post
 title: pandas - melt()
 date: 2022-06-08
+categories: ["Technology"]
+
 ---
 
 

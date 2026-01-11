@@ -2,6 +2,8 @@
 layout: post
 title: Precision vs Recall
 date: 2022-06-12
+categories: ["Technology"]
+
 ---
 
 

@@ -2,6 +2,8 @@
 layout: post
 title: 파이썬 퀀트 분석 패키지 - ffn(Financial Functions for Python)
 date: 2022-06-13
+categories: ["Quantitative Investment"]
+
 ---
 
 

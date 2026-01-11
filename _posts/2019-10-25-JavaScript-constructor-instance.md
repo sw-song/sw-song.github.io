@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - constructor, instance
 date: 2019-10-25
+categories: ["Web/JavaScript"]
+
 ---
 
 

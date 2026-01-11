@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - 함수 Parameter  vs Argument
 date: 2019-11-02
+categories: ["Web/JavaScript"]
+
 ---
 
 

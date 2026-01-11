@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - 객체와 동적 바인딩, 값의 이동
 date: 2019-10-08
+categories: ["Web/JavaScript"]
+
 ---
 
 

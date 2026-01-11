@@ -2,6 +2,8 @@
 layout: post
 title: K-Nearest Neighbor Algorithm
 date: 2022-06-13
+categories: ["Technology"]
+
 ---
 
 

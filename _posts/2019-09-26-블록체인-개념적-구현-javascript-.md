@@ -2,6 +2,8 @@
 layout: post
 title: 블록체인 개념적 구현(javascript)
 date: 2019-09-26
+categories: ["Web/JavaScript"]
+
 ---
 
 

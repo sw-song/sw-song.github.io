@@ -2,6 +2,8 @@
 layout: post
 title: JavaScript - 객체 참조, concat()
 date: 2019-10-26
+categories: ["Web/JavaScript"]
+
 ---
 
 

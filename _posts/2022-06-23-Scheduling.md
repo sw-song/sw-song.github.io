@@ -2,6 +2,8 @@
 layout: post
 title: Scheduling
 date: 2022-06-23
+categories: ["Technology"]
+
 ---
 
 

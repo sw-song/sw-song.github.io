@@ -2,6 +2,8 @@
 layout: post
 title: sklearn - RandomForestClassifier
 date: 2022-06-09
+categories: ["ML/DL"]
+
 ---
 
 

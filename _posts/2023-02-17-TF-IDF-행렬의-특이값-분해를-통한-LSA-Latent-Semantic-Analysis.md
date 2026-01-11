@@ -2,6 +2,8 @@
 layout: post
 title: TF-IDF 행렬의 특이값 분해를 통한 LSA(Latent Semantic Analysis)의 구현과 빈도 기반 토픽 모델의 한계
 date: 2023-02-17
+categories: ["ML/DL"]
+
 ---
 
 

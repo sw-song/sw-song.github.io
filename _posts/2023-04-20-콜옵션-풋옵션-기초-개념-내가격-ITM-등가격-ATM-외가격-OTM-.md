@@ -2,6 +2,8 @@
 layout: post
 title: 콜옵션/풋옵션 기초 개념 + 내가격(ITM), 등가격(ATM), 외가격(OTM)
 date: 2023-04-20
+categories: ["Finance"]
+
 ---
 
 

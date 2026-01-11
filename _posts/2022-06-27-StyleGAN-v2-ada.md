@@ -2,6 +2,8 @@
 layout: post
 title: StyleGAN v2-ada
 date: 2022-06-27
+categories: ["ML/DL"]
+
 ---
 
 

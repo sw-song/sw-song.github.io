@@ -2,6 +2,8 @@
 layout: post
 title: sklearn - classification_report()
 date: 2022-07-11
+categories: ["ML/DL"]
+
 ---
 
 

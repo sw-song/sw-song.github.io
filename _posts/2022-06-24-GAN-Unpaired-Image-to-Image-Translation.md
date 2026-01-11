@@ -2,6 +2,8 @@
 layout: post
 title: GAN - Unpaired Image to Image Translation
 date: 2022-06-24
+categories: ["ML/DL"]
+
 ---
 
 

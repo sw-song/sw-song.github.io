@@ -2,6 +2,8 @@
 layout: post
 title: sklearn - GradientBoostingClassifier
 date: 2022-06-14
+categories: ["ML/DL"]
+
 ---
 
 
