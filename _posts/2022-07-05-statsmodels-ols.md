@@ -2,7 +2,7 @@
 layout: post
 title: statsmodels - ols
 date: 2022-07-05
-categories: ["2. 도메인", "금융"]
+categories: ["1. 기술", "통계, 시계열"]
 
 ---
 

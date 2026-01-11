@@ -2,7 +2,7 @@
 layout: post
 title: Google Firestore로 경제 매크로 데이터 올리기
 date: 2023-01-13
-categories: ["3. 튜토리얼", "시계열 예측 및 계량 분석 방법론"]
+categories: ["1. 기술", "서버, 데이터, 클라우드"]
 
 ---
 

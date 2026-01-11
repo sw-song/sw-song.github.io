@@ -2,7 +2,7 @@
 layout: post
 title: Kolmogorov Smirnov
 date: 2022-07-07
-categories: ["2. 도메인", "금융"]
+categories: ["1. 기술", "통계, 시계열"]
 
 ---
 

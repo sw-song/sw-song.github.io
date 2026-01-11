@@ -2,7 +2,7 @@
 layout: post
 title: 미 장단기 국채 금리차 기반 경기 침체 예측 분석(ARIMA + Probit)
 date: 2024-12-29
-categories: ["3. 튜토리얼", "금융 분석 프로그래밍 응용"]
+categories: ["2. 도메인", "금융"]
 
 ---
 

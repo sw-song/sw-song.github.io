@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - 콜백
 date: 2019-11-05
-categories: ["1. 기술", "서버, 데이터, 클라우드"]
+categories: ["1. 기술", "웹, 자바스크립트"]
 
 ---
 

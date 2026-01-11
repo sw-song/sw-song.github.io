@@ -2,7 +2,7 @@
 layout: post
 title: Python Django - blog, admin
 date: 2020-05-17
-categories: ["1. 기술", "서버, 데이터, 클라우드"]
+categories: ["1. 기술", "웹, 자바스크립트"]
 
 ---
 

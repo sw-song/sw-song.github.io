@@ -2,7 +2,7 @@
 layout: post
 title: StyleGAN v2-ada
 date: 2022-06-27
-categories: ["2. 도메인", "비즈니스"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

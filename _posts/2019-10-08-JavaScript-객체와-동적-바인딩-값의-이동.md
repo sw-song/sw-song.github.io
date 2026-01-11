@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - 객체와 동적 바인딩, 값의 이동
 date: 2019-10-08
-categories: ["1. 기술", "웹, 자바스크립트"]
+categories: ["3. 튜토리얼", "시계열 예측 및 계량 분석 방법론"]
 
 ---
 

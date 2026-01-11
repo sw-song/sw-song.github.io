@@ -2,7 +2,7 @@
 layout: post
 title: pandas - corr()
 date: 2022-07-08
-categories: ["2. 도메인", "금융"]
+categories: ["1. 기술", "통계, 시계열"]
 
 ---
 

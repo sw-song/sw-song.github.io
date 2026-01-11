@@ -2,7 +2,7 @@
 layout: post
 title: Feature Importance
 date: 2022-07-13
-categories: ["2. 도메인", "자산운용"]
+categories: ["1. 기술", "통계, 시계열"]
 
 ---
 

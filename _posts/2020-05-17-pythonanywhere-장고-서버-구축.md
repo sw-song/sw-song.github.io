@@ -2,7 +2,7 @@
 layout: post
 title: pythonanywhere - 장고 서버 구축
 date: 2020-05-17
-categories: ["1. 기술", "서버, 데이터, 클라우드"]
+categories: ["3. 튜토리얼", "비즈니스 통계 분석 프로그래밍"]
 
 ---
 

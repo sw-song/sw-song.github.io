@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - 식, 그리고 문
 date: 2019-09-28
-categories: ["1. 기술", "웹, 자바스크립트"]
+categories: ["4. 실전", "글로벌 매크로 분석"]
 
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 파이썬 퀀트 분석 패키지 - ffn(Financial Functions for Python)
 date: 2022-06-13
-categories: ["1. 기술", "머신러닝, 딥러닝"]
+categories: ["3. 튜토리얼", "금융 분석 프로그래밍 응용"]
 
 ---
 
