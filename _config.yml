@@ -18,9 +18,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Defense 926             # the main title
+title: 관성을 이기는 데이터             # the main title
 
-tagline: Data Science for crime analysis, prediction and prevention    # it will display as the sub-title
+tagline: Data Analytics and Automation    # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
