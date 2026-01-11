@@ -2,7 +2,7 @@
 layout: post
 title: GAN - Unpaired Image to Image Translation
 date: 2022-06-24
-categories: ["1. 기술", "머신러닝, 딥러닝"]
+categories: ["1. 기술", "통계, 시계열"]
 
 ---
 

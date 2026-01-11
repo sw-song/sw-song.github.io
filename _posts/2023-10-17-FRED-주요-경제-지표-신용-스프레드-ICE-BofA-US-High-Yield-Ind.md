@@ -2,7 +2,7 @@
 layout: post
 title: FRED 주요 경제 지표 - 신용 스프레드(ICE BofA US High Yield Index Option-Adjusted Spread)
 date: 2023-10-17
-categories: ["2. 도메인", "금융"]
+categories: ["3. 튜토리얼", "금융 분석 프로그래밍 응용"]
 
 ---
 

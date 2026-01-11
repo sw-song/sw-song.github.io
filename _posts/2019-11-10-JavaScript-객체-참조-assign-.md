@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - '객체 참조', assign()
 date: 2019-11-10
-categories: ["1. 기술", "웹, 자바스크립트"]
+categories: ["1. 기술", "서버, 데이터, 클라우드"]
 
 ---
 

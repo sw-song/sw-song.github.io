@@ -2,7 +2,7 @@
 layout: post
 title: '[Dolt + Python + MySQL] 금융 분석을 위한 재무제표 데이터베이스 구축과 실행'
 date: 2025-05-09
-categories: ["1. 기술", "머신러닝, 딥러닝"]
+categories: ["4. 실전", "글로벌 매크로 분석"]
 
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 국내/해외 ETF 매매시 일반 위탁 계좌 vs 절세 계좌(연금저축, IRP, ISA) 세금 차이 정리
 date: 2025-06-10
-categories: ["2. 도메인", "금융"]
+categories: ["4. 실전", "글로벌 매크로 분석"]
 
 ---
 

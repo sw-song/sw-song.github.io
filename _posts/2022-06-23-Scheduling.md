@@ -2,7 +2,7 @@
 layout: post
 title: Scheduling
 date: 2022-06-23
-categories: ["1. 기술", "머신러닝, 딥러닝"]
+categories: ["1. 기술", "통계, 시계열"]
 
 ---
 

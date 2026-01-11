@@ -2,7 +2,7 @@
 layout: post
 title: git - branch
 date: 2022-06-01
-categories: ["1. 기술", "서버, 데이터, 클라우드"]
+categories: ["1. 기술", "머신러닝, 딥러닝"]
 
 ---
 

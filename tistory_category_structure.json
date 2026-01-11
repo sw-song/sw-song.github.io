@@ -1,0 +1,272 @@
+{
+  "blog_info": {
+    "title": "관성을 이기는 데이터",
+    "author": "swsong",
+    "tagline": "Capability, Utility, and Data Analysis.",
+    "url": "https://songseungwon.tistory.com",
+    "total_posts": 112,
+    "extraction_date": "2026-01-11"
+  },
+  "category_structure": {
+    "total_main_categories": 4,
+    "total_subcategories": 14,
+    "main_categories": [
+      {
+        "id": 1,
+        "name": "1. 기술",
+        "name_clean": "기술",
+        "post_count": 66,
+        "url_path": "/category/1.%20%EA%B8%B0%EC%88%A0",
+        "subcategories": [
+          {
+            "name": "인프라, 네트워크",
+            "post_count": 0,
+            "url_path": "/category/1.%20%EA%B8%B0%EC%88%A0/%EC%9D%B8%ED%94%84%EB%9D%BC%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC"
+          },
+          {
+            "name": "서버, 데이터, 클라우드",
+            "post_count": 20,
+            "url_path": "/category/1.%20%EA%B8%B0%EC%88%A0/%EC%84%9C%EB%B2%84%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%2C%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C"
+          },
+          {
+            "name": "웹, 자바스크립트",
+            "post_count": 15,
+            "url_path": "/category/1.%20%EA%B8%B0%EC%88%A0/%EC%9B%B9%2C%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8"
+          },
+          {
+            "name": "머신러닝, 딥러닝",
+            "post_count": 24,
+            "url_path": "/category/1.%20%EA%B8%B0%EC%88%A0/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%2C%20%EB%94%A5%EB%9F%AC%EB%8B%9D"
+          },
+          {
+            "name": "통계, 시계열",
+            "post_count": 7,
+            "url_path": "/category/1.%20%EA%B8%B0%EC%88%A0/%ED%86%B5%EA%B3%84%2C%20%EC%8B%9C%EA%B3%84%EC%97%B4"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "2. 도메인",
+        "name_clean": "도메인",
+        "post_count": 9,
+        "url_path": "/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8",
+        "subcategories": [
+          {
+            "name": "금융",
+            "post_count": 6,
+            "url_path": "/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EA%B8%88%EC%9C%B5"
+          },
+          {
+            "name": "비즈니스",
+            "post_count": 2,
+            "url_path": "/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4"
+          },
+          {
+            "name": "자산운용",
+            "post_count": 1,
+            "url_path": "/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EC%9E%90%EC%82%B0%EC%9A%B4%EC%9A%A9"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "3. 튜토리얼",
+        "name_clean": "튜토리얼",
+        "post_count": 29,
+        "url_path": "/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC",
+        "subcategories": [
+          {
+            "name": "금융 분석 프로그래밍 기초",
+            "post_count": 6,
+            "url_path": "/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EA%B8%88%EC%9C%B5%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88"
+          },
+          {
+            "name": "금융 분석 프로그래밍 응용",
+            "post_count": 11,
+            "url_path": "/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EA%B8%88%EC%9C%B5%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%9D%91%EC%9A%A9"
+          },
+          {
+            "name": "비즈니스 통계 분석 프로그래밍",
+            "post_count": 6,
+            "url_path": "/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%86%B5%EA%B3%84%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D"
+          },
+          {
+            "name": "시계열 예측 및 계량 분석 방법론",
+            "post_count": 4,
+            "url_path": "/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%98%88%EC%B8%A1%20%EB%B0%8F%20%EA%B3%84%EB%9F%89%20%EB%B6%84%EC%84%9D%20%EB%B0%A9%EB%B2%95%EB%A1%A0"
+          },
+          {
+            "name": "자연어 처리 및 텍스트 분석 방법론",
+            "post_count": 2,
+            "url_path": "/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EC%9E%90%EC%97%B0%EC%96%B4%20%EC%B2%98%EB%A6%AC%20%EB%B0%8F%20%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EB%B6%84%EC%84%9D%20%EB%B0%A9%EB%B2%95%EB%A1%A0"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "4. 실전",
+        "name_clean": "실전",
+        "post_count": 8,
+        "url_path": "/category/4.%20%EC%8B%A4%EC%A0%84",
+        "subcategories": [
+          {
+            "name": "글로벌 매크로 분석",
+            "post_count": 5,
+            "url_path": "/category/4.%20%EC%8B%A4%EC%A0%84/%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EB%A7%A4%ED%81%AC%EB%A1%9C%20%EB%B6%84%EC%84%9D"
+          },
+          {
+            "name": "계량 투자 분석",
+            "post_count": 3,
+            "url_path": "/category/4.%20%EC%8B%A4%EC%A0%84/%EA%B3%84%EB%9F%89%20%ED%88%AC%EC%9E%90%20%EB%B6%84%EC%84%9D"
+          }
+        ]
+      }
+    ]
+  },
+  "sample_posts_with_categories": [
+    {
+      "post_id": 157,
+      "title": "국내/해외 ETF 매매시 일반 위탁 계좌 vs 절세 계좌(연금저축, IRP, ISA) 세금 차이 정리",
+      "category": "2. 도메인/자산운용",
+      "category_clean": "도메인 > 자산운용",
+      "category_id": 1216643,
+      "url": "https://songseungwon.tistory.com/157"
+    },
+    {
+      "post_id": 156,
+      "title": "[Dolt + Python + MySQL] 금융 분석을 위한 재무제표 데이터베이스 구축과 실행",
+      "category": "1. 기술/서버, 데이터, 클라우드",
+      "category_clean": "기술 > 서버, 데이터, 클라우드",
+      "category_id": 940449,
+      "url": "https://songseungwon.tistory.com/156"
+    },
+    {
+      "post_id": 155,
+      "title": "[파이썬 퀀트 투자] 벨류에이션 멀티플 기반 피어 그룹 스크리닝",
+      "category": "4. 실전/계량 투자 분석",
+      "category_clean": "실전 > 계량 투자 분석",
+      "url": "https://songseungwon.tistory.com/155"
+    },
+    {
+      "post_id": 154,
+      "title": "[파이썬 퀀트 투자] 좋은 기업을 찾아보자 - 미국 기술주 멀티플 EDA",
+      "category": "4. 실전/계량 투자 분석",
+      "category_clean": "실전 > 계량 투자 분석",
+      "url": "https://songseungwon.tistory.com/154"
+    },
+    {
+      "post_id": 153,
+      "title": "[파이썬 퀀트 투자] 시장은 정말 효율적일까? - 통계적 차익거래(Statistical Arbitrage) 백테스팅 시뮬레이션",
+      "category": "4. 실전/계량 투자 분석",
+      "category_clean": "실전 > 계량 투자 분석",
+      "url": "https://songseungwon.tistory.com/153"
+    },
+    {
+      "post_id": 152,
+      "title": "2025년 장단기 국채금리 기반 마켓 베타 국면 분석 - 단기 금리 급락시 기저 원인을 포착할 것",
+      "category": "2. 도메인/금융",
+      "category_clean": "도메인 > 금융",
+      "url": "https://songseungwon.tistory.com/152"
+    },
+    {
+      "post_id": 151,
+      "title": "달러 통화량과 유동성 비율을 활용한 금, 비트코인 가치평가",
+      "category": "4. 실전/글로벌 매크로 분석",
+      "category_clean": "실전 > 글로벌 매크로 분석",
+      "url": "https://songseungwon.tistory.com/151"
+    },
+    {
+      "post_id": 150,
+      "title": "[파이썬 금융 데이터 분석] 미국 부채사이클 기반 2025년 리세션 리스크 평가",
+      "category": "4. 실전/글로벌 매크로 분석",
+      "category_clean": "실전 > 글로벌 매크로 분석",
+      "url": "https://songseungwon.tistory.com/150"
+    }
+  ],
+  "category_mapping_for_migration": {
+    "description": "Mapping between Tistory categories and potential GitHub blog categories",
+    "tistory_to_normalized": {
+      "1. 기술/인프라, 네트워크": [
+        "Infrastructure",
+        "Network",
+        "DevOps"
+      ],
+      "1. 기술/서버, 데이터, 클라우드": [
+        "Backend",
+        "Database",
+        "Cloud",
+        "Server"
+      ],
+      "1. 기술/웹, 자바스크립트": [
+        "Frontend",
+        "JavaScript",
+        "Web"
+      ],
+      "1. 기술/머신러닝, 딥러닝": [
+        "ML",
+        "Deep Learning",
+        "AI"
+      ],
+      "1. 기술/통계, 시계열": [
+        "Statistics",
+        "Time Series",
+        "Data Analysis"
+      ],
+      "2. 도메인/금융": [
+        "Finance",
+        "Finance Analysis"
+      ],
+      "2. 도메인/비즈니스": [
+        "Business",
+        "Business Analysis"
+      ],
+      "2. 도메인/자산운용": [
+        "Asset Management",
+        "Investment"
+      ],
+      "3. 튜토리얼/금융 분석 프로그래밍 기초": [
+        "Tutorial",
+        "Finance Analysis",
+        "Programming Basics"
+      ],
+      "3. 튜토리얼/금융 분석 프로그래밍 응용": [
+        "Tutorial",
+        "Finance Analysis",
+        "Programming Advanced"
+      ],
+      "3. 튜토리얼/비즈니스 통계 분석 프로그래밍": [
+        "Tutorial",
+        "Business",
+        "Statistics"
+      ],
+      "3. 튜토리얼/시계열 예측 및 계량 분석 방법론": [
+        "Tutorial",
+        "Time Series",
+        "Quantitative Analysis"
+      ],
+      "3. 튜토리얼/자연어 처리 및 텍스트 분석 방법론": [
+        "Tutorial",
+        "NLP",
+        "Text Analysis"
+      ],
+      "4. 실전/글로벌 매크로 분석": [
+        "Analysis",
+        "Macro Analysis",
+        "Global Markets"
+      ],
+      "4. 실전/계량 투자 분석": [
+        "Analysis",
+        "Quantitative Investment",
+        "Trading"
+      ]
+    }
+  },
+  "notes": {
+    "category_structure": "Two-level hierarchy: Main Category > Subcategory",
+    "post_count_verification": "Total posts from main categories (66+9+29+8) = 112 posts",
+    "naming_convention": "Categories are prefixed with numbers for ordering (1-4 for main categories)",
+    "category_format_in_posts": "Posts display category as 'Main/Sub' format (e.g., '1. 기술/서버, 데이터, 클라우드')",
+    "category_url_encoding": "URLs use URL encoding (% encoded) for Korean characters"
+  }
+}

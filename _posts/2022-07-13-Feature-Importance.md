@@ -2,7 +2,7 @@
 layout: post
 title: Feature Importance
 date: 2022-07-13
-categories: ["1. 기술", "머신러닝, 딥러닝"]
+categories: ["2. 도메인", "자산운용"]
 
 ---
 

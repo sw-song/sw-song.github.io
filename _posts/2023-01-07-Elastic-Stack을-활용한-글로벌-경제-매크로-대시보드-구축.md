@@ -2,7 +2,7 @@
 layout: post
 title: Elastic Stack을 활용한 글로벌 경제 매크로 대시보드 구축
 date: 2023-01-07
-categories: ["1. 기술", "서버, 데이터, 클라우드"]
+categories: ["3. 튜토리얼", "자연어 처리 및 텍스트 분석 방법론"]
 
 ---
 

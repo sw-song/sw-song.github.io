@@ -2,7 +2,7 @@
 layout: post
 title: '[파이썬 퀀트 투자] 시장은 정말 효율적일까? - 통계적 차익거래(Statistical Arbitrage) 백테스팅 시뮬레이션'
 date: 2025-04-29
-categories: ["1. 기술", "통계, 시계열"]
+categories: ["4. 실전", "글로벌 매크로 분석"]
 
 ---
 
