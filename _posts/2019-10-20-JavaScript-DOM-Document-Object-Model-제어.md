@@ -11,17 +11,15 @@ DOM은 브라우저가 제공하는 객체(BOM-Browser Object Model) 중 하나�
 
 DOM을 사용해보자.
 
-{% raw %}
 ```html
-<html>
-  <head>
-  </head>
-  <body>
-    <div id='el'></div>
-  </body>
-</html>
+&lt;html&gt;
+  &lt;head&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id='el'&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 ```
-{% endraw %}
 
 javaScript로 Html을 조작하기 위해 DOM을 사용해서 접근할 수 있다.
 
@@ -55,17 +53,15 @@ let elmt = document.querySelector('div');
 
 **자바스크립트는 DOM 객체를 통해 브라우저가 제공하는 이벤트를 제어할 수 있다.**
 
-{% raw %}
 ```html
-<div>
-  <form id="js_obj">
-    <button type='isevent'>
-      <span>Click</span>
-    </button>
-  </form>
-</div>
+&lt;div&gt;
+  &lt;form id="js_obj"&gt;
+    &lt;button type='isevent'&gt;
+      &lt;span&gt;Click&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
 ```
-{% endraw %}
 
 위 코드는 아래 캡쳐 화면과 같이 사용자가 클릭할 수 있는 버튼을 만들어낸다.
 
