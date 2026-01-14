@@ -1,0 +1,186 @@
+TISTORY BLOG CATEGORY STRUCTURE - VISUAL TREE
+==============================================
+
+Blog: 관성을 이기는 데이터 (Overcoming Inertia with Data)
+Author: swsong
+Total Posts: 112
+URL: https://songseungwon.tistory.com
+
+ROOT
+├── 분류 전체보기 (All Categories) [112]
+│
+├── 1. 기술 (Technology) [66 posts]
+│   ├── 인프라, 네트워크 (Infrastructure, Network) [0]
+│   ├── 서버, 데이터, 클라우드 (Server, Database, Cloud) [20]
+│   ├── 웹, 자바스크립트 (Web, JavaScript) [15]
+│   ├── 머신러닝, 딥러닝 (Machine Learning, Deep Learning) [24]
+│   └── 통계, 시계열 (Statistics, Time Series) [7]
+│
+├── 2. 도메인 (Domain) [9 posts]
+│   ├── 금융 (Finance) [6]
+│   ├── 비즈니스 (Business) [2]
+│   └── 자산운용 (Asset Management) [1]
+│
+├── 3. 튜토리얼 (Tutorial) [29 posts]
+│   ├── 금융 분석 프로그래밍 기초 (Finance Analysis Programming Basics) [6]
+│   ├── 금융 분석 프로그래밍 응용 (Finance Analysis Programming Applied) [11]
+│   ├── 비즈니스 통계 분석 프로그래밍 (Business Statistics Analysis Programming) [6]
+│   ├── 시계열 예측 및 계량 분석 방법론 (Time Series Forecasting & Quantitative Analysis Methodology) [4]
+│   └── 자연어 처리 및 텍스트 분석 방법론 (NLP & Text Analysis Methodology) [2]
+│
+└── 4. 실전 (Practical/Real-World) [8 posts]
+    ├── 글로벌 매크로 분석 (Global Macro Analysis) [5]
+    └── 계량 투자 분석 (Quantitative Investment Analysis) [3]
+
+
+CATEGORY URLS (URL-ENCODED)
+===========================
+
+Main Categories:
+  1. 기술
+     https://songseungwon.tistory.com/category/1.%20%EA%B8%B0%EC%88%A0
+
+  2. 도메인
+     https://songseungwon.tistory.com/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8
+
+  3. 튜토리얼
+     https://songseungwon.tistory.com/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC
+
+  4. 실전
+     https://songseungwon.tistory.com/category/4.%20%EC%8B%A4%EC%A0%84
+
+
+Subcategories (1. 기술):
+
+  인프라, 네트워크
+  https://songseungwon.tistory.com/category/1.%20%EA%B8%B0%EC%88%A0/%EC%9D%B8%ED%94%84%EB%9D%BC%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC
+
+  서버, 데이터, 클라우드
+  https://songseungwon.tistory.com/category/1.%20%EA%B8%B0%EC%88%A0/%EC%84%9C%EB%B2%84%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%2C%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C
+
+  웹, 자바스크립트
+  https://songseungwon.tistory.com/category/1.%20%EA%B8%B0%EC%88%A0/%EC%9B%B9%2C%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8
+
+  머신러닝, 딥러닝
+  https://songseungwon.tistory.com/category/1.%20%EA%B8%B0%EC%88%A0/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%2C%20%EB%94%A5%EB%9F%AC%EB%8B%9D
+
+  통계, 시계열
+  https://songseungwon.tistory.com/category/1.%20%EA%B8%B0%EC%88%A0/%ED%86%B5%EA%B3%84%2C%20%EC%8B%9C%EA%B3%84%EC%97%B4
+
+
+Subcategories (2. 도메인):
+
+  금융
+  https://songseungwon.tistory.com/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EA%B8%88%EC%9C%B5
+
+  비즈니스
+  https://songseungwon.tistory.com/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4
+
+  자산운용
+  https://songseungwon.tistory.com/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EC%9E%90%EC%82%B0%EC%9A%B4%EC%9A%A9
+
+
+Subcategories (3. 튜토리얼):
+
+  금융 분석 프로그래밍 기초
+  https://songseungwon.tistory.com/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EA%B8%88%EC%9C%B5%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88
+
+  금융 분석 프로그래밍 응용
+  https://songseungwon.tistory.com/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EA%B8%88%EC%9C%B5%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%9D%91%EC%9A%A9
+
+  비즈니스 통계 분석 프로그래밍
+  https://songseungwon.tistory.com/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%86%B5%EA%B3%84%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D
+
+  시계열 예측 및 계량 분석 방법론
+  https://songseungwon.tistory.com/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%98%88%EC%B8%A1%20%EB%B0%8F%20%EA%B3%84%EB%9F%89%20%EB%B6%84%EC%84%9D%20%EB%B0%A9%EB%B2%95%EB%A1%A0
+
+  자연어 처리 및 텍스트 분석 방법론
+  https://songseungwon.tistory.com/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EC%9E%90%EC%97%B0%EC%96%B4%20%EC%B2%98%EB%A6%AC%20%EB%B0%8F%20%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EB%B6%84%EC%84%9D%20%EB%B0%A9%EB%B2%95%EB%A1%A0
+
+
+Subcategories (4. 실전):
+
+  글로벌 매크로 분석
+  https://songseungwon.tistory.com/category/4.%20%EC%8B%A4%EC%A0%84/%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EB%A7%A4%ED%81%AC%EB%A1%9C%20%EB%B6%84%EC%84%9D
+
+  계량 투자 분석
+  https://songseungwon.tistory.com/category/4.%20%EC%8B%A4%EC%A0%84/%EA%B3%84%EB%9F%89%20%ED%88%AC%EC%9E%90%20%EB%B6%84%EC%84%9D
+
+
+SAMPLE POSTS BY CATEGORY
+========================
+
+Post ID: 157
+Title: 국내/해외 ETF 매매시 일반 위탁 계좌 vs 절세 계좌(연금저축, IRP, ISA) 세금 차이 정리
+Category: 2. 도메인/자산운용
+Tistory Category ID: 1216643
+URL: https://songseungwon.tistory.com/157
+
+Post ID: 156
+Title: [Dolt + Python + MySQL] 금융 분석을 위한 재무제표 데이터베이스 구축과 실행
+Category: 1. 기술/서버, 데이터, 클라우드
+Tistory Category ID: 940449
+URL: https://songseungwon.tistory.com/156
+
+Post ID: 155
+Title: [파이썬 퀀트 투자] 벨류에이션 멀티플 기반 피어 그룹 스크리닝
+Category: 4. 실전/계량 투자 분석
+URL: https://songseungwon.tistory.com/155
+
+Post ID: 154
+Title: [파이썬 퀀트 투자] 좋은 기업을 찾아보자 - 미국 기술주 멀티플 EDA
+Category: 4. 실전/계량 투자 분석
+URL: https://songseungwon.tistory.com/154
+
+Post ID: 153
+Title: [파이썬 퀀트 투자] 시장은 정말 효율적일까? - 통계적 차익거래(Statistical Arbitrage) 백테스팅 시뮬레이션
+Category: 4. 실전/계량 투자 분석
+URL: https://songseungwon.tistory.com/153
+
+Post ID: 152
+Title: 2025년 장단기 국채금리 기반 마켓 베타 국면 분석 - 단기 금리 급락시 기저 원인을 포착할 것
+Category: 2. 도메인/금융
+URL: https://songseungwon.tistory.com/152
+
+Post ID: 151
+Title: 달러 통화량과 유동성 비율을 활용한 금, 비트코인 가치평가
+Category: 4. 실전/글로벌 매크로 분석
+URL: https://songseungwon.tistory.com/151
+
+Post ID: 150
+Title: [파이썬 금융 데이터 분석] 미국 부채사이클 기반 2025년 리세션 리스크 평가
+Category: 4. 실전/글로벌 매크로 분석
+URL: https://songseungwon.tistory.com/150
+
+
+STATISTICS
+==========
+
+Total Posts: 112
+
+Main Category Distribution:
+  1. 기술 (Technology): 66 posts (58.9%)
+  3. 튜토리얼 (Tutorial): 29 posts (25.9%)
+  2. 도메인 (Domain): 9 posts (8.0%)
+  4. 실전 (Practical): 8 posts (7.1%)
+
+Most Active Subcategories (Top 5):
+  1. 머신러닝, 딥러닝 - 24 posts
+  2. 서버, 데이터, 클라우드 - 20 posts
+  3. 금융 분석 프로그래밍 응용 - 11 posts
+  4. 웹, 자바스크립트 - 15 posts
+  5. 글로벌 매크로 분석 - 5 posts
+
+Empty Subcategories:
+  인프라, 네트워크 - 0 posts
+
+
+KEY INSIGHTS
+============
+
+1. Technical Focus: Over half of all posts (58.9%) are technical in nature
+2. Finance Integration: A strong combination of programming tutorials with financial applications
+3. Learning Curve: Clear progression from basics (3번 Tutorial) to advanced applications (4번 Practical)
+4. Korean Categories: All category names are in Korean, requiring URL encoding for navigation
+5. Active Topics: ML/DL dominates technical content, with Python/Finance tutorials as secondary focus
+6. Sparse Areas: Infrastructure/Network category has no posts; Business domain minimally represented

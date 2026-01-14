@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="kr" mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망" /><meta property="og:locale" content="kr" /><meta name="description" content="딥러닝 신경망 모형이 언제나 이길까?" /><meta property="og:description" content="딥러닝 신경망 모형이 언제나 이길까?" /><link rel="canonical" href="https://sw-song.github.io/posts/%EC%9D%B4%EC%A7%84-%EB%B6%84%EB%A5%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%98%88%EC%B8%A1-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-%EC%8B%A0%EA%B2%BD/" /><meta property="og:url" content="https://sw-song.github.io/posts/%EC%9D%B4%EC%A7%84-%EB%B6%84%EB%A5%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%98%88%EC%B8%A1-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-%EC%8B%A0%EA%B2%BD/" /><meta property="og:site_name" content="관성을 이기는 데이터" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-02-08T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"딥러닝 신경망 모형이 언제나 이길까?","headline":"이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망","dateModified":"2026-01-12T08:03:50+09:00","url":"https://sw-song.github.io/posts/%EC%9D%B4%EC%A7%84-%EB%B6%84%EB%A5%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%98%88%EC%B8%A1-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-%EC%8B%A0%EA%B2%BD/","datePublished":"2022-02-08T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sw-song.github.io/posts/%EC%9D%B4%EC%A7%84-%EB%B6%84%EB%A5%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%98%88%EC%B8%A1-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-%EC%8B%A0%EA%B2%BD/"},"@context":"https://schema.org"}</script><title>이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망 | 관성을 이기는 데이터</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="관성을 이기는 데이터"><meta name="application-name" content="관성을 이기는 데이터"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/main/logo.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">관성을 이기는 데이터</a></div><div class="site-subtitle font-italic">Data Analytics and Automation</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/sw-song" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://www.linkedin.com/in/seungwonsong/" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['sw930601','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Seungwon Song </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Tue, Feb 8, 2022, 12:00 AM +0900" >Feb 8, 2022<i class="unloaded">2022-02-08T00:00:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Mon, Jan 12, 2026, 8:03 AM +0900" >Jan 12<i class="unloaded">2026-01-12T08:03:50+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2182 words">12 min read</span></div></div><div class="post-content"><p><strong>딥러닝 신경망 모형이 언제나 이길까?</strong></p><p>본 분석은 머신러닝 모델의 예측 성능을 비교함으로써 딥러닝(다층 신경망)이 언제나 만능일 수 없음을 검증하고자 한다. 물론 신경망의 경우 Hyper-parameter 튜닝 및 딥러닝에 최적화된 Feature Engineering을 통해 미세한 성능 개선이 가능하지만, 단순 이진 분류의 경우에 딥러닝보다 빠른 속도와 우수한 성능을 보여주는 가벼운 머신러닝 모델을 쉽게 찾을 수 있음을 보여주기 위함이다.</p><p>그럼, 자연스럽게 가설을 하나 설정해두고 분석을 진행하도록 하겠다.</p><h3 id="1-가설-설정-및-데이터-분포-확인"><strong>1. 가설 설정 및 데이터 분포 확인</strong></h3><ul><li>귀무가설 : 동일한 데이터로 동일한 정규화 과정을 거쳤을 때 머신러닝 모델 중 신경망 알고리즘의 성능이 가장 우수하다.<li>연구가설 : 동일한 데이터로 동일한 정규화 과정을 거쳤을 때 머신러닝 모델 중 신경망 알고리즘의 성능이 가장 우수한 것은 아니다.</ul><p>데이터는 <a href="https://archive.ics.uci.edu/ml/datasets/adult">UCI Machine Learning Repository의 Adult Data Set</a>을 사용한다. 해당 데이터는 소득 예측을 위한 정보를 담고 있으며, 연 $ 50K 이하 혹은 초과 케이스에 대한 label(y)를 함께 제공하고 있다.</p><p>각 컬럼은 범주형, 수치형 데이터가 섞여 있으며 각각의 분포는 아래와 같다.</p><p><img data-proofer-ignore data-src="/assets/images/posts/71-0.webp" alt="" /></p><p>Categorical Columns</p><p><img data-proofer-ignore data-src="/assets/images/posts/71-1.webp" alt="" /></p><p>Numerical Columns</p><h3 id="2-데이터-전처리-과정-확인"><strong>2. 데이터 전처리 과정 확인</strong></h3><p>머신러닝의 경우 모든 학습 데이터가 수치로 입력되어야 하므로 One-Hot-Encoding 방식을 사용해 범주형 데이터를 모두 변환해주었고,  이때 데이터가 희소해지는 현상<em>(One-Hot-Encoding시 데이터는 0과 1로 채워지며 0이 1에 비해 많은 공간을 차지하므로 머신러닝의 학습이 원활하지 못하게 됨)</em>에 대응하여 차원 축소(PCA, Principal Component Analysis)도 함께 수행해주었다. 과정마다의 결과물을 확인하고 넘어가자.</p><p><img data-proofer-ignore data-src="/assets/images/posts/71-2.webp" alt="" /></p><p>원본 데이터(범주형 데이터)</p><p><img data-proofer-ignore data-src="/assets/images/posts/71-3.webp" alt="" /></p><p>One-Hot-Encoding 수행 결과(8개 컬럼은 99개 컬럼으로 증폭되었고, 대부분 값이 0으로 입력됨) - 본 이미지에서는 9개 컬럼만 표시</p><p><img data-proofer-ignore data-src="/assets/images/posts/71-4.webp" alt="" /></p><p>PCA 수행 결과(99개 컬럼을 3개 컬럼으로 줄였고, 희소한 벡터를 유의미한 수치 벡터로 변환함) - *train/test set 분리로 인해 rows 갯수가 다름</p><p>이렇게 범주형 변수를 수치화한 다음 머신러닝 모델에 바로 입력하지 않고 정규화를 거치는 것이 좋다. 데이터의 평균 및 분산이 컬럼마다 다르게 되면 수치상 평균이 큰 특정 칼럼에 대한 영향이 다른 칼럼들의 분포를 상쇄시키기 때문이다. 범주형, 수치형 변수를 모두 정규화(평균 0, 표준편차 1)하고, 분포를 확인하면 다음과 같다.</p><p><img data-proofer-ignore data-src="/assets/images/posts/71-5.webp" alt="" /></p><p>train set의 분포지만 test set도 거의 유사한 분포를 띈다. 초록색 기준선이 평균을 가리키고 있다.</p><h3 id="3-모델간-예측-성능-비교"><strong>3. 모델간 예측 성능 비교</strong></h3><p>해당 데이터에 대해 총 5개의 머신러닝 모델로 예측을 수행했다.</p><h4 id="3-1-logistic-regression"><strong>3-1. Logistic Regression</strong></h4><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>				precision    recall  f1-score   support
+
+           0       0.87      0.93      0.90      6171
+           1       0.72      0.56      0.63      1970
+
+    accuracy                           0.84      8141
+   macro avg       0.79      0.74      0.76      8141
+weighted avg       0.83      0.84      0.83      8141
+
+---
+Precision
+- 연소득 $50,000 이하로 예측한 케이스의 87% 일치
+- 연소득 $50,000 초과로 예측한 케이스의 72% 일치
+
+Recall
+- 실제 연소득 $50,000 이하 케이스 중 93% 정상 분류
+- 실제 연소득 $50,000 초과 케이스 중 56% 정상 분류
+
+데이터 불균형으로 연소득 $50,000에 대한 예측 성능이 더 우수
+</pre></table></code></div></div><h4 id="3-2-random-forest"><strong>3-2. Random Forest</strong></h4><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>              precision    recall  f1-score   support
+
+           0       0.89      0.93      0.91      6171
+           1       0.74      0.62      0.68      1970
+
+    accuracy                           0.86      8141
+   macro avg       0.81      0.78      0.79      8141
+weighted avg       0.85      0.86      0.85      8141
+
+---
+Precision
+- 연소득 $50,000 이하로 예측한 케이스의 89% 일치
+- 연소득 $50,000 초과로 예측한 케이스의 74% 일치
+
+Recall
+- 실제 연소득 $50,000 이하 케이스 중 93% 정상 분류
+- 실제 연소득 $50,000 초과 케이스 중 62% 정상 분류
+
+마찬가지로 데이터 불균형으로 연소득 $50,000에 대한 예측 성능이 더 우수하지만 Linear Model보다 부족한 데이터셋에 대한 예측력이 좋음
+</pre></table></code></div></div><h4 id="3-3-xgboost"><strong>3-3. XGBoost</strong></h4><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>              precision    recall  f1-score   support
+
+           0       0.89      0.94      0.91      6171
+           1       0.76      0.65      0.70      1970
+
+    accuracy                           0.87      8141
+   macro avg       0.83      0.79      0.81      8141
+weighted avg       0.86      0.87      0.86      8141
+
+---
+Precision
+- 연소득 $50,000 이하로 예측한 케이스의 89% 일치
+- 연소득 $50,000 초과로 예측한 케이스의 76% 일치
+
+Recall
+- 실제 연소득 $50,000 이하 케이스 중 94% 정상 분류
+- 실제 연소득 $50,000 초과 케이스 중 65% 정상 분류
+
+기본 배깅 방식에서 개선된 학습 알고리즘인 랜덤포레스트보다도 부스팅 알고리즘이 성능이 좋았음.
+</pre></table></code></div></div><h4 id="3-4-lightgbm"><strong>3-4. LightGBM</strong></h4><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>              precision    recall  f1-score   support
+
+           0       0.89      0.94      0.91      6171
+           1       0.76      0.64      0.70      1970
+
+    accuracy                           0.87      8141
+   macro avg       0.83      0.79      0.81      8141
+weighted avg       0.86      0.87      0.86      8141
+
+---
+Precision
+- 연소득 $50,000 이하로 예측한 케이스의 89% 일치
+- 연소득 $50,000 초과로 예측한 케이스의 76% 일치
+
+Recall
+- 실제 연소득 $50,000 이하 케이스 중 94% 정상 분류
+- 실제 연소득 $50,000 초과 케이스 중 64% 정상 분류
+
+위에서 확인한 XGBoost와 매우 유사한 수치 확인. 하이퍼파라미터를 사용하지 않는다면 Boosting 계열간 큰 차이는 볼 수 없음
+</pre></table></code></div></div><h4 id="3-5-deep-learning"><strong>3-5. Deep Learning</strong></h4><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>              precision    recall  f1-score   support
+
+           0       0.89      0.91      0.90      6171
+           1       0.70      0.63      0.67      1970
+
+    accuracy                           0.85      8141
+   macro avg       0.79      0.77      0.78      8141
+weighted avg       0.84      0.85      0.84      8141
+
+---
+Precision
+- 연소득 $50,000 이하로 예측한 케이스의 89% 일치
+- 연소득 $50,000 초과로 예측한 케이스의 70% 일치
+
+Recall
+- 실제 연소득 $50,000 이하 케이스 중 91% 정상 분류
+- 실제 연소득 $50,000 초과 케이스 중 63% 정상 분류
+
+Boosting 계열보다 정확도는 떨어지며 Logistic Regression보다 불균형 데이터셋을 잘 반영한다는 점에서 유리하지만, 큰 차이는 없었다.
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/71-6.webp" alt="" /></p><h3 id="4-결론"><strong>4. 결론</strong></h3><p>모델간 성능 비교 결과 Gradient Boosting 계열의 알고리즘(XGBost, LightGBM)의 예측 정확도가 가장 좋았고, 속도를 고려했을 때, LightGBM이 가장 우수했다. 따라서 <strong>귀무가설을 기각하고 연구가설<em>(동일한 데이터로 동일한 정규화 과정을 거쳤을 때 머신러닝 모델 중 신경망 알고리즘의 성능이 가장 우수한 것은 아니다)</em>을 채택한다.</strong></p><p>실제로 캐글 대회에서도 많은 분석가들이 부스팅 계열 알고리즘으로 빠르고 정확한 모델을 구현해내고 있고, 특히 모델의 연산 속도가 중요한 금융이나 보안 등의 주요 산업 분야에서 부스팅 모델을 선호하는 경향이 있다. 산업 현장에서는 엔지니어의 회고, 피드백 과정을 통한 책임이 중요하기 때문에 모델의 해석 가능성과 설명력이 모델 선택의 주요 기준 중 하나다. 이러한 점에서도 신경망 모형보다 부스팅 계열 알고리즘 혹은 랜덤 포레스트 같은 트리 모형이 신경망 보다 유리한 부분이 있다.</p><p>요즘은 여러 모델을 함께 비교 분석하는 AutoML 패키지가 잘 나와있기 때문에 무조건 딥러닝을 사용하는 것보다 다양한 모델을 비교분석하면서 장단을 따져보는 것이 좋겠다.</p><p>👉 <a href="https://github.com/sw-song/TIA/blob/main/00_10_predict_income/predict_income.ipynb">분석 및 모델링에 사용된 파이썬 코드(주피터 노트북) 링크</a></p><p><strong>관성을 이기는 데이터</strong></p><p><a href="https://creativecommons.org/licenses/by/4.0/deed.ko">저작자표시 (새창열림)</a></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/3-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/'>3. 튜토리얼</a>, <a href='/categories/%EA%B8%88%EC%9C%B5-%EB%B6%84%EC%84%9D-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9D%91%EC%9A%A9/'>금융 분석 프로그래밍 응용</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망 - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%EC%9D%B4%EC%A7%84-%EB%B6%84%EB%A5%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%98%88%EC%B8%A1-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-%EC%8B%A0%EA%B2%BD/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망 - 관성을 이기는 데이터&u=https://sw-song.github.io/posts/%EC%9D%B4%EC%A7%84-%EB%B6%84%EB%A5%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%98%88%EC%B8%A1-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-%EC%8B%A0%EA%B2%BD/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망 - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%EC%9D%B4%EC%A7%84-%EB%B6%84%EB%A5%98%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%98%88%EC%B8%A1-%EC%84%B1%EB%8A%A5-%EB%B9%84%EA%B5%90-%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1-%ED%9A%8C%EA%B7%80-%EB%9E%9C%EB%8D%A4%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EB%B6%80%EC%8A%A4%ED%8C%85-%EC%8B%A0%EA%B2%BD/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Tistory%EC%97%90%EC%84%9C-GitHub-Pages%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%99%84%EC%A0%84-%EA%B0%80%EC%9D%B4%EB%93%9C/">Tistory에서 GitHub Pages로 블로그 마이그레이션 완전 가이드</a><li><a href="/posts/JavaScript-%EC%BD%9C%EB%B0%B1/">JavaScript - 콜백</a><li><a href="/posts/JavaScript-%EA%B0%9D%EC%B2%B4-%EC%B0%B8%EC%A1%B0-assign/">JavaScript - '객체 참조', assign()</a><li><a href="/posts/%EB%A7%A5-Mac-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%B2%BD%EB%A1%9C%EC%84%A4%EC%A0%95-%EC%95%84%EB%82%98%EC%BD%98%EB%8B%A4-Anaconda-2020%EB%85%84-5%EC%9B%94-10%EC%9D%BC-%EA%B8%B0%EC%A4%80/">맥(Mac) 터미널 경로설정 - 아나콘다(Anaconda), 2020년 5월 10일 기준 updated</a><li><a href="/posts/%EB%A7%A5-zsh-conda-install-%EC%97%90%EB%9F%AC-pip-install%EB%A1%9C-%EB%8C%80%EC%B2%B4/">맥 zsh - conda install 에러, pip install로 대체</a></ul></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%EB%A7%A5-homebrew-%EA%B9%83-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%97%B0%EB%8F%99/"><div class="card-body"> <span class="timeago small" >May 17, 2020<i class="unloaded">2020-05-17T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>맥 homebrew - 깃 설치 및 깃허브 연동</h3><div class="text-muted small"><p> 먼저 homebrew를 설치할 것이다. homebrew는 맥에서 git과 같은 다양한 툴을 편하게 설치하게 해준다. git 사이트에서도 이렇게 homebrew 사용을 권장한다. Install Homebrew 아래의 코드를 복사해서 터미널에 붙여넣는다. 정상적으로 설치가 되면 이렇게 password를 입력하라고 하는데 그냥 enter쳐주...</p></div></div></a></div><div class="card"> <a href="/posts/%ED%82%A4%EC%9B%80%EC%A6%9D%EA%B6%8C-API%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%A3%BC%EA%B0%80-%EC%A0%95%EB%B3%B4-%EC%88%98%EC%A7%91-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%88%98%EC%A7%91-%EC%9E%90%EB%8F%99%ED%99%94/"><div class="card-body"> <span class="timeago small" >Sep 2, 2021<i class="unloaded">2021-09-02T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>키움증권 API를 활용한 비 실시간 주가 정보 수집 - 파이썬 데이터 수집 자동화</h3><div class="text-muted small"><p> 키움 증권 API를 활용한 주식 정보 및 일봉 데이터 수집 자동화 pykiwoom 모듈 활용 : github/sharebook-kr/pykiwoom 코드 참고 : 퀀트투자를 위한 키움증권 API, 조대표 외 1명 1. 개요 1-1. 주식 데이터 수집 방식 비교 주가 정보를 수집하기 위한 방법으로는 주로 금융사에서 제공하는 api방...</p></div></div></a></div><div class="card"> <a href="/posts/%EC%A1%B4%EB%B2%84-vs-%EC%9E%90%EB%8F%99%EB%A7%A4%EB%A7%A4-%EB%B0%B1%ED%85%8C%EC%8A%A4%ED%8C%85-%EC%88%98%EC%9D%B5%EB%A5%A0-%EB%B9%84%EA%B5%90-%EC%B9%B4%EC%B9%B4%EC%98%A4-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%88%EC%9C%B5-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/"><div class="card-body"> <span class="timeago small" >Sep 7, 2021<i class="unloaded">2021-09-07T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>존버 vs 자동매매 백테스팅 수익률 비교(카카오) - 파이썬 금융 데이터 분석</h3><div class="text-muted small"><p> Step 0. 전략 과거에 카카오 상장 초기에 배팅했다면 지금쯤 소위 대박을 터뜨렸을 것이다. 이를 아는 상황에서 과연 특정 (차트) 매매 전략이 단순 장기 보유보다 우세한지 확인해 보고자 한다. ​전략은 잘 알려진 골든크로스 매수, 데드크로스 매도 방식을 시도한다. 골든크로스는 단기 이동평균선(보통 20일 이하)이 장기 이동평균선(보통 30일 이...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/%EA%B3%BC%EA%B1%B0-%EC%A3%BC%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C-%EB%AF%B8%EB%9E%98-%EC%A3%BC%EA%B0%80%EB%A5%BC-%EC%98%88%EC%B8%A1%ED%95%A0-%EC%88%98-%EC%9E%88%EC%9D%84%EA%B9%8C-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%8B%9C%EA%B3%84%EC%97%B4-%ED%8C%A8%ED%84%B4-%EA%B2%80%EC%83%89/" class="btn btn-outline-primary" prompt="Older"><p>과거 주가 데이터로 미래 주가를 예측할 수 있을까? - 파이썬 시계열 패턴 검색</p></a> <a href="/posts/Elastic-Search-%EC%99%B8%EB%B6%80-%ED%98%B8%EC%8A%A4%ED%8C%85-%EA%B0%9C%EB%B0%A9/" class="btn btn-outline-primary" prompt="Newer"><p>Elastic Search - 외부 호스팅 개방</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2026 <a href="https://github.com/sw-song">Seungwon Song</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>

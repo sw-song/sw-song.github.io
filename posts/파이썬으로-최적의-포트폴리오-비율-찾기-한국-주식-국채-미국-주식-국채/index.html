@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="kr" mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채)" /><meta property="og:locale" content="kr" /><meta name="description" content="주식 시장의 난이도가 올라가면서 개인 투자자들도 자산 배분을 고려하고 있다. 자산 배분의 방식에는 여러 가지가 있겠지만 이번에는 미국과 한국 2개의 시장에만 투자하고, 각 시장에 대해 채권과 주식을 고르게 배분하는 전략으로 전개하고자 한다. 안전자산인 채권과 위험자산 주식을 어떤 비율로 분배하는 것이 가장 효율적일까?" /><meta property="og:description" content="주식 시장의 난이도가 올라가면서 개인 투자자들도 자산 배분을 고려하고 있다. 자산 배분의 방식에는 여러 가지가 있겠지만 이번에는 미국과 한국 2개의 시장에만 투자하고, 각 시장에 대해 채권과 주식을 고르게 배분하는 전략으로 전개하고자 한다. 안전자산인 채권과 위험자산 주식을 어떤 비율로 분배하는 것이 가장 효율적일까?" /><link rel="canonical" href="https://sw-song.github.io/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/" /><meta property="og:url" content="https://sw-song.github.io/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/" /><meta property="og:site_name" content="관성을 이기는 데이터" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-06-11T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채)" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"주식 시장의 난이도가 올라가면서 개인 투자자들도 자산 배분을 고려하고 있다. 자산 배분의 방식에는 여러 가지가 있겠지만 이번에는 미국과 한국 2개의 시장에만 투자하고, 각 시장에 대해 채권과 주식을 고르게 배분하는 전략으로 전개하고자 한다. 안전자산인 채권과 위험자산 주식을 어떤 비율로 분배하는 것이 가장 효율적일까?","headline":"파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채)","dateModified":"2026-01-12T08:03:50+09:00","url":"https://sw-song.github.io/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/","datePublished":"2022-06-11T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sw-song.github.io/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/"},"@context":"https://schema.org"}</script><title>파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채) | 관성을 이기는 데이터</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="관성을 이기는 데이터"><meta name="application-name" content="관성을 이기는 데이터"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/main/logo.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">관성을 이기는 데이터</a></div><div class="site-subtitle font-italic">Data Analytics and Automation</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/sw-song" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://www.linkedin.com/in/seungwonsong/" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['sw930601','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채)</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채)</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Seungwon Song </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sat, Jun 11, 2022, 12:00 AM +0900" >Jun 11, 2022<i class="unloaded">2022-06-11T00:00:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Mon, Jan 12, 2026, 8:03 AM +0900" >Jan 12<i class="unloaded">2026-01-12T08:03:50+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2924 words">16 min read</span></div></div><div class="post-content"><p>주식 시장의 난이도가 올라가면서 개인 투자자들도 자산 배분을 고려하고 있다. 자산 배분의 방식에는 여러 가지가 있겠지만 이번에는 미국과 한국 2개의 시장에만 투자하고, 각 시장에 대해 채권과 주식을 고르게 배분하는 전략으로 전개하고자 한다. 안전자산인 채권과 위험자산 주식을 어떤 비율로 분배하는 것이 가장 효율적일까?</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>Step 1. 야후 파이낸스 데이터 추출
+Step 2. 일일 수익률 및 최종 수익률 확인
+Step 3. 일일 수익률간 상관관계 시각화
+Step 4. 변동성(위험) 대비 수익률 시각화
+Step 5. 샤프 지수에 따른 포트폴리오 비율 시각화
+Step 6. 사프 지수에 따른 포트폴리오 수익률 및 변동성 시각화
+Step 7. 최적의 포트폴리오 비율
+</pre></table></code></div></div><h3 id="step-1-야후-파이낸스-데이터-추출"><strong>Step 1. 야후 파이낸스 데이터 추출</strong></h3><p>데이터는 야후 파이낸스에서 가져올 것이므로 클래스를 미리 정의해두자.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>class YFinance():
+    def __init__(self, tickers, period):
+        self.period = period
+        
+        self.df_price = pd.DataFrame()
+        self.df_dividends = pd.DataFrame()
+        for ticker in tickers:
+            print(f'[INFO] 데이터 불러오는 중 .. (ticker : {ticker})')
+            full_data = yf.Ticker(ticker).history(start=self.period[0], end=self.period[1])
+            self.df_price[ticker] = full_data['Close']
+            self.df_dividends[ticker] = full_data['Dividends']
+            time.sleep(0.5)
+        print(f'[INFO] 데이터셋 구성 완료')
+            
+    def get_price(self):
+        return self.df_price
+        
+    def get_dividends(self):
+        return self.df_dividends
+</pre></table></code></div></div><p>미국 주식은 S&amp;P500 지수를, 한국 주식은 코스피 지수를 사용하며 채권은 각 국가의 7~10년물 국채 가격을 사용한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>tickers = ['SPY', '^KS11','IEF', '148070.KS'] # 미국 주식, 한국 주식, 미국 채권, 한국 채권
+start_date = '2012-02-28'
+end_date = '2022-02-28'
+
+y_finance = YFinance(tickers=tickers, period=(start_date, end_date))
+
+yf_price = y_finance.get_price() # 주가
+yf_dividends = y_finance.get_dividends() # 배당금
+
+print('-------------------------------\n',yf_price.shape, yf_dividends.shape)
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-0.webp" alt="" /></p><p>2012년 2월 28일부터 2022년 2월 28일 전까지 데이터를 불러왔지만 미국 장과 한국 장의 개장일이 다르기 때문에 데이터가 부족한 컬럼이 있을 수 있다. dropna()를 통해 한 컬럼이라도 데이터가 빠진 경우 행을 날려준다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>yf_price = yf_price.dropna()
+yf_price.columns = ['us_stock','kr_stock','us_bond','kr_bond']
+
+yf_dividends = yf_dividends.dropna()
+yf_dividends.columns = yf_price.columns
+
+print(yf_price.shape, yf_dividends.shape)
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-1.webp" alt="" /></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>yf_price
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-2.webp" alt="" /></p><p>현재 포트폴리오에서 배당금은 미국 주식(S&amp;P500)과 미국 채권(7~10년물)에서만 발생했다. 이후 포트폴리오 수익률 계산에 사용할 예정이니 참고하자.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 총 누적 배당금
+yf_dividends.sum()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-3.webp" alt="" /></p><p>이렇게 가져온 데이터로 그래프를 한번 그려준다. 4개 티커 종가 범위가 모두 다르기 때문에 데이터가 시작되는 날짜를 기준일로 잡고 이후 증감에 대해 차트를 그린다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>price_rate = yf_price/yf_price.iloc[0] # 기준일(2012-02-28) 대비 증감
+
+plt.figure(figsize=(12,4))
+sns.lineplot(data=price_rate, linewidth=0.85)
+plt.ylim((0, price_rate.max().max()))
+plt.title('Increase/decrease rate compared to the base date')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-4.webp" alt="" /></p><h3 id="step-2-일일-수익률-최종-수익률-시각화"><strong>Step 2. 일일 수익률, 최종 수익률 시각화</strong></h3><p>차트를 그렸으니 이번에는 일일 변동과 최종 수익률도 그래프로 그려보자. 일일 변동을 그려보면, 전체 기간 중 가격이 오른 날의 비중이 얼마나 되는지 확인할 수 있다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre>plt.figure(figsize=(12,8))
+
+pcc = yf_price.pct_change().iloc[1:,:] # 첫째 날 데이터 제거(NaN)
+
+for i in range(4):
+
+    data = pcc.iloc[:,i]
+    plt.subplot(int(f'22{i+1}'))
+    sns.lineplot(data=data, linewidth=0.85, alpha=0.7)
+    inc_rate = (data &gt; 0).sum() / len(data) * 100
+    plt.title(f'&amp;lt; {data.name} : Increase rate {inc_rate:.2f}% &amp;gt;')
+    plt.axhline(y=0, color='r', linestyle='--', linewidth=0.7, alpha=0.9)
+
+plt.suptitle('Percent change of each asset')
+plt.tight_layout()
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-5.webp" alt="" /></p><ul><li>S&amp;P500의 경우, 2012년 2분기부터 2022년 1분기까지 전체 일수 중 55.64%가 상승했다.<li>코스피의 경우, 동기간 중 52.65%가 상승했다.<li>미국 국채의 경우, 동기간 중 52.4%가 상승했다.<li>한국 국채의 경우, 동기간 중 51.9%가 상승했다.</ul><p>각 컬럼별로 최종 수익률도 살펴보자. 최종 수익률은 수집 기간의 첫째 날 대비 마지막 날이 몇 % 상승했는가를 확인하면 알 수 있다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>plt.figure(figsize=(9,4))
+bars = sns.barplot(x=return_rate.index, y=return_rate.values, color='Blue', alpha=0.3)
+for p in bars.patches:
+    bars.annotate(f'{p.get_height():.1f}%',
+                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                   ha = 'center', va='center',
+                   xytext = (0,9),
+                   textcoords = 'offset points')
+    
+plt.title(f'Return rate of total period (%) - {(yf_price.index[-1] - yf_price.index[0]).days} days')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-6.webp" alt="" /></p><ul><li>S&amp;P500의 경우, 관찰 기간 동안 285.4% 상승했다.<li>코스피의 경우, 관찰 기간 동안 33.6% 상승했다.<li>미국 국채 선물의 경우, 관찰 기간 동안 24.8% 상승했다.<li>한국 국채 선물의 경우, 관찰 기간 동안 14.5% 상승했다.</ul><h3 id="step-3-일일-수익률-간-상관관계-시각화"><strong>Step 3. 일일 수익률 간 상관관계 시각화</strong></h3><p>포트폴리오를 꾸릴 때에는 상관관계가 낮은 자산들로 구성해야 한다. 수익률은 최대한 유지하면서 변동을 낮출 수 있기 때문이다. 아래 히트맵에 상관계수가 표시되어 있는데, 상관계수가 1에 가까울수록 같이 움직이는 자산이다. 가능하다면 상관계수가 0.2 이하의 낮은 수준으로 자산 조합을 선택하는 것이 좋다. 여기서는 미국 주식과 미국 국채, 한국 국채 3가지 조합이 좋아보인다. 한국 주식의 경우 미국 주식과 상관관계가 0.26으로, 포트폴리오 기준으로 고려할 때에는 다소 높은 편이다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>plt.title("Correlation of all asset's percent change")
+sns.heatmap(yf_price.pct_change().corr(), cmap='Blues', linewidth=0.2, annot=True)
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-7.webp" alt="" /></p><h3 id="step-4-변동성위험-대비-수익률-시각화"><strong>Step 4. 변동성(위험) 대비 수익률 시각화</strong></h3><p>미국 주식과 채권, 한국 주식과 채권 4가지 조합은 상관계수가 과하게 높은 케이스가 없기 때문에(미국 주식과 한국 주식 조합이 우려되긴 하지만) 포트폴리오로 고려해볼 수 있다. 이제는 포트폴리오 비중을 계산할 시간이다. 비중은 numpy random 함수를 통해 무작위로 총합 1이 되게 만들어주고, 1만 개의 비율 조합에 따른 연간 포트폴리오 리스크와 연평균 수익률을 계산하면 되겠다.</p><p>연 평균 수익률의 경우 전체 기간의 수익과 배당금을 합산한 금액을 첫날 자산 가격으로 나눠준 다음 10년의 기간에 대해 기하평균(10 제곱근)을 계산해주면 구할 수 있다. 복리 개념이기 때문에 단순 평균으로 계산하면 오차가 커진다.</p><p>연간 포트폴리오 리스크는 연간 수익률의 공분산을 구한 다음 ‘포트폴리오 비율의 역행렬 x 공분산 x 포트폴리오 비율’을 계산하면 포트폴리오 분산(변동성 제곱)이 나오는데, 루트를 씌워 표준편차(변동성)로 만들어주면 된다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre>import numpy as np
+
+port_ratios = []
+port_returns = np.array([])
+port_risks = np.array([])
+for i in range(10000): # 포트폴리오 비율 조합 10000개
+    # 포트폴리오 비율
+    port_ratio = np.random.rand(len(yf_price.columns)) # 4가지 랜덤 실수 조합
+    port_ratio /= port_ratio.sum() # 합계가 1인 랜덤 실수
+    port_ratios.append(port_ratio)
+    
+    # 연 평균 수익률
+    total_return_rate = (yf_price.iloc[-1] + yf_dividends.sum()) / yf_price.iloc[0] # 배당금 합산 총 수익률(%)
+    annual_avg_rr = total_return_rate ** (1/10) # 연 (기하)평균 수익률(%)
+    port_return = np.dot(port_ratio, annual_avg_rr-1) # 연 평균 포트폴리오 수익률 = 연 평균 수익률과 포트폴리오 비율의 행렬곱
+    port_returns = np.append(port_returns, port_return)
+    
+    # 연간 리스크
+    annual_cov = yf_price.pct_change().cov() * len(yf_price)/10 # 연간 수익률의 공분산 = 일별 수익률 공분산 * 연간 평균 거래일수
+    port_risk = np.sqrt(np.dot(port_ratio.T, np.dot(annual_cov, port_ratio))) # E(Volatility) = sqrt(WT*COV*W)
+    port_risks = np.append(port_risks, port_risk)
+</pre></table></code></div></div><p>위 식이 돌면, 1만 개의 포트폴리오 비율 조합과 각 포트폴리오 비율에 따른 연 평균 수익률과 연간 리스크가 계산된다.</p><p>여기서 구한 연 평균 수익률을 연간 리스크로 나눠주면 샤프지수의 근사치<em>(*샤프지수는 ‘(포트폴리오 수익률-시장 수익률)/(포트폴리오 리스크)’로 계산되는데, 여기서는 순위만 매기면 되기 때문에 시장 수익률을 빼는 과정이 생략되어 있다. 이 때문에 근사치라 표현했다.)</em>가 나온다. 샤프지수는 공식에서 알 수 있듯이 단위 위험(편차, 변동성) 당 수익률로, 감수하는 리스크 대비 기대 수익이 얼마나 되는가를 표현한다. 포트폴리오의 효율성을 판단하는 데에 유용하게 쓰이는 지표다.</p><p>아래 차트는 1만개의 무작위 포트폴리오를 리스크 대비 수익률로 보여주고 있다. 그중에서 샤프지수가 가장 높은 것과 변동성이 가장 낮은 것을 각각 빨간색 삼각형, 파란색 삼각형으로 표시해줬다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>sorted_shape_idx = np.argsort(port_returns/port_risks)
+sorted_risk_idx = np.argsort(port_risks)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>plt.figure(figsize=(12,6))
+sns.scatterplot(x=port_risks, y=port_returns, c=port_returns/port_risks, cmap='cool', alpha=0.85, s=20)
+sns.scatterplot(x=port_risks[sorted_shape_idx[-1:]], y=port_returns[sorted_shape_idx[-1:]], color='r', marker='^', s=500)
+sns.scatterplot(x=port_risks[sorted_risk_idx[:1]], y=port_returns[sorted_risk_idx[:1]], color='b', marker='v', s=500)
+
+plt.title('Return per unit risk')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-8.webp" alt="" /></p><h3 id="step-5-샤프-지수에-따른-포트폴리오-비율-시각화"><strong>Step 5. 샤프 지수에 따른 포트폴리오 비율 시각화</strong></h3><p>이번에는 샤프 지수가 가장 높은 포트폴리오부터 가장 낮은 포트폴리오까지 샤프 지수 순으로 나열해서 보여줄 것인데, 포트폴리오에서 각 자산이 차지하는 비율을 색상으로 표현한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre>port_df = pd.DataFrame(port_ratios)
+sorted_port_df = port_df.iloc[sorted_shape_idx[::-1]] # 역순
+sorted_port_df.columns = yf_price.columns
+
+plt.figure(figsize=(12,4))
+plt.stackplot(np.arange(1,len(sorted_port_df)+1,1), np.array(sorted_port_df.T), labels=sorted_port_df.columns)
+
+plt.xlim(0,10000)
+plt.legend(bbox_to_anchor=(1.12,0.95))
+plt.xlabel('Ranking of Sharpe Ratio')
+plt.ylabel('Portfolio Ratio')
+plt.title('Ranking of Optimal Portfolios by Sharpe Ratio')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-9.webp" alt="" /></p><p>왼쪽으로 갈수록 샤프지수가 가장 높은 포트폴리오다. 샤프지수가 높을수록 미국 채권의 비중이 높아지고, 한국 주식 비중은 낮아지는 것을 알 수 있다. 한국 국채와 미국 주식의 비중은 남는 포지션에 적절히 배분하는 것이 좋겠다.</p><h3 id="step-6-샤프-지수에-따른-포트폴리오-수익률-및-변동성-시각화"><strong>Step 6. 샤프 지수에 따른 포트폴리오 수익률 및 변동성 시각화</strong></h3><p>포트폴리오의 샤프지수가 높을 수록 수익률과 변동성이 어떤지 눈으로 확인하고 싶다. 따라서 같은 X축(샤프지수 내림차순)을 놓고 수익률과 변동성을 y축으로 그려본다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>sorted_returns = port_returns[[sorted_port_df.index]]
+sorted_risks = port_risks[[sorted_port_df.index]]
+
+plt.figure(figsize=(12,4))
+plt.fill_between(x=np.arange(1,len(sorted_returns)+1,1), y1=sorted_returns.tolist(), label='return')
+plt.fill_between(x=np.arange(1,len(sorted_risks)+1,1), y1=sorted_risks.tolist(), alpha=0.3, label='risk')
+plt.xlabel('Ranking of Sharpe Ratio')
+plt.ylabel('Return &amp; Risk')
+plt.title('Returns &amp; Risks of Portfolio by Sharpe Ratio Ranking')
+plt.legend()
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-10.webp" alt="" /></p><p>샤프지수가 높을 수록 수익률은 높아지고, 변동성은 낮아지는 경향을 보인다.</p><h3 id="step-7-최적의-포트폴리오-비율"><strong>Step 7. 최적의 포트폴리오 비율</strong></h3><p>그래서 만약 미국 국채와 주식, 그리고 한국 국채와 주식으로 포트폴리오를 구성한다면, 2012년 2분기부터 2022년 1분기까지의 수익률 기록을 토대로 볼 때 아래의 비율이 최적의 포트폴리오가 된다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>print(f'최적의 포트폴리오 비율 : \n{pd.Series(sorted_port_df.iloc[0], index=sorted_port_df.columns)}')
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/118-11.webp" alt="" /></p><p><strong>관성을 이기는 데이터</strong></p><p><a href="https://creativecommons.org/licenses/by/4.0/deed.ko">저작자표시 (새창열림)</a></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/2-%EB%8F%84%EB%A9%94%EC%9D%B8/'>2. 도메인</a>, <a href='/categories/%EA%B8%88%EC%9C%B5/'>금융</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채) - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채) - 관성을 이기는 데이터&u=https://sw-song.github.io/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채) - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Tistory%EC%97%90%EC%84%9C-GitHub-Pages%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%99%84%EC%A0%84-%EA%B0%80%EC%9D%B4%EB%93%9C/">Tistory에서 GitHub Pages로 블로그 마이그레이션 완전 가이드</a><li><a href="/posts/JavaScript-%EC%BD%9C%EB%B0%B1/">JavaScript - 콜백</a><li><a href="/posts/JavaScript-%EA%B0%9D%EC%B2%B4-%EC%B0%B8%EC%A1%B0-assign/">JavaScript - '객체 참조', assign()</a><li><a href="/posts/%EB%A7%A5-Mac-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%B2%BD%EB%A1%9C%EC%84%A4%EC%A0%95-%EC%95%84%EB%82%98%EC%BD%98%EB%8B%A4-Anaconda-2020%EB%85%84-5%EC%9B%94-10%EC%9D%BC-%EA%B8%B0%EC%A4%80/">맥(Mac) 터미널 경로설정 - 아나콘다(Anaconda), 2020년 5월 10일 기준 updated</a><li><a href="/posts/%EB%A7%A5-zsh-conda-install-%EC%97%90%EB%9F%AC-pip-install%EB%A1%9C-%EB%8C%80%EC%B2%B4/">맥 zsh - conda install 에러, pip install로 대체</a></ul></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%EB%AF%B8-%EC%9E%A5%EB%8B%A8%EA%B8%B0-%EA%B5%AD%EC%B1%84-%EA%B8%88%EB%A6%AC%EC%B0%A8-%EA%B8%B0%EB%B0%98-%EA%B2%BD%EA%B8%B0-%EC%B9%A8%EC%B2%B4-%EC%98%88%EC%B8%A1-%EB%B6%84%EC%84%9D-ARIMA-Probit/"><div class="card-body"> <span class="timeago small" >Dec 29, 2024<i class="unloaded">2024-12-29T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>미 장단기 국채 금리차 기반 경기 침체 예측 분석(ARIMA + Probit)</h3><div class="text-muted small"><p> 본 글에서는 ARIMA 모형을 활용해 미래 미국채 Spread 추이를 continuous하게 예측하고, 이어서 Probit 모형을 통해 ARIMA 예측값을 경기침체 여부로 변환한다. 경제 예측 모델링을 수행할 때에는 가급적 단순한(파라미터가 적은) 모델, 해석가능한 모델을 사용하는 것이 좋다. 일반적인 인식과 달리 경제 데이터는 딥러닝과 같은 모델 아...</p></div></div></a></div><div class="card"> <a href="/posts/2025%EB%85%84-%EC%9E%A5%EB%8B%A8%EA%B8%B0-%EA%B5%AD%EC%B1%84%EA%B8%88%EB%A6%AC-%EA%B8%B0%EB%B0%98-%EB%A7%88%EC%BC%93-%EB%B2%A0%ED%83%80-%EA%B5%AD%EB%A9%B4-%EB%B6%84%EC%84%9D-%EB%8B%A8%EA%B8%B0-%EA%B8%88%EB%A6%AC-%EA%B8%89%EB%9D%BD%EC%8B%9C-%EA%B8%B0%EC%A0%80-%EC%9B%90%EC%9D%B8%EC%9D%84-%ED%8F%AC/"><div class="card-body"> <span class="timeago small" >Feb 12, 2025<i class="unloaded">2025-02-12T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>2025년 장단기 국채금리 기반 마켓 베타 국면 분석 - 단기 금리 급락시 기저 원인을 포착할 것</h3><div class="text-muted small"><p> 1. 불 vs 베어 불(bull): 황소가 공격할 때 뿔을 들어 올리는 모습을 빗댄. 상승장을 의미 베어(bear): 곰이 공격할 때 앞발을 내리치는 모습을 빗댄, 하락장을 의미. shutterstock 2. 스티프닝 vs 플래트닝 스티프닝(steepening): 장기채와 단기채 수익률 ...</p></div></div></a></div><div class="card"> <a href="/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EA%B0%80%EA%B2%A9-%EC%98%88%EC%B8%A1-%ED%9A%8C%EA%B7%80%EB%AA%A8%ED%98%95/"><div class="card-body"> <span class="timeago small" >Jan 9, 2023<i class="unloaded">2023-01-09T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>파이썬 이더리움 가격 예측 - 회귀모형</h3><div class="text-muted small"><p> 많은 딥러닝 입문 도서, 유튜브 콘텐츠 등에서 주가 예측을 소재로 삼고 있다. 자극적이고, 흥미로울 뿐 아니라 예측 결과는 경이로울 정도로 정확해 보여서 주식에 관심 있는 많은 사람들의 관심을 받게 된다. 다음과 같이 ‘AI가 예측한 주가’라고 하는 시뮬레이션 결과를 보신 적이 있지 않은가? 위 결과는 실제로 모델을 학습시켜 예측한 결과물이며,...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/sklearn-RFE/" class="btn btn-outline-primary" prompt="Older"><p>sklearn - RFE</p></a> <a href="/posts/Precision-vs-Recall/" class="btn btn-outline-primary" prompt="Newer"><p>Precision vs Recall</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2026 <a href="https://github.com/sw-song">Seungwon Song</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>

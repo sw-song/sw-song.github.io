@@ -1,0 +1,16 @@
+main_category_id,main_category_name,main_category_name_en,main_category_posts,subcategory_name,subcategory_name_en,subcategory_posts,category_url
+1,1. 기술,Technology,66,인프라 네트워크,Infrastructure Network,0,/category/1.%20%EA%B8%B0%EC%88%A0/%EC%9D%B8%ED%94%84%EB%9D%BC%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC
+1,1. 기술,Technology,66,서버 데이터 클라우드,Server Database Cloud,20,/category/1.%20%EA%B8%B0%EC%88%A0/%EC%84%9C%EB%B2%84%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%2C%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C
+1,1. 기술,Technology,66,웹 자바스크립트,Web JavaScript,15,/category/1.%20%EA%B8%B0%EC%88%A0/%EC%9B%B9%2C%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8
+1,1. 기술,Technology,66,머신러닝 딥러닝,Machine Learning Deep Learning,24,/category/1.%20%EA%B8%B0%EC%88%A0/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%2C%20%EB%94%A5%EB%9F%AC%EB%8B%9D
+1,1. 기술,Technology,66,통계 시계열,Statistics Time Series,7,/category/1.%20%EA%B8%B0%EC%88%A0/%ED%86%B5%EA%B3%84%2C%20%EC%8B%9C%EA%B3%84%EC%97%B4
+2,2. 도메인,Domain,9,금융,Finance,6,/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EA%B8%88%EC%9C%B5
+2,2. 도메인,Domain,9,비즈니스,Business,2,/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4
+2,2. 도메인,Domain,9,자산운용,Asset Management,1,/category/2.%20%EB%8F%84%EB%A9%94%EC%9D%B8/%EC%9E%90%EC%82%B0%EC%9A%B4%EC%9A%A9
+3,3. 튜토리얼,Tutorial,29,금융 분석 프로그래밍 기초,Finance Analysis Programming Basics,6,/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EA%B8%88%EC%9C%B5%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88
+3,3. 튜토리얼,Tutorial,29,금융 분석 프로그래밍 응용,Finance Analysis Programming Applied,11,/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EA%B8%88%EC%9C%B5%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%9D%91%EC%9A%A9
+3,3. 튜토리얼,Tutorial,29,비즈니스 통계 분석 프로그래밍,Business Statistics Analysis Programming,6,/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%86%B5%EA%B3%84%20%EB%B6%84%EC%84%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D
+3,3. 튜토리얼,Tutorial,29,시계열 예측 및 계량 분석 방법론,Time Series Forecasting and Quantitative Analysis Methodology,4,/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%98%88%EC%B8%A1%20%EB%B0%8F%20%EA%B3%84%EB%9F%89%20%EB%B6%84%EC%84%9D%20%EB%B0%A9%EB%B2%95%EB%A1%A0
+3,3. 튜토리얼,Tutorial,29,자연어 처리 및 텍스트 분석 방법론,NLP and Text Analysis Methodology,2,/category/3.%20%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/%EC%9E%90%EC%97%B0%EC%96%B4%20%EC%B2%98%EB%A6%AC%20%EB%B0%8F%20%ED%85%8D%EC%8A%A4%ED%8A%B8%20%EB%B6%84%EC%84%9D%20%EB%B0%A9%EB%B2%95%EB%A1%A0
+4,4. 실전,Practical,8,글로벌 매크로 분석,Global Macro Analysis,5,/category/4.%20%EC%8B%A4%EC%A0%84/%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EB%A7%A4%ED%81%AC%EB%A1%9C%20%EB%B6%84%EC%84%9D
+4,4. 실전,Practical,8,계량 투자 분석,Quantitative Investment Analysis,3,/category/4.%20%EC%8B%A4%EC%A0%84/%EA%B3%84%EB%9F%89%20%ED%88%AC%EC%9E%90%20%EB%B6%84%EC%84%9D

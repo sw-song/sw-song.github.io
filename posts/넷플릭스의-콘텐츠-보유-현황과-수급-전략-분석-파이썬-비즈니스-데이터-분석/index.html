@@ -1,0 +1,809 @@
+<!DOCTYPE html><html lang="kr" mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석" /><meta property="og:locale" content="kr" /><meta name="description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation." /><meta property="og:description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation." /><link rel="canonical" href="https://sw-song.github.io/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" /><meta property="og:url" content="https://sw-song.github.io/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" /><meta property="og:site_name" content="관성을 이기는 데이터" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-09-02T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation.","headline":"넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석","dateModified":"2026-01-12T08:03:50+09:00","url":"https://sw-song.github.io/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/","datePublished":"2021-09-02T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sw-song.github.io/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/"},"@context":"https://schema.org"}</script><title>넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석 | 관성을 이기는 데이터</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="관성을 이기는 데이터"><meta name="application-name" content="관성을 이기는 데이터"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/main/logo.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">관성을 이기는 데이터</a></div><div class="site-subtitle font-italic">Data Analytics and Automation</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/sw-song" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://www.linkedin.com/in/seungwonsong/" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['sw930601','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Seungwon Song </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Thu, Sep 2, 2021, 12:00 AM +0900" >Sep 2, 2021<i class="unloaded">2021-09-02T00:00:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Mon, Jan 12, 2026, 8:03 AM +0900" >Jan 12<i class="unloaded">2026-01-12T08:03:50+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="7404 words">41 min read</span></div></div><div class="post-content"><p><img data-proofer-ignore data-src="/assets/images/posts/53-0.webp" alt="" /></p><h2 id="넷플릭스의-콘텐츠-보유-현황과-수급-전략-분석"><strong>넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석</strong></h2><ul><li><strong>분석 목표 : 넷플릭스에서 보유한 콘텐츠 현황과 최근 집중하는 콘텐츠 유형을 파악해 넷플릭스의 시장 점유를 위한 콘텐츠 수급 전략을 분석한다.</strong><li><strong>데이터 출처 : <a href="https://www.kaggle.com/shivamb/netflix-shows">Netflix Movies and TV Shows, Kaggle</a></strong><li><strong>참고 사이트 : <a href="https://www.primevideo.com/help/ref=atv_hp_nd_cnt?language=ko_KR&amp;nodeId=GFGQU3WYEG6FSJFJ">영화, TV 관람 등급 표</a></strong></ul><h2 id="1-가설-설정"><strong>1. 가설 설정</strong></h2><p>각 컬럼별 유효 데이터와 결측치 분포를 확인하고, 이에 따라 분석 목표에 도달하기 위한 가설을 설정한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>import pandas as pd
+import numpy as np
+
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import warnings
+warnings.filterwarnings(action='ignore')
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>netflix_r = pd.read_csv('./data/netflix_titles.csv')
+netflix_r
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>show_id<th>type<th>title<th>director<th>cast<th>country<th>date_added<th>release_year<th>rating<th>duration<th>listed_in<th>description<tbody><tr><td>0<td>s1<td>TV Show<td>3%<td>NaN<td>João Miguel, Bianca Comparato, Michel Gomes, R…<td>Brazil<td>August 14, 2020<td>2020<td>TV-MA<td>4 Seasons<td>International TV Shows, TV Dramas, TV Sci-Fi &amp;…<td>In a future where the elite inhabit an island …<tr><td>1<td>s2<td>Movie<td>7:19<td>Jorge Michel Grau<td>Demián Bichir, Héctor Bonilla, Oscar Serrano, …<td>Mexico<td>December 23, 2016<td>2016<td>TV-MA<td>93 min<td>Dramas, International Movies<td>After a devastating earthquake hits Mexico Cit…<tr><td>2<td>s3<td>Movie<td>23:59<td>Gilbert Chan<td>Tedd Chan, Stella Chung, Henley Hii, Lawrence …<td>Singapore<td>December 20, 2018<td>2011<td>R<td>78 min<td>Horror Movies, International Movies<td>When an army recruit is found dead, his fellow…<tr><td>3<td>s4<td>Movie<td>9<td>Shane Acker<td>Elijah Wood, John C. Reilly, Jennifer Connelly…<td>United States<td>November 16, 2017<td>2009<td>PG-13<td>80 min<td>Action &amp; Adventure, Independent Movies, Sci-Fi…<td>In a postapocalyptic world, rag-doll robots hi…<tr><td>4<td>s5<td>Movie<td>21<td>Robert Luketic<td>Jim Sturgess, Kevin Spacey, Kate Bosworth, Aar…<td>United States<td>January 1, 2020<td>2008<td>PG-13<td>123 min<td>Dramas<td>A brilliant group of students become card-coun…<tr><td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<tr><td>7782<td>s7783<td>Movie<td>Zozo<td>Josef Fares<td>Imad Creidi, Antoinette Turk, Elias Gergi, Car…<td>Sweden, Czech Republic, United Kingdom, Denmar…<td>October 19, 2020<td>2005<td>TV-MA<td>99 min<td>Dramas, International Movies<td>When Lebanon’s Civil War deprives Zozo of his …<tr><td>7783<td>s7784<td>Movie<td>Zubaan<td>Mozez Singh<td>Vicky Kaushal, Sarah-Jane Dias, Raaghav Chanan…<td>India<td>March 2, 2019<td>2015<td>TV-14<td>111 min<td>Dramas, International Movies, Music &amp; Musicals<td>A scrappy but poor boy worms his way into a ty…<tr><td>7784<td>s7785<td>Movie<td>Zulu Man in Japan<td>NaN<td>Nasty C<td>NaN<td>September 25, 2020<td>2019<td>TV-MA<td>44 min<td>Documentaries, International Movies, Music &amp; M…<td>In this documentary, South African rapper Nast…<tr><td>7785<td>s7786<td>TV Show<td>Zumbo’s Just Desserts<td>NaN<td>Adriano Zumbo, Rachel Khoo<td>Australia<td>October 31, 2020<td>2019<td>TV-PG<td>1 Season<td>International TV Shows, Reality TV<td>Dessert wizard Adriano Zumbo looks for the nex…<tr><td>7786<td>s7787<td>Movie<td>ZZ TOP: THAT LITTLE OL’ BAND FROM TEXAS<td>Sam Dunn<td>NaN<td>United Kingdom, Canada, United States<td>March 1, 2020<td>2019<td>TV-MA<td>90 min<td>Documentaries, Music &amp; Musicals<td>This documentary delves into the mystique behi…</table></div><p>7787 rows × 12 columns</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>netflix_r.isnull().sum()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre>show_id            0
+type               0
+title              0
+director        2389
+cast             718
+country          507
+date_added        10
+release_year       0
+rating             7
+duration           0
+listed_in          0
+description        0
+dtype: int64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sns.heatmap(netflix_r.isnull());
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-1.webp" alt="" /></p><ul><li><strong><code class="language-plaintext highlighter-rouge">show_id</code> : 해당 데이터셋 이외에 병합할 테이블이 없기 때문에 id 컬럼은 제거한다.</strong><li><strong><code class="language-plaintext highlighter-rouge">director</code>: 감독에 대한 정보는 고려하지 않겠다.</strong><li><strong><code class="language-plaintext highlighter-rouge">cast</code>: 배우 역시 고려하지 않겠다.</strong></ul><p>본 데이터에서 검증하고자 하는 가설은 아래와 같다.(H1 = 연구가설)</p><ol><li><strong>H1 : 최근 특정 콘텐츠 유형(TV show or Movie)이 늘고 있다. (주요 컬럼 : type)</strong><li><strong>H1 : 최근 특정 국가의 콘텐츠 비중이 늘고 있다. (주요 컬럼 : country)</strong><li><strong>H1 : 최근 옛날(오래된) 콘텐츠 수급 비중이 늘고 있다. (주요 컬럼 : release_year)</strong><li><strong>H1 : 최근 타겟층(관람등급)이 명확한 콘텐츠 비중이 늘고 있다. (주요 컬럼 : rating)</strong><li><strong>H1 : 최근 길이(시리즈, 시간)가 짧은 콘텐츠 비중이 늘고 있다. (주요 컬럼 : duration)</strong><li><strong>H1 : 최근 유통하는 콘텐츠 장르가 더 다양해지고 있다. (주요 컬럼 : listed_in, description)</strong></ol><p>위 순서로 가설을 검증해나가며 넷플릭스의 시장 점유 전략에 대한 최종 결론을 도출하고자 한다.</p><h2 id="2-기본-전처리"><strong>2. 기본 전처리</strong></h2><p>본격적인 분석에 앞서 미리 처리해야할 사항은 아래와 같다.</p><ol><li><strong>분석에 사용할 컬럼만 가져온다.</strong><li><strong>사용하지 않을 행은 제거한다.(시간 누락)</strong><li><strong>추세 확인을 위해 시계열 데이터로 변환한다.</strong><li><strong>과거와 현재를 상대적으로 비교하기 위해 구간(시간)을 분할한다.</strong></ol><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>netflix_r.head(3)
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>show_id<th>type<th>title<th>director<th>cast<th>country<th>date_added<th>release_year<th>rating<th>duration<th>listed_in<th>description<tbody><tr><td>0<td>s1<td>TV Show<td>3%<td>NaN<td>João Miguel, Bianca Comparato, Michel Gomes, R…<td>Brazil<td>August 14, 2020<td>2020<td>TV-MA<td>4 Seasons<td>International TV Shows, TV Dramas, TV Sci-Fi &amp;…<td>In a future where the elite inhabit an island …<tr><td>1<td>s2<td>Movie<td>7:19<td>Jorge Michel Grau<td>Demián Bichir, Héctor Bonilla, Oscar Serrano, …<td>Mexico<td>December 23, 2016<td>2016<td>TV-MA<td>93 min<td>Dramas, International Movies<td>After a devastating earthquake hits Mexico Cit…<tr><td>2<td>s3<td>Movie<td>23:59<td>Gilbert Chan<td>Tedd Chan, Stella Chung, Henley Hii, Lawrence …<td>Singapore<td>December 20, 2018<td>2011<td>R<td>78 min<td>Horror Movies, International Movies<td>When an army recruit is found dead, his fellow…</table></div><h3 id="2-1-불필요한-컬럼-제거"><strong>2-1. 불필요한 컬럼 제거</strong></h3><p>사용하지 않을 아래 컬럼들을 제거한다.</p><ul><li><strong><code class="language-plaintext highlighter-rouge">show_id</code></strong><li><strong><code class="language-plaintext highlighter-rouge">director</code></strong><li><strong><code class="language-plaintext highlighter-rouge">cast</code></strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>nflx = netflix_r.copy()
+nflx.drop(['show_id','director','cast'], axis=1, inplace=True)
+nflx.head(3)
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>type<th>title<th>country<th>date_added<th>release_year<th>rating<th>duration<th>listed_in<th>description<tbody><tr><td>0<td>TV Show<td>3%<td>Brazil<td>August 14, 2020<td>2020<td>TV-MA<td>4 Seasons<td>International TV Shows, TV Dramas, TV Sci-Fi &amp;…<td>In a future where the elite inhabit an island …<tr><td>1<td>Movie<td>7:19<td>Mexico<td>December 23, 2016<td>2016<td>TV-MA<td>93 min<td>Dramas, International Movies<td>After a devastating earthquake hits Mexico Cit…<tr><td>2<td>Movie<td>23:59<td>Singapore<td>December 20, 2018<td>2011<td>R<td>78 min<td>Horror Movies, International Movies<td>When an army recruit is found dead, his fellow…</table></div><h3 id="2-2-불필요한-행-제거"><strong>2-2. 불필요한 행 제거</strong></h3><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx.isnull().sum()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>type              0
+title             0
+country         507
+date_added       10
+release_year      0
+rating            7
+duration          0
+listed_in         0
+description       0
+dtype: int64
+</pre></table></code></div></div><p>모든 가설은 넷플릭스에 콘텐츠가 올라간 시간에 기준을 두고 있고, 최근 전략을 파악하고자 하는 것이 분석 목표이므로 시간 정보(date_added)가 없는 행은 과감하게 삭제하도록 한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx['date_added'].isnull().sum()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>10
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>nflx = nflx.loc[nflx['date_added'].isnull()==False]
+nflx['date_added'].isnull().sum()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>0
+</pre></table></code></div></div><h3 id="2-3-데이터-타입-변환"><strong>2-3. 데이터 타입 변환</strong></h3><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx.dtypes
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>type            object
+title           object
+country         object
+date_added      object
+release_year     int64
+rating          object
+duration        object
+listed_in       object
+description     object
+dtype: object
+</pre></table></code></div></div><p>날짜 데이터는 datetime 타입으로, 콘텐츠 길이(n부작, 시간)는 숫자로 변환한다.</p><ul><li><strong><code class="language-plaintext highlighter-rouge">date_added</code>, <code class="language-plaintext highlighter-rouge">release_year</code> -&gt; datetime</strong><li><strong><code class="language-plaintext highlighter-rouge">duration</code> -&gt; int</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>nflx['date_added'] = nflx['date_added'].astype('datetime64')
+nflx['date_added']
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>0      2020-08-14
+1      2016-12-23
+2      2018-12-20
+3      2017-11-16
+4      2020-01-01
+          ...    
+7782   2020-10-19
+7783   2019-03-02
+7784   2020-09-25
+7785   2020-10-31
+7786   2020-03-01
+Name: date_added, Length: 7777, dtype: datetime64[ns]
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre># 최초 출시일에 월/일 정보가 누락되어 있으므로 1월 1일로 일괄 대체한다.(넷플릭스에서 유통된 연도가 같은 경우 시간상 역행이 발생하지 않도록 하기 위함)
+nflx['release_year'] = pd.to_datetime(nflx['release_year'], format='%Y')
+nflx['release_year']
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>0      2020-01-01
+1      2016-01-01
+2      2011-01-01
+3      2009-01-01
+4      2008-01-01
+          ...    
+7782   2005-01-01
+7783   2015-01-01
+7784   2019-01-01
+7785   2019-01-01
+7786   2019-01-01
+Name: release_year, Length: 7777, dtype: datetime64[ns]
+</pre></table></code></div></div><p>콘텐츠 길이는 콘텐츠 타입에 따라 형식이 다르다.</p><ul><li><strong><code class="language-plaintext highlighter-rouge">type</code>이 TV Show라면 단일 시리즈인 경우 1 Season, 연속 시리즈인 경우 N Seasons로 표기된다.</strong><li><strong><code class="language-plaintext highlighter-rouge">type</code>이 TV Show지만 <code class="language-plaintext highlighter-rouge">duration</code> 단위가 Season 혹은 Seasons가 아닌 예외 케이스는 없다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx.loc[nflx['type']=='TV Show','duration']
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>0       4 Seasons
+5        1 Season
+11       1 Season
+12       1 Season
+16       1 Season
+          ...    
+7767     1 Season
+7775     1 Season
+7777    2 Seasons
+7779     1 Season
+7785     1 Season
+Name: duration, Length: 2400, dtype: object
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 1 Season 혹은 N Seasons로 표기되지 않은 예외케이스 갯수 확인
+(nflx.loc[nflx['type']=='TV Show','duration'].str.contains('Season')==False).sum()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>0
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre># 단위(Seasons, Season) 제거
+nflx.loc[nflx['type']=='TV Show','duration'] = nflx.loc[nflx['type']=='TV Show','duration'].apply(lambda x : x.split(" ")[0])
+nflx.loc[nflx['type']=='TV Show','duration']
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>0       4
+5       1
+11      1
+12      1
+16      1
+       ..
+7767    1
+7775    1
+7777    2
+7779    1
+7785    1
+Name: duration, Length: 2400, dtype: object
+</pre></table></code></div></div><ul><li><strong><code class="language-plaintext highlighter-rouge">type</code>이 Movie라면 모두 min으로 표기한다.</strong><li><strong><code class="language-plaintext highlighter-rouge">type</code>이 Movie이지만 <code class="language-plaintext highlighter-rouge">duration</code> 단위가 min이 아닌 예외 케이스는 없다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx.loc[nflx['type']=='Movie','duration']
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>1        93 min
+2        78 min
+3        80 min
+4       123 min
+6        95 min
+         ...   
+7781     88 min
+7782     99 min
+7783    111 min
+7784     44 min
+7786     90 min
+Name: duration, Length: 5377, dtype: object
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># min으로 표기되지 않은 예외케이스 갯수 확인
+(nflx.loc[nflx['type']=='Movie','duration'].str.contains('min')==False).sum()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>0
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre># 단위(min) 제거
+nflx.loc[nflx['type']=='Movie','duration'] = nflx.loc[nflx['type']=='Movie','duration'].apply(lambda x : x.split(" ")[0])
+nflx.loc[nflx['type']=='Movie','duration']
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>1        93
+2        78
+3        80
+4       123
+6        95
+       ... 
+7781     88
+7782     99
+7783    111
+7784     44
+7786     90
+Name: duration, Length: 5377, dtype: object
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx['duration'] = nflx['duration'].astype('int64')
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 데이터 확인
+nflx.head(3)
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>type<th>title<th>country<th>date_added<th>release_year<th>rating<th>duration<th>listed_in<th>description<tbody><tr><td>0<td>TV Show<td>3%<td>Brazil<td>2020-08-14<td>2020-01-01<td>TV-MA<td>4<td>International TV Shows, TV Dramas, TV Sci-Fi &amp;…<td>In a future where the elite inhabit an island …<tr><td>1<td>Movie<td>7:19<td>Mexico<td>2016-12-23<td>2016-01-01<td>TV-MA<td>93<td>Dramas, International Movies<td>After a devastating earthquake hits Mexico Cit…<tr><td>2<td>Movie<td>23:59<td>Singapore<td>2018-12-20<td>2011-01-01<td>R<td>78<td>Horror Movies, International Movies<td>When an army recruit is found dead, his fellow…</table></div><h3 id="2-3-시계열-데이터-변환"><strong>2-3. 시계열 데이터 변환</strong></h3><p>앞서 설계한 모든 가설은 ‘최근’이라는 시간 축을 기준으로 하고 있다. 모든 분석 방향이 과거와 현재를 비교하는 과정이 될 것이므로 콘텐츠가 넷플릭스에 추가된 날짜를 인덱스로 하여 시계열 데이터로 변환한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>nflx = nflx.set_index('date_added').sort_index()
+nflx
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>type<th>title<th>country<th>release_year<th>rating<th>duration<th>listed_in<th>description<tbody><tr><td>date_added<td> <td> <td> <td> <td> <td> <td> <td> <tr><td>2008-01-01<td>Movie<td>To and From New York<td>United States<td>2006-01-01<td>TV-MA<td>81<td>Dramas, Independent Movies, Thrillers<td>While covering a story in New York City, a Sea…<tr><td>2008-02-04<td>TV Show<td>Dinner for Five<td>United States<td>2007-01-01<td>TV-MA<td>1<td>Stand-Up Comedy &amp; Talk Shows<td>In each episode, four celebrities join host Jo…<tr><td>2009-05-05<td>Movie<td>Just Another Love Story<td>Denmark<td>2007-01-01<td>TV-MA<td>104<td>Dramas, International Movies<td>When he causes a car accident that leaves a yo…<tr><td>2009-11-18<td>Movie<td>Splatter<td>United States<td>2009-01-01<td>TV-MA<td>29<td>Horror Movies<td>After committing suicide, a washed-up rocker r…<tr><td>2010-11-01<td>Movie<td>Mad Ron’s Prevues from Hell<td>United States<td>1987-01-01<td>NR<td>84<td>Cult Movies, Horror Movies<td>This collection cherry-picks trailers, forgott…<tr><td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<tr><td>2021-01-15<td>Movie<td>Wish You<td>NaN<td>2021-01-01<td>TV-PG<td>102<td>Dramas, International Movies, LGBTQ Movies<td>Singing and dreaming together, a talented sing…<tr><td>2021-01-15<td>TV Show<td>The Magicians<td>United States, Canada<td>2020-01-01<td>TV-MA<td>5<td>TV Dramas, TV Sci-Fi &amp; Fantasy<td>When grad student Quentin Coldwater enters a c…<tr><td>2021-01-16<td>Movie<td>Death of Me<td>United States, Thailand<td>2020-01-01<td>R<td>94<td>Horror Movies<td>With no memory of the previous night, a vacati…<tr><td>2021-01-16<td>Movie<td>Radium Girls<td>United States<td>2018-01-01<td>TV-14<td>103<td>Dramas, Independent Movies<td>When the women at a radium factory begin to fa…<tr><td>2021-01-16<td>Movie<td>A Monster Calls<td>United Kingdom, Spain, United States<td>2016-01-01<td>PG-13<td>108<td>Dramas, Sci-Fi &amp; Fantasy<td>Overwhelmed by his mother’s illness, a young b…</table></div><p>7777 rows × 8 columns</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx.dtypes
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>type                    object
+title                   object
+country                 object
+release_year    datetime64[ns]
+rating                  object
+duration                 int64
+listed_in               object
+description             object
+dtype: object
+</pre></table></code></div></div><h3 id="2-4-데이터-구간시간-분할"><strong>2-4. 데이터 구간(시간) 분할</strong></h3><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx['title'].resample('Q').count().plot();
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-2.webp" alt="" /></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx['title'].resample('Y').count()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre>date_added
+2008-12-31       2
+2009-12-31       2
+2010-12-31       1
+2011-12-31      13
+2012-12-31       3
+2013-12-31      11
+2014-12-31      25
+2015-12-31      88
+2016-12-31     443
+2017-12-31    1225
+2018-12-31    1685
+2019-12-31    2153
+2020-12-31    2009
+2021-12-31     117
+Freq: A-DEC, Name: title, dtype: int64
+</pre></table></code></div></div><p>넷플릭스는 초창기부터 서서히 콘텐츠를 늘려왔고, 2016년~2016년을 기점으로 폭발적으로 성장했다. 현재 데이터는 시간 별 분포 차이가 심하기 때문에 시간 축을 그대로 사용하는 것은 바람직하지 않다. 전체 기간을 몇 개의 구간으로 분할하여 위와 같이 구간(Y) 별로 너무 많은 데이터가 몰리거나, 너무 적은 데이터만 취합되지 않도록 하자.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre># 0부터 7까지, 각각 1111개씩 채워진 리스트 생성
+seps = []
+for i in range(1,7+1):
+    sep = np.ones(1111,dtype=np.int8)*i
+    seps.extend(sep)
+print(len(seps))
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>7777
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre># seps는 숫자로서의 의미가 없다. string으로 변환한다.
+nflx['seps'] = seps
+nflx['seps'] = nflx['seps'].astype('str')
+nflx.dtypes
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>type                    object
+title                   object
+country                 object
+release_year    datetime64[ns]
+rating                  object
+duration                 int64
+listed_in               object
+description             object
+seps                    object
+dtype: object
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>count_seps = nflx.groupby('seps').count()['title']
+
+plt.figure(figsize=(8,4))
+sns.barplot(x=count_seps.index ,y=count_seps.values)
+
+plt.ylabel('count')
+plt.xlabel('period(past --&gt; now)')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-3.webp" alt="" /></p><p>총 7777개의 데이터를 시간 순으로 1111개씩 분할했다. seps가 1에 가까울수록 최근으로부터 멀어진다.</p><h2 id="3-가설-검정"><strong>3. 가설 검정</strong></h2><p>아래 6가지 가설에 대하여 순차적으로 검증하고, 넷플릭스의 수급 전략을 분석한다.</p><ol><li><strong>H1 : 최근 특정 콘텐츠 유형(TV show or Movie)이 늘고 있다. (주요 컬럼 : type)</strong><li><strong>H1 : 최근 특정 국가의 콘텐츠 수급 비중이 늘고 있다. (주요 컬럼 : country)</strong><li><strong>H1 : 최근 옛날(오래된) 콘텐츠 수급 비중이 늘고 있다. (주요 컬럼 : release_year)</strong><li><strong>H1 : 최근 어린이 콘텐츠 비중이 줄고 있다. (주요 컬럼 : rating)</strong><li><strong>H1 : 최근 길이(시리즈, 시간)가 짧은 콘텐츠 비중이 늘고 있다. (주요 컬럼 : duration)</strong><li><strong>H1 : 최근 유통하는 콘텐츠 장르가 더 다양해지고 있다. (주요 컬럼 : listed_in, description)</strong></ol><h3 id="3-1-특정-콘텐츠-유형에-대한-집중-수급-여부-분석"><strong>3-1. 특정 콘텐츠 유형에 대한 집중 수급 여부 분석</strong></h3><p>최근 TV 시리즈물의 퀄리티나 제작 속도는 영화 산업의 발전 속도를 따라잡고 있다. 넷플릭스가 TV 시리즈물과 영화 중 어떤 콘텐츠에 더 집중하고 있는지 확인하고자 한다.</p><ul><li><strong>H0 : 콘텐츠 유형(TV show or Movie)별 점유율은 전과 동일하다.</strong><li><strong>H1 : 최근 특정 콘텐츠 유형(TV show or Movie)이 늘고 있다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx.groupby(['seps','type'])['title'].count().reset_index()
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>seps<th>type<th>title<tbody><tr><td>0<td>1<td>Movie<td>744<tr><td>1<td>1<td>TV Show<td>367<tr><td>2<td>2<td>Movie<td>802<tr><td>3<td>2<td>TV Show<td>309<tr><td>4<td>3<td>Movie<td>829<tr><td>5<td>3<td>TV Show<td>282<tr><td>6<td>4<td>Movie<td>779<tr><td>7<td>4<td>TV Show<td>332<tr><td>8<td>5<td>Movie<td>741<tr><td>9<td>5<td>TV Show<td>370<tr><td>10<td>6<td>Movie<td>764<tr><td>11<td>6<td>TV Show<td>347<tr><td>12<td>7<td>Movie<td>718<tr><td>13<td>7<td>TV Show<td>393</table></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>count_type = pd.DataFrame(nflx.groupby(['seps','type']).count()['title'])
+count_type.columns = ['count']
+count_type
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th> <th>count<tbody><tr><td>seps<td>type<td> <tr><td>1<td>Movie<td>744<tr><td>TV Show<td>367<td> <tr><td>2<td>Movie<td>802<tr><td>TV Show<td>309<td> <tr><td>3<td>Movie<td>829<tr><td>TV Show<td>282<td> <tr><td>4<td>Movie<td>779<tr><td>TV Show<td>332<td> <tr><td>5<td>Movie<td>741<tr><td>TV Show<td>370<td> <tr><td>6<td>Movie<td>764<tr><td>TV Show<td>347<td> <tr><td>7<td>Movie<td>718<tr><td>TV Show<td>393<td> </table></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>count_type = pd.pivot_table(count_type, index='seps', columns='type')
+count_type.columns=['movie', 'tv']
+count_type
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>movie<th>tv<tbody><tr><td>seps<td> <td> <tr><td>1<td>744<td>367<tr><td>2<td>802<td>309<tr><td>3<td>829<td>282<tr><td>4<td>779<td>332<tr><td>5<td>741<td>370<tr><td>6<td>764<td>347<tr><td>7<td>718<td>393</table></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>list(np.arange(1,8))
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>[1, 2, 3, 4, 5, 6, 7]
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>plt.figure(figsize=(8,4))
+
+sns.lineplot(data=count_type, x=count_type.index, y=count_type['movie'], label='Movie')
+sns.lineplot(data=count_type, x=count_type.index, y=count_type['tv'], label='TV Show')
+
+plt.legend()
+plt.ylabel('the number of contents')
+plt.xlabel('period(past.. 1---&gt;7 ..now)')
+
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-4.webp" alt="" /></p><p><strong>결론 :</strong><br /> <strong>최근 영화보다 TV 시리즈가 늘고 있다. 귀무가설을 기각한다.</strong><br /> 특히 넷플릭스 서비스 초기보다 현 시점에서 TV 시리즈가 늘고 있는 것에 의미가 있다. 초기 영화 수급이 어려웠던 때보다 최근 자본이 받쳐주는 상황에서도 TV 시리즈 보유량을 늘리는 것을 보면 TV 시리즈에 대한 강한 시장 수요를 간접적으로 이해할 수 있다.</p><h3 id="3-2-특정-국가를-겨냥한-콘텐츠-현황-분석"><strong>3-2. 특정 국가를 겨냥한 콘텐츠 현황 분석</strong></h3><p>콘텐츠 플랫폼의 경우 특정 국가 진입 및 초기 점유율 확보를 위해 해당 국가에서 생산한 콘텐츠를 전략적으로 확보하는 경향이 있다. 국가별 콘텐츠 비중을 살펴보고 최근 순위나 점유율의 변동이 있는지 살펴보도록 하자.</p><ul><li><strong>H0 : 국가별 콘텐츠 수급 비중은 전과 동일하다.</strong><li><strong>H1 : 최근 특정 국가의 콘텐츠 수급 비중이 늘고 있다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 가장 최근 확보한 1111개 콘텐츠의 제작 국가별 비중
+nflx.loc[nflx['seps']=='7','country'].value_counts()[:10]
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>United States     385
+India             112
+United Kingdom     38
+Japan              31
+Canada             29
+Philippines        25
+South Korea        24
+Spain              16
+Nigeria            15
+Indonesia          15
+Name: country, dtype: int64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>top10_countries = nflx.loc[nflx['seps']=='7','country'].value_counts()[:10].index
+top10_countries
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>Index(['United States', 'India', 'United Kingdom', 'Japan', 'Canada',
+       'Philippines', 'South Korea', 'Spain', 'Nigeria', 'Indonesia'],
+      dtype='object')
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>seps_by_top10 = nflx.loc[nflx['country'].isin(top10_countries),['country','seps']]
+seps_by_top10
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>country<th>seps<tbody><tr><td>date_added<td> <td> <tr><td>2008-01-01<td>United States<td>1<tr><td>2008-02-04<td>United States<td>1<tr><td>2009-11-18<td>United States<td>1<tr><td>2010-11-01<td>United States<td>1<tr><td>2011-09-27<td>United States<td>1<tr><td>…<td>…<td>…<tr><td>2021-01-15<td>United States<td>7<tr><td>2021-01-15<td>United States<td>7<tr><td>2021-01-15<td>United States<td>7<tr><td>2021-01-15<td>United States<td>7<tr><td>2021-01-16<td>United States<td>7</table></div><p>4798 rows × 2 columns</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>seps_by_top10.loc[seps_by_top10['country'] == top10_countries[0]].groupby('seps').count()
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>country<tbody><tr><td>seps<td> <tr><td>1<td>415<tr><td>2<td>332<tr><td>3<td>285<tr><td>4<td>336<tr><td>5<td>434<tr><td>6<td>362<tr><td>7<td>385</table></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>top10_countries
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>Index(['United States', 'India', 'United Kingdom', 'Japan', 'Canada',
+       'Philippines', 'South Korea', 'Spain', 'Nigeria', 'Indonesia'],
+      dtype='object')
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>plt.figure(figsize=(12,8))
+for country in list(top10_countries):
+    count_country = seps_by_top10.loc[seps_by_top10['country'] == country].groupby('seps').count()
+    sns.lineplot(data=count_country, x=count_country.index, y=count_country['country'], label=country)
+
+plt.legend()
+
+plt.ylabel('The Count of Countries')
+plt.xlabel('period(past.. 1---&gt;7 ..now)')
+
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-5.webp" alt="" /></p><p><strong>결론 :</strong><br /> <strong>국가별 콘텐츠 수급 비중은 전과 다르다. 귀무가설을 기각한다.</strong><br /> 한 때, 인도 영화 수급 비중이 미국 본토 콘텐츠 수급 비중과 유사했던 적도 있으나 현재 미국 콘텐츠에 더 집중하고 있는 것으로 보인다. 동시에 영국 콘텐츠 수급 비중을 점차 줄여나가고 있다.</p><h3 id="3-3-콘텐츠-수급-대상-연도-분석"><strong>3-3. 콘텐츠 수급 대상 연도 분석</strong></h3><p>최근 국내에서는 과거 히트작이 재상영되거나 유튜브 등을 통해 다시 회자되는 시청 트랜드가 생겨나고 있다. 전 세계적으로 이러한 현상이 나타나고 있다면 넷플릭스에서도 최신 영화, 최신 드라마만 집중하지 않고 더 넓은 범위의 연도를 고려할 수 있다.</p><ul><li><strong>H0 : 최근 옛날(오래된) 콘텐츠 수급 비중이 늘고 있다.</strong><li><strong>H1 : 최근 옛날(오래된) 콘텐츠 수급 비중이 늘고 있다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>type<th>title<th>country<th>release_year<th>rating<th>duration<th>listed_in<th>description<th>seps<tbody><tr><td>date_added<td> <td> <td> <td> <td> <td> <td> <td> <td> <tr><td>2008-01-01<td>Movie<td>To and From New York<td>United States<td>2006-01-01<td>TV-MA<td>81<td>Dramas, Independent Movies, Thrillers<td>While covering a story in New York City, a Sea…<td>1<tr><td>2008-02-04<td>TV Show<td>Dinner for Five<td>United States<td>2007-01-01<td>TV-MA<td>1<td>Stand-Up Comedy &amp; Talk Shows<td>In each episode, four celebrities join host Jo…<td>1<tr><td>2009-05-05<td>Movie<td>Just Another Love Story<td>Denmark<td>2007-01-01<td>TV-MA<td>104<td>Dramas, International Movies<td>When he causes a car accident that leaves a yo…<td>1<tr><td>2009-11-18<td>Movie<td>Splatter<td>United States<td>2009-01-01<td>TV-MA<td>29<td>Horror Movies<td>After committing suicide, a washed-up rocker r…<td>1<tr><td>2010-11-01<td>Movie<td>Mad Ron’s Prevues from Hell<td>United States<td>1987-01-01<td>NR<td>84<td>Cult Movies, Horror Movies<td>This collection cherry-picks trailers, forgott…<td>1<tr><td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<td>…<tr><td>2021-01-15<td>Movie<td>Wish You<td>NaN<td>2021-01-01<td>TV-PG<td>102<td>Dramas, International Movies, LGBTQ Movies<td>Singing and dreaming together, a talented sing…<td>7<tr><td>2021-01-15<td>TV Show<td>The Magicians<td>United States, Canada<td>2020-01-01<td>TV-MA<td>5<td>TV Dramas, TV Sci-Fi &amp; Fantasy<td>When grad student Quentin Coldwater enters a c…<td>7<tr><td>2021-01-16<td>Movie<td>Death of Me<td>United States, Thailand<td>2020-01-01<td>R<td>94<td>Horror Movies<td>With no memory of the previous night, a vacati…<td>7<tr><td>2021-01-16<td>Movie<td>Radium Girls<td>United States<td>2018-01-01<td>TV-14<td>103<td>Dramas, Independent Movies<td>When the women at a radium factory begin to fa…<td>7<tr><td>2021-01-16<td>Movie<td>A Monster Calls<td>United Kingdom, Spain, United States<td>2016-01-01<td>PG-13<td>108<td>Dramas, Sci-Fi &amp; Fantasy<td>Overwhelmed by his mother’s illness, a young b…<td>7</table></div><p>7777 rows × 9 columns</p><p>‘출시일로부터 얼마나 지난 콘텐츠를 수급했는가?’ 에 대한 데이터를 확보한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>add_from_release = pd.DataFrame(nflx.index - nflx['release_year'])
+add_from_release.columns = ['days']
+add_from_release
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>days<tbody><tr><td>date_added<td> <tr><td>2008-01-01<td>730 days<tr><td>2008-02-04<td>399 days<tr><td>2009-05-05<td>855 days<tr><td>2009-11-18<td>321 days<tr><td>2010-11-01<td>8705 days<tr><td>…<td>…<tr><td>2021-01-15<td>14 days<tr><td>2021-01-15<td>380 days<tr><td>2021-01-16<td>381 days<tr><td>2021-01-16<td>1111 days<tr><td>2021-01-16<td>1842 days</table></div><p>7777 rows × 1 columns</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre># 숫자만 남긴다.
+add_from_release['days'] = add_from_release['days'].apply(lambda x : str(x).split(' ')[0])
+add_from_release['days'] = add_from_release['days'].astype('int64')
+add_from_release
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>days<tbody><tr><td>date_added<td> <tr><td>2008-01-01<td>730<tr><td>2008-02-04<td>399<tr><td>2009-05-05<td>855<tr><td>2009-11-18<td>321<tr><td>2010-11-01<td>8705<tr><td>…<td>…<tr><td>2021-01-15<td>14<tr><td>2021-01-15<td>380<tr><td>2021-01-16<td>381<tr><td>2021-01-16<td>1111<tr><td>2021-01-16<td>1842</table></div><p>7777 rows × 1 columns</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 시계열 그래프 확인
+add_from_release.plot();
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-6.webp" alt="" /></p><p>역시나 데이터가 ‘최근’에 밀집되어 있어서 시계열 그대로 데이터 분포를 분석하기는 어렵다.<br /> 이번에도 <code class="language-plaintext highlighter-rouge">seps</code> 컬럼을 붙여서 사용하도록 한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>add_from_release['seps'] = nflx['seps']
+add_from_release
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>days<th>seps<tbody><tr><td>date_added<td> <td> <tr><td>2008-01-01<td>730<td>1<tr><td>2008-02-04<td>399<td>1<tr><td>2009-05-05<td>855<td>1<tr><td>2009-11-18<td>321<td>1<tr><td>2010-11-01<td>8705<td>1<tr><td>…<td>…<td>…<tr><td>2021-01-15<td>14<td>7<tr><td>2021-01-15<td>380<td>7<tr><td>2021-01-16<td>381<td>7<tr><td>2021-01-16<td>1111<td>7<tr><td>2021-01-16<td>1842<td>7</table></div><p>7777 rows × 2 columns</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre># 각 시계열 구간 별 평균 집계
+add_from_release.groupby('seps').mean().plot()
+plt.axvline(x=3, color='r', linestyle='--');
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-7.webp" alt="" /></p><p><strong>결론 :</strong><br /> 넷플릭스는 과거(1,2,3,4)에 비해 최근(5,6,7) 출시일이 오래 지난 콘텐츠를 많이 수급한 경향이 있다. 귀무가설을 기각한다. 넷플릭스 수급 현황을 보면서 국내와 마찬가지로 세계적으로 시간이 흐른 명작들을 다시 보고자 하는 소비자 수요도 확인해볼 수 있었다.</p><h3 id="3-4-넷플릭스의-주요-소비자-타겟연령대-분석"><strong>3-4. 넷플릭스의 주요 소비자 타겟(연령대) 분석</strong></h3><p>넷플릭스 사용자가 늘어나면서, 이탈율 관리를 위해 주 타겟층을 확실하게 확보하고자 하는 움직임을 보일 수 있다. 콘텐츠 플랫폼은 2~30대 사용자 수가 가장 많다.</p><p>따라서 어린이 연령대의 비중이 낮아지는지, 반대로 성인 연령대 콘텐츠 비중이 높아지는지 함께 확인하는 것을 통해 넷플릭스가 집중하고 있는 타겟층을 분석할 수 있다.</p><ul><li><strong>H0 : 어린이 콘텐츠 비중은 일정하게 유지되고 있다.</strong><li><strong>H1 : 최근 어린이 콘텐츠 비중이 줄고 있다.</strong></ul><p><a href="https://www.primevideo.com/help/ref=atv_hp_nd_cnt?language=ko_KR&amp;nodeId=GFGQU3WYEG6FSJFJ">(참고) 영화, TV 관람 등급 표</a></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nflx['rating'].unique()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>array(['TV-MA', 'NR', 'TV-PG', 'TV-14', 'PG', 'R', 'TV-G', 'G', 'TV-Y',
+       'TV-Y7-FV', 'TV-Y7', 'PG-13', nan, 'NC-17', 'UR'], dtype=object)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>rating_dict = {
+    'kids' : ['G','TV-G','TV-Y'], # 전체관람가
+    'elem' : ['PG','TV-Y7','TV-Y7-FV','TV-PG'], # 7세 이상
+    'teen' : ['PG-13'], # 13세 이상
+    'youth' : ['TV-14'], # 16세 이상
+    'adult' : ['NC-17','R','TV-MA','NR','UR'] # 18세 이상, 청불 포함
+}
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>ratings = rating_dict.keys()
+rating_df = pd.DataFrame(columns=ratings)
+rating_list = []
+
+for i in range(1,8): # seps : 1~7
+    rating_list = []
+    for key in rating_dict.keys(): # rating : kids / elem / teen / youth / adult
+        rating_list.append(nflx.loc[nflx['seps']==str(i),'rating'].str.contains('|'.join(rating_dict[key])).sum())
+    rating_df = rating_df.append(pd.Series(rating_list,index=rating_df.columns), ignore_index=True)
+rating_df = rating_df.astype('int64')
+rating_df
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>kids<th>elem<th>teen<th>youth<th>adult<tbody><tr><td>0<td>316<td>253<td>16<td>271<td>518<tr><td>1<td>307<td>248<td>30<td>298<td>505<tr><td>2<td>285<td>215<td>36<td>316<td>510<tr><td>3<td>255<td>219<td>51<td>278<td>578<tr><td>4<td>358<td>282<td>93<td>237<td>516<tr><td>5<td>316<td>233<td>79<td>282<td>513<tr><td>6<td>388<td>263<td>81<td>246<td>477</table></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>plt.figure(figsize=(8,6))
+for col in list(rating_df.columns):
+    sns.lineplot(data=rating_df, x=rating_df.index, y=rating_df[col], label=col)
+
+plt.legend()
+
+plt.ylabel('The Count of Ratings')
+plt.xlabel('period(past.. 1---&gt;7 ..now)')
+
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-8.webp" alt="" /></p><p><strong>결론 :</strong><br /> <strong>adult 등급의 콘텐츠 수급은 줄어드는 반면 kids와 teen 등급 수급은 늘고 있다. 연구가설을 기각하고 귀무가설을 채택한다.</strong><br /> 가장 활발한 콘텐츠 이용자가 2~30대라는 점에서 전략적으로 해당 연령층에 집중할 것이라는 예상을 했으나 예상과 다른 결과를 확인했다. 넷플릭스는 2-30대 뿐만아니라 더 젋은 세대까지 확보하고자 한다. 이는 IT 기술과 영상 콘텐츠가 익숙한 Z세대를 고려했을때 충분히 납득가능한 결과다. (국내에서도 초등학생들이 네이버보다 유튜브로 먼저 검색한다고 한다)</p><h3 id="3-5-콘텐츠-평균-재생-시간-분석"><strong>3-5. 콘텐츠 평균 재생 시간 분석</strong></h3><p>세계적으로 틱톡과 같은 숏폼 콘텐츠가 유행이다. 또한, 왕좌의게임과 같은 드넓은 세계관의 장기 시리즈가 과거 인기였다면 최근에는 킹덤, 스위트홈처럼 짧고 자극적인 시리즈가 주목을 받고 있다. 이에 따라 최근 넷플릭스에서 콘텐츠를 수급할 때 재생 시간을 고려하는 경향이 있는지 여부를 확인하고자 한다.</p><ul><li><strong>H0 : 평균 콘텐츠 재생 시간은 전과 동일하거나 더 길어지고 있다.</strong><li><strong>H1 : 최근 재생 시간이 짧은 콘텐츠 비중이 늘고 있다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>duration_df = pd.DataFrame(nflx.groupby(['seps','type'])['duration'].mean())
+duration_df
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th> <th>duration<tbody><tr><td>seps<td>type<td> <tr><td>1<td>Movie<td>88.951613<tr><td>TV Show<td>1.662125<td> <tr><td>2<td>Movie<td>99.214464<tr><td>TV Show<td>1.915858<td> <tr><td>3<td>Movie<td>102.677925<tr><td>TV Show<td>1.627660<td> <tr><td>4<td>Movie<td>98.812580<tr><td>TV Show<td>1.617470<td> <tr><td>5<td>Movie<td>98.291498<tr><td>TV Show<td>1.624324<td> <tr><td>6<td>Movie<td>106.675393<tr><td>TV Show<td>1.878963<td> <tr><td>7<td>Movie<td>100.000000<tr><td>TV Show<td>1.972010<td> </table></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>duration_df = pd.pivot_table(duration_df, index='seps', columns='type')
+duration_df.columns = ['movie','tv']
+duration_df
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>movie<th>tv<tbody><tr><td>seps<td> <td> <tr><td>1<td>88.951613<td>1.662125<tr><td>2<td>99.214464<td>1.915858<tr><td>3<td>102.677925<td>1.627660<tr><td>4<td>98.812580<td>1.617470<tr><td>5<td>98.291498<td>1.624324<tr><td>6<td>106.675393<td>1.878963<tr><td>7<td>100.000000<td>1.972010</table></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre>fig,axes = plt.subplots(1,2, figsize=(12,6))
+
+sns.lineplot(data=duration_df, x=duration_df.index, y=duration_df['movie'], ax=axes[0])
+sns.lineplot(data=duration_df, x=duration_df.index, y=duration_df['tv'], ax=axes[1])
+
+axes[0].set_title('Movie')
+axes[1].set_title('TV Show')
+
+axes[0].set_ylabel('The Mean of Durations')
+axes[1].set_ylabel('The Mean of Durations')
+
+axes[0].set_xlabel('Period')
+axes[1].set_xlabel('Period')
+
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-9.webp" alt="" /></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 급격히 늘고 있는 TV Show 방영 차수 빈도 확인
+nflx.loc[nflx['type']=='TV Show','duration'].value_counts()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre>1     1608
+2      378
+3      183
+4       86
+5       57
+6       30
+7       19
+8       18
+9        8
+10       5
+15       2
+11       2
+12       2
+13       1
+16       1
+Name: duration, dtype: int64
+</pre></table></code></div></div><p><strong>결론 :</strong><br /> <strong>오히려 최근 평균 콘텐츠 재생 시간이 증가하고 있다. 연구가설을 기각하고 귀무가설을 채택한다.</strong><br /> 특히 TV Show의 경우 시리즈물에 대한 수요가 더 커지는 것을 확인할 수 있다. 다만, 수치상 큰 차이가 없기 때문에 넷플릭스에서 전략적으로 의도했다기보다는 최근 제작되는 콘텐츠들이 더 풍성하고 퀄리티있게 제작되면서 자연스럽게 시리즈물이 많아지고, 영화 시간이 길어진 것으로 보인다.</p><h3 id="3-6-넷플릭스에서-주로-수급하는-콘텐츠-장르-분석"><strong>3-6. 넷플릭스에서 주로 수급하는 콘텐츠 장르 분석</strong></h3><p>콘텐츠, OTT시장의 고도화된 개인화 추천서비스로 대중적인 취향보다 개별적 취향을 더 심도깊게 고민하고 기술적으로 분석하고 있다.<br /> 넷플릭스는 추천서비스를 비즈니스에 적극적으로 활용하면서 가파른 성장을 이뤄낸 경험이 있다. 따라서 넷플릭스는 고객을 더 세분화하고 이에 따라 콘텐츠 장르를 더 다양하게 분류하고 수급하는 전략을 취할 수 있다.</p><ul><li><strong>H0 : 최근 유통하는 콘텐츠 장르는 그 수가 과거와 같거나 적다.</strong><li><strong>H1 : 최근 유통하는 콘텐츠 장르가 더 다양해지고 있다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 전체 기간 중 장르별 콘텐츠 수
+nflx['listed_in'].value_counts()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>Documentaries                                         334
+Stand-Up Comedy                                       321
+Dramas, International Movies                          320
+Comedies, Dramas, International Movies                243
+Dramas, Independent Movies, International Movies      215
+                                                     ... 
+Cult Movies, Documentaries, LGBTQ Movies                1
+Cult Movies, Horror Movies, Thrillers                   1
+Dramas, Horror Movies, Sci-Fi &amp; Fantasy                 1
+Action &amp; Adventure, Anime Features, Classic Movies      1
+Comedies, Cult Movies, LGBTQ Movies                     1
+Name: listed_in, Length: 491, dtype: int64
+</pre></table></code></div></div><p>넷플릭스에는 다큐멘터리가 가장 많고, 스탠드업코미디가 그 다음이다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>nflx.groupby('seps')['listed_in'].nunique().plot()
+
+plt.xlabel('Period')
+plt.ylabel('Count of Contents')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-10.webp" alt="" /></p><p><strong>최근으로 올수록 더 다양한 장르를 보유하는 추세를 보인다. 콘텐츠 장르가 더 다양하지고 있으므로(1,2,3,4 Period &lt; 5,6,7 Period) 귀무가설을 기각한다.</strong><br /> 해당 데이터에서는 추가로 더 많은 정보를 얻어낼 수 있을 것 같다. 과거에는 어떤 장르를 주로 수급했고, 최근 어떤 장르를 주로 수급하는지 알아보도록 하자.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>docum_count = nflx.loc[nflx['listed_in']=='Documentaries'].groupby('seps').count()['listed_in']
+
+plt.figure(figsize=(8,4))
+docum_count.plot()
+plt.ylabel('the count of documentary genre')
+plt.xlabel('Period')
+
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-11.webp" alt="" /></p><p>전체 콘텐츠 수에서 다큐멘터리 장르가 차지하는 비중이 가장 높았는데, 이는 넷플릭스 초기에 많이 수급했던 것에 원인이 있었다. 최근 넷플릭스는 다큐멘터리 수급에 집중하지 않고 있다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 최근 집중적으로 수급하는 장르 확인
+nflx.loc[nflx['seps']=='7','listed_in'].value_counts()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>Dramas, International Movies                            45
+Kids' TV                                                41
+Children &amp; Family Movies, Comedies                      38
+Children &amp; Family Movies                                35
+Comedies, Dramas, International Movies                  34
+                                                        ..
+Children &amp; Family Movies, Classic Movies, Dramas         1
+International TV Shows, TV Dramas, TV Thrillers          1
+British TV Shows, Romantic TV Shows, TV Dramas           1
+Action &amp; Adventure, Dramas, Romantic Movies              1
+Crime TV Shows, International TV Shows, TV Mysteries     1
+Name: listed_in, Length: 229, dtype: int64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>top5_genre = nflx.loc[nflx['seps']=='7','listed_in'].value_counts().index[:5]
+
+plt.figure(figsize=(12,5))
+for genre in list(top5_genre):
+    genre_count = nflx.loc[nflx['listed_in']==genre].groupby('seps').count()['listed_in']
+    sns.lineplot(x=genre_count.index, y=genre_count.values, label=genre)
+
+plt.xlabel('Period')
+plt.ylabel('The Count of Each Genre')
+plt.axvline(x=3, linestyle='--', color='r')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/53-12.webp" alt="" /></p><p>키즈 콘텐츠, 가족 콘텐츠의 비중이 4 <code class="language-plaintext highlighter-rouge">Period</code> 부터 꾸준히 상승하고 있다.</p><p><strong>결론 :</strong><br /> 과거 대비 다양한 장르를 확보하면서 다큐멘터리와 같은 콘텐츠 점유율이 높았던 장르의 비중이 낮아지고,<br /> 더 다양한 고객층의 니즈를 반영하고자 하는 것을 확인할 수 있다.</p><h2 id="4-종합-결론"><strong>4. 종합 결론</strong></h2><p>아래 6가지 가설 검정 과정을 통해 <strong>넷플릭스가 시장 점유를 위해 취하고 있는 콘텐츠 수급 전략</strong>을 분석해보았다.</p><ol><li><strong>H1 : 최근 특정 콘텐츠 유형(TV show or Movie)이 늘고 있다. (주요 컬럼 : type)</strong><li><strong>H1 : 최근 특정 국가의 콘텐츠 수급 비중이 늘고 있다. (주요 컬럼 : country)</strong><li><strong>H1 : 최근 옛날(오래된) 콘텐츠 수급 비중이 늘고 있다. (주요 컬럼 : release_year)</strong><li><strong>H1 : 최근 어린이 콘텐츠 비중이 줄고 있다. (주요 컬럼 : rating)</strong><li><strong>H1 : 최근 길이(시리즈, 시간)가 짧은 콘텐츠 비중이 늘고 있다. (주요 컬럼 : duration)</strong><li><strong>H1 : 최근 유통하는 콘텐츠 장르가 더 다양해지고 있다. (주요 컬럼 : listed_in, description)</strong></ol><p>종합하면,</p><p>넷플릭스는 영화보다 <strong>TV 시리즈 수급</strong>을 늘리고 있고, <strong>자국(미국) 콘텐츠 확보</strong>에 힘을 싣고 있다. 또한 소비자 수요를 반영해 최신 콘텐츠뿐만 아니라 <strong>시간이 흐른 콘텐츠</strong>들을 함께 확보하고 있고 2~30대 주요 고객층 이외 <strong>어린이를 포함해 더 다양한 고객을 타겟</strong>으로 하고 있다.<br /> 숏폼 콘텐츠가 유행하고 있지만 영화 산업이나 TV 드라마 산업에서 자체 콘텐츠의 길이를 줄이려는 시도를 하는 경향은 없으며 넷플릭스 역시 영상물의 <strong>재생 시간에 대해서는 수급 기준으로 고려하지 않는</strong> 것으로 보인다. 마지막으로 다양한 고객들의 수요를 맞추기 위해 <strong>다양한 콘텐츠 장르</strong>를 선보이면서 <strong>어린이 및 가족 콘텐츠</strong> 보유량을 늘려 다양한 고객층의 니즈를 반영하고자 한다.</p><p>👉 <a href="https://github.com/sw-song/TIA">파이썬 코드 보러 가기</a></p><p><strong>관성을 이기는 데이터</strong></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/2-%EB%8F%84%EB%A9%94%EC%9D%B8/'>2. 도메인</a>, <a href='/categories/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4/'>비즈니스</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석 - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석 - 관성을 이기는 데이터&u=https://sw-song.github.io/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석 - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Tistory%EC%97%90%EC%84%9C-GitHub-Pages%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%99%84%EC%A0%84-%EA%B0%80%EC%9D%B4%EB%93%9C/">Tistory에서 GitHub Pages로 블로그 마이그레이션 완전 가이드</a><li><a href="/posts/JavaScript-%EC%BD%9C%EB%B0%B1/">JavaScript - 콜백</a><li><a href="/posts/JavaScript-%EA%B0%9D%EC%B2%B4-%EC%B0%B8%EC%A1%B0-assign/">JavaScript - '객체 참조', assign()</a><li><a href="/posts/%EB%A7%A5-Mac-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%B2%BD%EB%A1%9C%EC%84%A4%EC%A0%95-%EC%95%84%EB%82%98%EC%BD%98%EB%8B%A4-Anaconda-2020%EB%85%84-5%EC%9B%94-10%EC%9D%BC-%EA%B8%B0%EC%A4%80/">맥(Mac) 터미널 경로설정 - 아나콘다(Anaconda), 2020년 5월 10일 기준 updated</a><li><a href="/posts/%EB%A7%A5-zsh-conda-install-%EC%97%90%EB%9F%AC-pip-install%EB%A1%9C-%EB%8C%80%EC%B2%B4/">맥 zsh - conda install 에러, pip install로 대체</a></ul></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%EB%8D%94-%EB%82%98%EC%9D%80-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EC%A0%84%EB%9E%B5%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%99%9C%EC%9A%A9-%EB%B0%A9%EB%B2%95-4%EA%B0%80%EC%A7%80/"><div class="card-body"> <span class="timeago small" >Sep 10, 2023<i class="unloaded">2023-09-10T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>더 나은 비즈니스 전략을 위한 데이터 활용 방법 4가지</h3><div class="text-muted small"><p> kenway consulting에서 발행한 아티클(4 ways to leverage data for a better business strategy)을 번역하였습니다. kenway consulting은 시카고에 본사를 둔 직원 100명 규모의 IT 경영 컨설팅 펌입니다. 주로 기업의 디저털 전환 및 경영 관리를 위해 데이터 파이프라인과 통합 시스...</p></div></div></a></div><div class="card"> <a href="/posts/%EB%AF%B8-%EC%9E%A5%EB%8B%A8%EA%B8%B0-%EA%B5%AD%EC%B1%84-%EA%B8%88%EB%A6%AC%EC%B0%A8-%EA%B8%B0%EB%B0%98-%EA%B2%BD%EA%B8%B0-%EC%B9%A8%EC%B2%B4-%EC%98%88%EC%B8%A1-%EB%B6%84%EC%84%9D-ARIMA-Probit/"><div class="card-body"> <span class="timeago small" >Dec 29, 2024<i class="unloaded">2024-12-29T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>미 장단기 국채 금리차 기반 경기 침체 예측 분석(ARIMA + Probit)</h3><div class="text-muted small"><p> 본 글에서는 ARIMA 모형을 활용해 미래 미국채 Spread 추이를 continuous하게 예측하고, 이어서 Probit 모형을 통해 ARIMA 예측값을 경기침체 여부로 변환한다. 경제 예측 모델링을 수행할 때에는 가급적 단순한(파라미터가 적은) 모델, 해석가능한 모델을 사용하는 것이 좋다. 일반적인 인식과 달리 경제 데이터는 딥러닝과 같은 모델 아...</p></div></div></a></div><div class="card"> <a href="/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%B5%9C%EC%A0%81%EC%9D%98-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EB%B9%84%EC%9C%A8-%EC%B0%BE%EA%B8%B0-%ED%95%9C%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84-%EB%AF%B8%EA%B5%AD-%EC%A3%BC%EC%8B%9D-%EA%B5%AD%EC%B1%84/"><div class="card-body"> <span class="timeago small" >Jun 11, 2022<i class="unloaded">2022-06-11T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채)</h3><div class="text-muted small"><p> 주식 시장의 난이도가 올라가면서 개인 투자자들도 자산 배분을 고려하고 있다. 자산 배분의 방식에는 여러 가지가 있겠지만 이번에는 미국과 한국 2개의 시장에만 투자하고, 각 시장에 대해 채권과 주식을 고르게 배분하는 전략으로 전개하고자 한다. 안전자산인 채권과 위험자산 주식을 어떤 비율로 분배하는 것이 가장 효율적일까? 1 2 3 4 5 6 7 Ste...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" class="btn btn-outline-primary" prompt="Older"><p>커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석</p></a> <a href="/posts/%ED%82%A4%EC%9B%80%EC%A6%9D%EA%B6%8C-API%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EB%B9%84-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%A3%BC%EA%B0%80-%EC%A0%95%EB%B3%B4-%EC%88%98%EC%A7%91-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%88%98%EC%A7%91-%EC%9E%90%EB%8F%99%ED%99%94/" class="btn btn-outline-primary" prompt="Newer"><p>키움증권 API를 활용한 비 실시간 주가 정보 수집 - 파이썬 데이터 수집 자동화</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2026 <a href="https://github.com/sw-song">Seungwon Song</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>

@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="kr" mode="light" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석" /><meta property="og:locale" content="kr" /><meta name="description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation." /><meta property="og:description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation." /><link rel="canonical" href="https://sw-song.github.io/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" /><meta property="og:url" content="https://sw-song.github.io/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" /><meta property="og:site_name" content="관성을 이기는 데이터" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-08-12T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation.","headline":"커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석","dateModified":"2026-01-12T08:03:50+09:00","url":"https://sw-song.github.io/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/","datePublished":"2021-08-12T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sw-song.github.io/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/"},"@context":"https://schema.org"}</script><title>커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석 | 관성을 이기는 데이터</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="관성을 이기는 데이터"><meta name="application-name" content="관성을 이기는 데이터"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/main/logo.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">관성을 이기는 데이터</a></div><div class="site-subtitle font-italic">Data Analytics and Automation</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/sw-song" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://www.linkedin.com/in/seungwonsong/" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['sw930601','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Seungwon Song </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Thu, Aug 12, 2021, 12:00 AM +0900" >Aug 12, 2021<i class="unloaded">2021-08-12T00:00:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Mon, Jan 12, 2026, 8:03 AM +0900" >Jan 12<i class="unloaded">2026-01-12T08:03:50+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="6320 words">35 min read</span></div></div><div class="post-content"><p><img data-proofer-ignore data-src="/assets/images/posts/51-0.webp" alt="" /></p><h2 id="웹앱-접속-시간에-따른-지출-현황-분석-및-매출-개선-전략-수립"><strong>웹/앱 접속 시간에 따른 지출 현황 분석 및 매출 개선 전략 수립</strong></h2><ul><li>분석 목표 : 서비스 내 고객 별 접속 현황과 연간 지출액을 살펴보고, 매출을 높이기 위한 전략을 수립한다.<li>데이터 출처 : <a href="https://www.kaggle.com/srolka/ecommerce-customers">Ecommerce Customers, Kaggle</a></ul><h2 id="1-가설-설정"><strong>1. 가설 설정</strong></h2><p>각 컬럼 정보를 확인하고, 분석 목표에 도달하기 위한 가설을 설정한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>import pandas as pd
+import numpy as np
+
+from scipy import stats
+import statsmodels.api as sm
+from sklearn import model_selection
+from sklearn.linear_model import LinearRegression
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings(action='ignore')
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>customer_r = pd.read_csv('./data/customers.csv').iloc[:,3:]
+customer_r
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>Avg. Session Length<th>Time on App<th>Time on Website<th>Length of Membership<th>Yearly Amount Spent<tbody><tr><td>0<td>34.497268<td>12.655651<td>39.577668<td>4.082621<td>587.951054<tr><td>1<td>31.926272<td>11.109461<td>37.268959<td>2.664034<td>392.204933<tr><td>2<td>33.000915<td>11.330278<td>37.110597<td>4.104543<td>487.547505<tr><td>3<td>34.305557<td>13.717514<td>36.721283<td>3.120179<td>581.852344<tr><td>4<td>33.330673<td>12.795189<td>37.536653<td>4.446308<td>599.406092<tr><td>…<td>…<td>…<td>…<td>…<td>…<tr><td>495<td>33.237660<td>13.566160<td>36.417985<td>3.746573<td>573.847438<tr><td>496<td>34.702529<td>11.695736<td>37.190268<td>3.576526<td>529.049004<tr><td>497<td>32.646777<td>11.499409<td>38.332576<td>4.958264<td>551.620145<tr><td>498<td>33.322501<td>12.391423<td>36.840086<td>2.336485<td>456.469510<tr><td>499<td>33.715981<td>12.418808<td>35.771016<td>2.735160<td>497.778642</table></div><p>500 rows × 5 columns</p><p>각 컬럼은 아래 정보를 담고 있다.</p><ol><li><strong>Avg.Session Length : 평균 세션 지속 시간</strong><li><strong>Time on App : App 접속 시간</strong><li><strong>Time on Website : Website 접속 시간</strong><li><strong>Length of Membership : 가입 기간</strong><li><strong>Yearly Amount Spent : 연간 지출액</strong></ol><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 결측치 및 데이터 타입 확인
+customer_r.info()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 500 entries, 0 to 499
+Data columns (total 5 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Avg. Session Length   500 non-null    float64
+ 1   Time on App           500 non-null    float64
+ 2   Time on Website       500 non-null    float64
+ 3   Length of Membership  500 non-null    float64
+ 4   Yearly Amount Spent   500 non-null    float64
+dtypes: float64(5)
+memory usage: 19.7 KB
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 데이터 분포 통계 확인
+customer_r.describe()
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>Avg. Session Length<th>Time on App<th>Time on Website<th>Length of Membership<th>Yearly Amount Spent<tbody><tr><td>count<td>500.000000<td>500.000000<td>500.000000<td>500.000000<td>500.000000<tr><td>mean<td>33.053194<td>12.052488<td>37.060445<td>3.533462<td>499.314038<tr><td>std<td>0.992563<td>0.994216<td>1.010489<td>0.999278<td>79.314782<tr><td>min<td>29.532429<td>8.508152<td>33.913847<td>0.269901<td>256.670582<tr><td>25%<td>32.341822<td>11.388153<td>36.349257<td>2.930450<td>445.038277<tr><td>50%<td>33.082008<td>11.983231<td>37.069367<td>3.533975<td>498.887875<tr><td>75%<td>33.711985<td>12.753850<td>37.716432<td>4.126502<td>549.313828<tr><td>max<td>36.139662<td>15.126994<td>40.005182<td>6.922689<td>765.518462</table></div><p>각 컬럼의 단위는(분, 시간, 일, 월)는 정확히 알 수 없고, 값이 크고 작다에 대한 인지만 가능한 상황이다. 따라서 이번 분석에는 임의로 주어진 데이터의 단위를 납득 가능한 수준에서 부여하고자 한다.</p><ol><li><strong>Avg.Session Length (분)</strong><li><strong>Time on App (분)</strong><li><strong>Time on Website (분)</strong><li><strong>Length of Membership (월)</strong><li><strong>Yearly Amount Spent (천 원)</strong></ol><p>먼저, 세션 길이는 평균 33분으로 <code class="language-plaintext highlighter-rouge">Time on App</code>, <code class="language-plaintext highlighter-rouge">Time on Website</code>와 데이터 범위가 매우 유사하다.</p><p>두 개의 <code class="language-plaintext highlighter-rouge">Time on ~</code> 컬럼을 빈도(접속 횟수)로 이해하기에는 각 row가 연간 집계 데이터임을 감안할 때 적절하지 않다. 따라서 앞 3개 컬럼은 모두 단위를 ‘분’으로 통합하겠다. 정보 손실을 피하기 위해 소수점 이하는 제거하지 않고 ‘초’ 이하 단위로 본다.</p><p>다음으로 <code class="language-plaintext highlighter-rouge">Length of Membership</code>의 경우 모든 데이터가 0~12 사이에 분포한다.</p><p>‘월’ 단위로 고려하고, 정보 손실을 피하기 위해 소수점 이하는 제거하지 않고 ‘일’ 이하(일,시간,분..) 단위로 보겠다.</p><p>마지막으로 분석 대상을 대형 플랫폼 기업이 아닌 국내 소규모 커머스로 가정하기 위해 <code class="language-plaintext highlighter-rouge">Yearly Amount Spent</code>는 ‘천 원’ 단위로 약속하고 마찬가지로 정보 손실을 피하기 위해 소수점 이하는 제거하지 않는다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre># 전처리 전 원본 데이터 복사
+customer = customer_r.copy()
+
+# 에러를 줄이기 위해 컬럼명 변경
+customer.columns = ['session','app','web','membership','spent']
+</pre></table></code></div></div><p>이미 정제된 데이터라 미리 전처리를 해야할 부분은 없었고 컬럼 이름만 보기 쉽게 정리했다.<br /> 이제 본격적으로 분석에 들어가기 전에 어떤 과정을 거치며 최종 결론에 도달할지 단계적 가설을 설정한다.</p><p>우리의 분석 목표는 ‘서비스 내 고객 별 접속 현황과 연간 지출액을 살펴보고, 매출을 높이기 위한 전략을 수립하는 것’이다.</p><p>따라서 본 데이터에서 검증하고자 하는 가설은 아래와 같다.(H1 = 연구가설)</p><ol><li><strong>H1: 유저의 세션 접속 시간이 길수록 연간 지출액은 높다. (주요 컬럼: spent~session)</strong><li><strong>H1: 유저의 가입 기간이 길수록 연간 지출액은 높다. (주요 컬럼: spent~membership)</strong><li><strong>H1: 해당 서비스는 웹보다 앱을 더 많이 사용한다. (주요 컬럼: app~web)</strong><li><strong>H1: 앱 사용 시간이 많을 수록 연간 지출액은 높다. (주요 컬럼: spent~app)</strong><li><strong>H1: 웹 사용 시간이 많을 수록 연간 지출액은 높다. (주요 컬럼: spent~web)</strong><li><strong>H1: 가입 기간에 따라 앱이나 웹 선호도(사용 시간)는 다르다. (주요 컬럼: app+web~membership)</strong></ol><h2 id="2-가설-검정"><strong>2. 가설 검정</strong></h2><p>앞서 설계한 5가지 가설을 순차적으로 검정해나가며 최종 전략을 수립하도록 한다.</p><h3 id="2-1-평균-세션-접속-시간에-따른-연간-지출액-확인"><strong>2-1. 평균 세션 접속 시간에 따른 연간 지출액 확인</strong></h3><p>평균 세션 접속 시간이 긴 유저라면 충성도가 높을 것이고, 지출액도 높을 것이라 예상해볼 수 있다.</p><p>과연 그러한지 상관계수를 통해 확인하고자 한다.</p><ul><li><strong>H0: 유저의 세션 접속 시간과 연간 지출액은 서로 관련이 없다.</strong><li><strong>H1: 유저의 세션 접속 시간이 길수록 연간 지출액은 높다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sns.scatterplot(data=customer, x='session',y='spent');
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-1.webp" alt="" /></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>x = customer['session']
+y = customer['spent']
+
+# 피어슨 상관계수 확인
+stats.pearsonr(x,y)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>(0.35508829470764325, 2.6450940333346556e-16)
+</pre></table></code></div></div><p>피어슨 상관분석 결과 p-value는 0에 수렴하고 상관계수는 0.36으로, 약한 양의 상관관계를 확인했다.</p><p><strong>결론:</strong><br /> <strong>평균 세션 지속 시간은 연간 지출액과 양의 상관관계가 있다. 귀무가설을 기각한다.</strong><br /> 하지만 연관성이 강하지 않고, 모든 서비스가 그러하든 수치로 판단할 수 없는 많은 잠재 변수가 존재한다. 따라서 세션 지속 시간이 길기 <strong>“때문에”</strong> 연간 지출액이 상승하는 것인지 그 <strong>“인과성”</strong>을 확인할 수는 없다. 다만, 세션 지속 시간이 긴 유저는 본 서비스 매출에 기여하는 고객으로 해석할 수 있다.</p><h3 id="2-2-가입-기간에-따른-연간-지출액-확인"><strong>2-2. 가입 기간에 따른 연간 지출액 확인</strong></h3><p>일반적으로 가입 기간과 지출액은 관련이 크지 않다. 점점 커머스 시장이 커지고 복잡해지면서 가입한 서비스를 굳이 해지하기보다 가입한 채 사용하지 않는 경향이 많기 때문이다. 그러나 만약 본 서비스가 사용 기간에 따라 충성도가 크고, 리텐션이 매우 좋은 서비스라면 가입 기간에 따라 연간 지출액이 높아질 수 있다.</p><p>따라서 리텐션 효율이 좋은 서비스인지 알아보기 위해 가입 기간에 따른 연간 지출액을 확인하고자 한다.</p><ul><li><strong>H0: 유저의 가입 기간과 연간 지출액은 서로 관련이 없다.</strong><li><strong>H1: 유저의 가입 기간이 길수록 연간 지출액은 높다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sns.scatterplot(data=customer, x='membership', y='spent');
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-2.webp" alt="" /></p><p>매우 강한 선형 관계를 보인다. 구체화하기 위해 상관계수를 이어서 확인해보도록 한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>x = customer['membership']
+y = customer['spent']
+
+# 피어슨 상관계수 확인
+stats.pearsonr(x,y)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>(0.809083568247581, 4.806615782583552e-117)
+</pre></table></code></div></div><p>상관계수는 0.81, p-value는 0에 강하게 수렴한다. 강한 양의 상관관계를 나타낸다.</p><p><strong>결론:</strong></p><p><strong>유저의 가입 기간과 연간 지출액은 강한 양의 상관관계가 있다. 귀무가설을 기각한다.</strong>평균 세션 유지 시간과 마찬가지로 가입 기간이 <strong>길어서</strong> 연간 지출액이 높다는 <strong>인과성</strong>을 확인할 수는 없다. 하지만 본 서비스가 가입 이후의 고객 경험이 매우 좋고, 시간에 따라 매출에 기여하는 충성고객 비율이 높다고 이해할 수 있겠다.</p><h3 id="2-3-웹-앱-사용-시간-비교"><strong>2-3. 웹, 앱 사용 시간 비교</strong></h3><p><a href="https://www.koit.co.kr/news/articleView.html?idxno=82667">3월까지 쇼핑 앱 사용자수 ‘3500만’- 70%가 앱으로 쇼핑, 정보통신신문</a></p><p>위 기사를 근거로 본 서비스는 앱 사용빈도가 높을 것이라 예상할 수 있다.</p><p>하지만 데이터에서 구매 경로를 확인할 수 없기 때문에, 웹의 사용시간과 앱 사용시간을 통해 간접적으로 구매 경로에 대한 유저 선호도를 확인해보고자 한다.</p><ul><li><strong>H0: 해당 서비스는 웹보다 앱을 더 적게 사용하거나 사용 시간이 동일하다.</strong><li><strong>H1: 해당 서비스는 웹보다 앱을 더 많이 사용한다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre># 전체 구매 경로(app, web) 중 app 사용 비율
+customer['app_per'] = customer['app'] / (customer['app'] + customer['web'])
+
+customer['app_per'].describe()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>count    500.000000
+mean       0.245180
+std        0.015740
+min        0.193497
+25%        0.234936
+50%        0.245531
+75%        0.257707
+max        0.289320
+Name: app_per, dtype: float64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sns.histplot(customer['app_per']);
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-3.webp" alt="" /></p><p><strong>결론:</strong><br /> <strong>모든 유저의 앱 사용 비율은 최대 30%를 넘지 않는다. 연구가설을 기각한다.</strong></p><p>본 서비스는 예상과 달리 웹 사용 비율이 더 높다. 그러나 웹 사용 비율이 높은 것이 매출에 기여하는지는 알 수 없다. 따라서 앱 사용 시간에 따른 연간 지출액과 웹 사용 시간에 따른 연간 지출액을 비교해서 두 판매 경로의 효율을 체크할 필요가 있겠다.</p><h3 id="2-4-앱-사용-시간에-따른-연간-지출액-확인"><strong>2-4. 앱 사용 시간에 따른 연간 지출액 확인</strong></h3><p>앞서 확인한 것처럼 본 서비스는 웹 사용 비율이 더 높다. 그러나 국내 쇼핑의 70%가 앱에서 이루어진다는 보도를 고려할 때, 실제 매출은 웹 보다 앱에서 주로 발생할 가능성이 크다. 따라서 앱 사용 시간에 따른 연간 지출액을 상관분석을 통해 확인하고자 한다.</p><ul><li><strong>H0: 앱 사용 시간과 연간 지출액은 서로 관련이 없다.</strong><li><strong>H1: 앱 사용 시간이 많을 수록 연간 지출액은 높다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sns.scatterplot(data=customer, x='app', y='spent');
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-4.webp" alt="" /></p><p>산점도로 볼 때, 선형 관계가 있는 것 같다. 이어서 상관계수를 통해 확인한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>x=customer['app']
+y=customer['spent']
+
+stats.pearsonr(x,y)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>(0.4993277700534505, 6.905842369970937e-33)
+</pre></table></code></div></div><p>상관분석 결과 상관계수는 0.5, p-value는 0에 수렴하여 양의 상관관계가 존재함을 알 수 있다.</p><p><strong>결론:</strong><br /> <strong>유저의 app 사용 시간은 연간 지출액과 관련이 있다. 분석 결과 양의 상관관계가 있으므로 귀무가설을 기각한다.</strong><br /> 이어서 web 사용 시간과 연간 지출액의 상관 분석 결과를 비교하면, 어떤 구매 경로가 더 효율이 좋은지 확인할 수 있다.</p><h3 id="2-5-웹-사용-시간에-따른-연간-지출액-확인"><strong>2-5. 웹 사용 시간에 따른 연간 지출액 확인</strong></h3><p>앱과 마찬가지로 웹 사용 시간도 연간 지출액과 관련이 있을 것이라 예상할 수 있다. 앱보다 사용 비율이 압도적으로 높고, 서비스를 사용한다는 것은 작은 결제라도 연결되기 때문이다. 분석을 통해 상관계수를 확인하고, 앞에서 확인한 app 사용 시간과 연간 지출액의 상관계수와 비교해보자.</p><ul><li><strong>H0: 웹 사용 시간과 연간 지출액은 서로 관련이 없다.</strong><li><strong>H1: 웹 사용 시간이 많을 수록 연간 지출액은 높다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sns.scatterplot(data=customer, x='web', y='spent');
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-5.webp" alt="" /></p><p>시각적으로는 <code class="language-plaintext highlighter-rouge">app</code>과 <code class="language-plaintext highlighter-rouge">spent</code>의 관계보다 상관성이 약해 보인다. 이어서 피어슨 상관계수를 확인해보자.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>x = customer['web']
+y = customer['spent']
+
+stats.pearsonr(x,y)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>(-0.002640844672158962, 0.9530290603515617)
+</pre></table></code></div></div><p>예상과 달리 상관관계가 없다. p_value는 0.5보다 크고 상관계수를 신뢰할 수 없기에 app, web 사용 시간 별 연간 지출액에 대한 결론은 아래와 같이 정리한다.</p><p><strong>결론:</strong><br /> <strong>예상과 달리 web 사용 시간과 연간 지출액은 서로 관련이 없다. 연구가설을 기각한다.</strong><br /> <code class="language-plaintext highlighter-rouge">2-3</code>, <code class="language-plaintext highlighter-rouge">2-4</code>와 종합하면, 유저는 웹에서 시간을 많이 보내지만 실제 결제는 app을 통해 발생하는 것을 알 수 있다. 전략적으로 결제가 발생하는 app 사용 시간을 늘리기 위한 서비스 개편이 필요해 보인다.</p><h3 id="2-6-가입-기간에-따른-구매-경로에-대한-선호도-차이-분석"><strong>2-6. 가입 기간에 따른 구매 경로에 대한 선호도 차이 분석</strong></h3><p>마지막으로, 가입 기간으로 고객 그룹을 나누기 위해 가입 기간에 따라 웹 사용 시간과 앱 사용 시간을 확인한다. 그룹을 나누는 것은 고객군 별 매출 향상을 위한 전략을 달리 설계하기 위함이다.</p><ul><li><strong>H0: 가입 기간에 따라 앱이나 웹 선호도(사용 시간)는 서로 차이가 없다.</strong><li><strong>H1: 가입 기간에 따라 앱이나 웹 선호도(사용 시간)는 다르다.</strong></ul><p>먼저, 가입 기간을 각각 유효한 그룹으로 나누기 위해 분포를 확인합니다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>customer['membership'].describe()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>count    500.000000
+mean       3.533462
+std        0.999278
+min        0.269901
+25%        2.930450
+50%        3.533975
+75%        4.126502
+max        6.922689
+Name: membership, dtype: float64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sns.histplot(customer['membership']);
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-6.webp" alt="" /></p><p>데이터가 정규분포를 따른다. 그룹은 중위수(50%)를 기준으로 2개로 나누도록 한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>md = np.median(customer['membership'])
+
+customer['group'] = customer['membership'].apply(lambda x:'A' if x &amp;lt; md else 'B')
+
+customer['group'].value_counts()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>B    250
+A    250
+Name: group, dtype: int64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>customer.loc[customer['group']=='B','app'].describe()
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>count    250.000000
+mean      12.076809
+std        1.004755
+min        9.477778
+25%       11.365706
+50%       12.013014
+75%       12.777711
+max       15.126994
+Name: app, dtype: float64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># group 별 분포 시각화
+sns.barplot(x=['A','B'], y=customer['group'].value_counts());
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-7.webp" alt="" /></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>print('서비스 사용 기간이 평균 미만인 고객의 평균 app 사용 시간 : {:.2f}'.\
+      format(customer.loc[customer['group']=='A','app'].mean()))
+
+print('서비스 사용 기간이 평균 미만인 고객의 평균 web 사용 시간 : {:.2f}'.\
+      format(customer.loc[customer['group']=='A','web'].mean()))
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>서비스 사용 기간이 평균 미만인 고객의 평균 app 사용 시간 : 12.03
+서비스 사용 기간이 평균 미만인 고객의 평균 web 사용 시간 : 37.05
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>print('서비스 사용 기간이 평균 이상인 고객의 평균 app 사용 시간 : {:.2f}'.\
+      format(customer.loc[customer['group']=='B','app'].mean()))
+
+print('서비스 사용 기간이 평균 이상인 고객의 평균 web 사용 시간 : {:.2f}'.\
+      format(customer.loc[customer['group']=='B','web'].mean()))
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>서비스 사용 기간이 평균 이상인 고객의 평균 app 사용 시간 : 12.08
+서비스 사용 기간이 평균 이상인 고객의 평균 web 사용 시간 : 37.07
+</pre></table></code></div></div><p>각 그룹 별 app, web 사용 시간에 유의미한 차이가 있다고 보기 어렵다. 두 그룹 모두 web을 선호한다.</p><p><strong>결론:</strong><br /> <strong>서비스 사용 기간(가입 기간)에 따라 구매 경로(app, web)에 대한 선호도는 차이가 없다. 연구가설을 기각한다.</strong> 그러나 앞서 확인한 것처럼 실제 구매가 발생하는 곳은 app이므로 web 사용자를 app으로 옮겨올 필요가 있다. app에 대한 선호도를 높일 수 있다면, app 사용 시간을 늘리고 연간 지출액을 증가시킬 수 있다.</p><h3 id="2-7-가입-기간에-따른-구매-경로-별-연간-지출액-확인"><strong>2-7. 가입 기간에 따른 구매 경로 별 연간 지출액 확인</strong></h3><p>가입 기간과 상관없이 모두 web을 선호하고, app 사용 시간 및 web 사용 시간에 차이가 없었다. 그렇다면 서비스 이용 시간이 동일하다면, web과 app 모두에서 가입 기간이 긴 유저가 연간 지출액이 높을지 확인하고자 한다.</p><p>앞서 가입 기간이 길수록 연간 지출액이 높다는 것을 확인했기 때문에 web, app 동일하게 그러한지 파악하기 위함이다.</p><ul><li><strong>H0: app, web 둘 중 하나만 가입 기간이 오래된 그룹(B)이 연간 지출액이 높다.</strong><li><strong>H1: app, web 모두 가입 기간이 오래된 그룹(B)이 연간 지출액이 높다.</strong></ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>fig, axes = plt.subplots(1,2, figsize=(10,4))
+
+# app/web 사용 시간에 따른 연간 지출액을 그룹으로 나눠 확인한다.
+sns.scatterplot(data=customer, x='app', y='spent', hue='group', ax=axes[0])
+sns.scatterplot(data=customer, x='web', y='spent', hue='group', ax=axes[1])
+
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-8.webp" alt="" /></p><p>두 구매 경로(app, web) 모두 B 그룹이 연간 지출액이 높은 경향을 보인다. 귀무가설을 기각한다. 차이가 분명하게 있으므로 그룹을 2개로 나누지 않고 모든 가입 기간에 대해 산점도를 확인해보겠다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>fig, axes = plt.subplots(1,2, figsize=(10,4))
+
+# app/web 사용 시간에 따른 연간 지출액을 그룹으로 나눠 확인한다.
+sns.scatterplot(data=customer, x='app', y='spent', hue='membership', ax=axes[0])
+sns.scatterplot(data=customer, x='web', y='spent', hue='membership', ax=axes[1])
+
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-9.webp" alt="" /></p><p><strong>결론:</strong><br /> <strong>두 구매 경로(app, web) 모두 서비스 사용 기간(가입 기간)이 길면 연간 지출액도 높다.</strong><br /> <code class="language-plaintext highlighter-rouge">2-6</code>과 종합하면, 모든 가입 기간과 모든 구매 경로에 대해서 고객은 일관성 있는 특징을 보인다. 즉, 가입 기간 별로 고객 그룹을 나눈다거나 구매 경로 별 선호도 기반으로 고객 그룹을 나눌 수 없다. 따라서 매출 개선 전략 타깃은 고객군을 나누지 않고 전체 유저를 대상으로 한다.</p><h2 id="3-분석-결과"><strong>3. 분석 결과</strong></h2><p>아래 7가지 가설 검정 과정을 통해 <strong>웹/앱 접속 시간에 따른 지출 현황</strong>을 분석해보았다.</p><ol><li><strong>H1: 유저의 세션 접속 시간이 길수록 연간 지출액은 높다.</strong><li><strong>H1: 유저의 가입 기간이 길수록 연간 지출액은 높다.</strong><li><strong>H1: 해당 서비스는 웹보다 앱을 더 많이 사용한다.</strong><li><strong>H1: 앱 사용 시간이 많을수록 연간 지출액은 높다.</strong><li><strong>H1: 웹 사용 시간이 많을 수록 연간 지출액은 높다.</strong><li><strong>H1: 가입 기간에 따라 앱이나 웹 선호도(사용 시간)는 다르다.</strong><li><strong>H1: app, web 모두 가입 기간이 오래된 그룹(B)이 연간 지출액이 높다.</strong></ol><p>정리하면,<br /> 유저의 가입 기간이 길수록 지출액이 높다는 점에서 충성 고객이 많은 고효율 서비스다. 결제는 app에서 발생하지만 사용자가 web에 머무는 시간이 더 많고, 이는 가입 기간이 길더라도 동일하게 나타나는 현상이다.</p><p>위 분석을 토대로 아래의 방법으로 매출 개선을 시도해볼 수 있다.</p><p><strong>매출 개선 전략 :</strong><br /> <strong>“web에서 사용자가 머무는 주요 페이지를 app에 최적화하여 점진적으로 app 사용 시간을 늘린다.”</strong></p><h2 id="4-매출-개선-시뮬레이션"><strong>4. 매출 개선 시뮬레이션</strong></h2><p>app 사용 비중이 늘어났을 때 어느 정도의 매출 개선이 예상되는지 회귀 분석을 통해 예측해보도록 하자.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre># 회귀분석 목적으로 새로운 데이터프레임을 다시 생성
+ct_lin = customer_r.copy()
+ct_lin.columns = ['session','app','web','membership','spent']
+
+# 정규성 검정
+for col in ct_lin.columns:
+    st, pv = stats.kstest(ct_lin[col],'norm')
+    print('vector : {} - p_value : {}'.format(col,pv))
+    if pv &lt; 0.05:
+        print('--&amp;gt; 정규분포 O')
+    else:
+        print('--&gt; 정규분포 X')
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>vector : session - p_value : 0.0
+--&gt; 정규분포 O
+vector : app - p_value : 0.0
+--&gt; 정규분포 O
+vector : web - p_value : 0.0
+--&gt; 정규분포 O
+vector : membership - p_value : 0.0
+--&gt; 정규분포 O
+vector : spent - p_value : 0.0
+--&gt; 정규분포 O
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>X = ct_lin.iloc[:,:-1] # spent 제외 나머지 모든 컬럼
+X_ = (X - np.min(X))/(np.max(X)-np.min(X)) # 독립변수 정규화 작업
+
+y = ct_lin.iloc[:,-1] # spent
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 표준화된 독립변수 분포 확인
+X_.hist();
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-10.webp" alt="" /></p><p>회귀분석의 신뢰도 확보를 위해 변수들의 정규성을 검정했고, 회귀분석의 정확도를 높이기 위해 모든 컬럼의 데이터 범위를 0과 1 사이로 통일시켰다.</p><p>다음으로 테스트 셋을 따로 분리하고 예측할 모델 성능을 평가한다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>X_train, X_test, y_train, y_test = model_selection.train_test_split(X_,y,test_size=0.2,shuffle=True)
+
+# 데이터가 잘 분할되었는지 확인
+print('The distribution of training set : {} and {}'.format(X_train.shape, y_train.shape))
+print('The distribution of test set : {} and {}'.format(X_test.shape, y_test.shape))
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>The distribution of training set : (400, 4) and (400,)
+The distribution of test set : (100, 4) and (100,)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>lr = LinearRegression()
+lr.fit(X_train, y_train)
+lr.predict(X_test)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre><td class="rouge-code"><pre>array([478.51058369, 449.88143676, 411.39031632, 530.3528004 ,
+       488.21386745, 449.73882129, 565.33149069, 491.37434266,
+       381.29515047, 398.97215612, 554.53025792, 460.71323737,
+       589.64343949, 409.31004883, 609.23503452, 418.30819157,
+       448.25048868, 500.68451076, 525.98929327, 527.94173467,
+       627.91669757, 606.15396051, 498.16392866, 519.19453143,
+       703.10815952, 533.95199327, 623.12370825, 571.83177477,
+       347.94951233, 514.09880783, 479.43710906, 540.20256643,
+       494.06564279, 501.40467521, 484.69696931, 616.65667535,
+       497.52537355, 505.35428713, 495.37792452, 284.01048684,
+       424.28292475, 536.23633553, 501.99175929, 549.80182898,
+       464.26833261, 506.88692522, 518.49951848, 608.60628647,
+       424.87394181, 423.67045631, 478.83072748, 472.18810295,
+       590.66708726, 523.75155655, 523.16045797, 413.09116445,
+       598.72923402, 473.31721848, 465.05781685, 414.35281299,
+       475.49375111, 511.31138277, 439.8882148 , 435.69041158,
+       479.53589169, 520.66421506, 548.81178739, 459.64125271,
+       435.00894641, 445.73302682, 542.98592376, 464.03496306,
+       478.39591238, 315.39792167, 542.31575921, 457.46719547,
+       429.201549  , 357.22097032, 414.61837048, 521.47665544,
+       313.6723082 , 402.50046751, 473.36249895, 552.93736345,
+       458.56018325, 456.37602465, 583.09659469, 574.68074709,
+       349.86393209, 255.04108793, 498.4940258 , 438.02540873,
+       557.91441062, 563.53682494, 532.53380615, 375.3153187 ,
+       551.18583722, 590.20906496, 384.39727334, 495.40860513])
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 모델 정확도 확인
+lr.score(X_test, y_test)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>0.989284333947629
+</pre></table></code></div></div><p>매우 높은 예측 정확도를 가진 선형 회귀 모델을 완성했다. 이 모델을 사용해 app 사용 시간이 늘어남에 따라 연간 지출액이 어떻게 상승할지 예측해보자.</p><p>먼저, 테스트 셋에서 하나의 샘플을 추출하여 app 사용 시간을 점진적으로 늘린 새로운 테이블을 생성한다.<br /> <em>(사용자 수는 동일하다는 가정 하에, app 사용 시간은 10%씩 늘어나고 web 사용 시간은 10%씩 감소시키는 것으로 논의를 단순화하겠다.)</em></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 테스트셋 확인
+X_
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>session<th>app<th>web<th>membership<tbody><tr><td>0<td>0.751425<td>0.626620<td>0.929816<td>0.573101<tr><td>1<td>0.362306<td>0.393016<td>0.550801<td>0.359869<tr><td>2<td>0.524953<td>0.426378<td>0.524803<td>0.576396<tr><td>3<td>0.722409<td>0.787050<td>0.460890<td>0.428434<tr><td>4<td>0.574861<td>0.647702<td>0.594748<td>0.627768<tr><td>…<td>…<td>…<td>…<td>…<tr><td>495<td>0.560784<td>0.764183<td>0.411098<td>0.522589<tr><td>496<td>0.782491<td>0.481592<td>0.537882<td>0.497028<tr><td>497<td>0.471354<td>0.451931<td>0.725412<td>0.704722<tr><td>498<td>0.573625<td>0.586699<td>0.480394<td>0.310634<tr><td>499<td>0.633178<td>0.590837<td>0.304887<td>0.370560</table></div><p>500 rows × 4 columns</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre># 무작위 인덱스 설정
+idx = np.random.randint(10)
+idx
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>4
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre># 무작위로 1개 샘플 추출
+sample = X_test.iloc[idx]
+sample
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>session       0.217829
+app           0.486975
+web           0.354718
+membership    0.624770
+Name: 482, dtype: float64
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>sample['session']
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>0.21782894037206957
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre><td class="rouge-code"><pre>pers = np.arange(0,1,0.1) # 0부터 0.9까지 0.1씩 증가하는 배열 생성
+
+session_list = []
+app_list = []
+web_list = []
+membership_list = []
+
+for p in pers: 
+    session_list.append(sample['session'])
+    app_list.append(sample['app']*(1+p))
+    web_list.append(sample['web']*(1-p))
+    membership_list.append(sample['membership'])
+
+test_dict = {
+    'session':session_list,
+    'app':app_list,
+    'web':web_list,
+    'membership':membership_list
+}
+
+# 데이터프레임 생성
+testset = pd.DataFrame(test_dict)
+testset
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>session<th>app<th>web<th>membership<tbody><tr><td>0<td>0.217829<td>0.486975<td>0.354718<td>0.62477<tr><td>1<td>0.217829<td>0.535673<td>0.319246<td>0.62477<tr><td>2<td>0.217829<td>0.584370<td>0.283774<td>0.62477<tr><td>3<td>0.217829<td>0.633068<td>0.248302<td>0.62477<tr><td>4<td>0.217829<td>0.681765<td>0.212831<td>0.62477<tr><td>5<td>0.217829<td>0.730463<td>0.177359<td>0.62477<tr><td>6<td>0.217829<td>0.779160<td>0.141887<td>0.62477<tr><td>7<td>0.217829<td>0.827858<td>0.106415<td>0.62477<tr><td>8<td>0.217829<td>0.876555<td>0.070944<td>0.62477<tr><td>9<td>0.217829<td>0.925253<td>0.035472<td>0.62477</table></div><p><code class="language-plaintext highlighter-rouge">session</code>과 <code class="language-plaintext highlighter-rouge">membership</code>은 동일하고 <code class="language-plaintext highlighter-rouge">app</code>은 10%씩 증가, <code class="language-plaintext highlighter-rouge">web</code>은 10%씩 감소하는 데이터 테이블을 생성했다.</p><p>이제 앞에서 만든 모델에 데이터를 넣고 연간 지출액을 예측해본다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>lr.predict(testset)
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>array([488.21386745, 500.62367008, 513.0334727 , 525.44327532,
+       537.85307795, 550.26288057, 562.6726832 , 575.08248582,
+       587.49228845, 599.90209107])
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre>sns.lineplot(x=np.arange(0,10,1), y=lr.predict(testset).tolist())
+
+plt.xticks(np.arange(0,10,1))
+plt.xlabel('app x (1.n%)')
+plt.ylabel('prediction')
+plt.show()
+</pre></table></code></div></div><p><img data-proofer-ignore data-src="/assets/images/posts/51-11.webp" alt="" /></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># 앱 사용 시간 증가에 따른 연간 지출액 증가율
+pd.DataFrame(lr.predict(testset)).pct_change()
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th> <th>0<tbody><tr><td>0<td>NaN<tr><td>1<td>0.025419<tr><td>2<td>0.024789<tr><td>3<td>0.024189<tr><td>4<td>0.023618<tr><td>5<td>0.023073<tr><td>6<td>0.022552<tr><td>7<td>0.022055<tr><td>8<td>0.021579<tr><td>9<td>0.021123</table></div><p><strong>유저의 app 사용 시간이 10%씩 늘어남에 따라 연간 지출액은 2%씩 상승한다.</strong> web 사용 시간을 10%씩 줄였음에도 지출액 증가를 보이는 것은 매우 유의미하다. 또한 무작위로 추출한 유저(<code class="language-plaintext highlighter-rouge">sample</code> 행)의 실제 연간 지출액을 보면 아래와 같이 예측값과 차이가 크지 않다.</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># sample 유저의 실제 연간 지출액
+y_test.iloc[idx]
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>494.6386097568927
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre># sample 유저의 예상 연간 지출액
+lr.predict(testset)[0]
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Text "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>488.2138674508592
+</pre></table></code></div></div><p><strong>시뮬레이션 결과:</strong><br /> 유저의 app 사용 시간을 기존 대비 10%씩 늘릴 수 있다면 연간 지출액은 2%씩 상승 가능하다. 따라서 현재 web에서 머무는 시간이 많은 페이지를 확인하여 app에서도 동일하게 서비스를 이용할 수 있도록 하고, 점차적으로 app의 사용성을 개선하여 web에서 app으로 전환하는 비율을 높이면서 동시에 신규 사용자를 app으로 유치시키는 전략을 취하는 것이 좋겠다.</p><p><strong>관성을 이기는 데이터</strong></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/3-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/'>3. 튜토리얼</a>, <a href='/categories/%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%ED%86%B5%EA%B3%84-%EB%B6%84%EC%84%9D-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/'>비즈니스 통계 분석 프로그래밍</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석 - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석 - 관성을 이기는 데이터&u=https://sw-song.github.io/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석 - 관성을 이기는 데이터&url=https://sw-song.github.io/posts/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%97%B0%EA%B0%84-%EC%A7%80%EC%B6%9C%EC%95%A1%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%A7%A4%EC%B6%9C-%EA%B0%9C%EC%84%A0-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Tistory%EC%97%90%EC%84%9C-GitHub-Pages%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%99%84%EC%A0%84-%EA%B0%80%EC%9D%B4%EB%93%9C/">Tistory에서 GitHub Pages로 블로그 마이그레이션 완전 가이드</a><li><a href="/posts/JavaScript-%EC%BD%9C%EB%B0%B1/">JavaScript - 콜백</a><li><a href="/posts/JavaScript-%EA%B0%9D%EC%B2%B4-%EC%B0%B8%EC%A1%B0-assign/">JavaScript - '객체 참조', assign()</a><li><a href="/posts/%EB%A7%A5-Mac-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%B2%BD%EB%A1%9C%EC%84%A4%EC%A0%95-%EC%95%84%EB%82%98%EC%BD%98%EB%8B%A4-Anaconda-2020%EB%85%84-5%EC%9B%94-10%EC%9D%BC-%EA%B8%B0%EC%A4%80/">맥(Mac) 터미널 경로설정 - 아나콘다(Anaconda), 2020년 5월 10일 기준 updated</a><li><a href="/posts/%EB%A7%A5-zsh-conda-install-%EC%97%90%EB%9F%AC-pip-install%EB%A1%9C-%EB%8C%80%EC%B2%B4/">맥 zsh - conda install 에러, pip install로 대체</a></ul></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%EB%A7%A5-Mac-%ED%84%B0%EB%AF%B8%EB%84%90-%EA%B2%BD%EB%A1%9C%EC%84%A4%EC%A0%95-%EC%95%84%EB%82%98%EC%BD%98%EB%8B%A4-Anaconda-2020%EB%85%84-5%EC%9B%94-10%EC%9D%BC-%EA%B8%B0%EC%A4%80/"><div class="card-body"> <span class="timeago small" >May 10, 2020<i class="unloaded">2020-05-10T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>맥(Mac) 터미널 경로설정 - 아나콘다(Anaconda), 2020년 5월 10일 기준 updated</h3><div class="text-muted small"><p> 오랜만에 맥에 아나콘다를 설치하고 가상 환경을 띄우려는데, 에러가 발생했다. 구글링 해보면 대부분 export PATH=”/Users/username/anaconda/bin:$PATH”로 설정하면 된다 는 내용이 많다. 동일하게 시도했을때, 아래와 같이 에러가 발생한다. 초기화도 해보았으나 No action taken. 이라는 모호한 ...</p></div></div></a></div><div class="card"> <a href="/posts/%EB%A7%A5-zsh-conda-install-%EC%97%90%EB%9F%AC-pip-install%EB%A1%9C-%EB%8C%80%EC%B2%B4/"><div class="card-body"> <span class="timeago small" >May 16, 2020<i class="unloaded">2020-05-16T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>맥 zsh - conda install 에러, pip install로 대체</h3><div class="text-muted small"><p> 이번에 새로 산 맥에 장고를 설치하려다가 conda install 관련 에러가 있어 내용을 기록한다. 우선, 사용자폴더에서 새롭게 sw_python이라는 폴더를 생성하고, 가상환경도 만들어 줬다. 가상환경 이름은 재미없지만 django_venv이다. 가상환경은 잘 생성되었다. conda activate django_venv 명령어로 가상환경을 ...</p></div></div></a></div><div class="card"> <a href="/posts/pythonanywhere-%EC%9E%A5%EA%B3%A0-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95/"><div class="card-body"> <span class="timeago small" >May 17, 2020<i class="unloaded">2020-05-17T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>pythonanywhere - 장고 서버 구축</h3><div class="text-muted small"><p> 웹으로 모델을 서빙해야 하는 상황이 자주 생긴다. pythonanywhere로 간단한 개인 서버를 띄워보고 싶다면, 딱 3가지만 생각하면 된다. 로컬에서 개발하고 Github에 원격으로 올리고 외부 호스팅 업체를 사용한다. 로컬 개발하고 머신러닝 모델 배포나 일반 웹서비스를 위해 html 페이지를 로컬 서버에 띄워봤...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/%EB%A7%A5-homebrew-%EA%B9%83-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%97%B0%EB%8F%99/" class="btn btn-outline-primary" prompt="Older"><p>맥 homebrew - 깃 설치 및 깃허브 연동</p></a> <a href="/posts/%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EC%9D%98-%EC%BD%98%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9C%A0-%ED%98%84%ED%99%A9%EA%B3%BC-%EC%88%98%EA%B8%89-%EC%A0%84%EB%9E%B5-%EB%B6%84%EC%84%9D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/" class="btn btn-outline-primary" prompt="Newer"><p>넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2026 <a href="https://github.com/sw-song">Seungwon Song</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>

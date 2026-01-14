@@ -1,0 +1,699 @@
+{
+  "total_github_posts": 113,
+  "matched": 2,
+  "unmatched": 111,
+  "match_rate": "1.8%",
+  "matches": [
+    {
+      "github_file": "2025-05-09-Dolt-Python-MySQL-금융-분석을-위한-재무제표-데이터베이스-구축과-.md",
+      "github_title": "[Dolt + Python + MySQL] 금융 분석을 위한 재무제표 데이터베이스 구축과 실행",
+      "github_date": "2025-05-09",
+      "tistory_title": "[Dolt + Python + MySQL] 금융 분석을 위한 재무제표 데이터베이스 구축과 실행2025.05.09 07:55",
+      "tistory_url": "https://songseungwon.tistory.com/156",
+      "category": "1. 기술/머신러닝, 딥러닝",
+      "confidence": 0.8666666666666667,
+      "method": "fuzzy_match"
+    },
+    {
+      "github_file": "2025-06-10-국내-해외-ETF-매매시-일반-위탁-계좌-vs-절세-계좌-연금저축-IRP-ISA-세금.md",
+      "github_title": "국내/해외 ETF 매매시 일반 위탁 계좌 vs 절세 계좌(연금저축, IRP, ISA) 세금 차이 정리",
+      "github_date": "2025-06-10",
+      "tistory_title": "국내/해외 ETF 매매시 일반 위탁 계좌 vs 절세 계좌(연금저축, IRP, ISA) 세금 차이 정리2025.06.10 18:54",
+      "tistory_url": "https://songseungwon.tistory.com/157",
+      "category": "1. 기술/머신러닝, 딥러닝",
+      "confidence": 0.875,
+      "method": "fuzzy_match"
+    }
+  ],
+  "unmatched_files": [
+    {
+      "github_file": "2019-09-23-NodeJS-NPM-PM2.md",
+      "github_title": "NodeJS - NPM, PM2",
+      "github_date": "2019-09-23",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-09-24-HTML-element-CSS.md",
+      "github_title": "HTML element, CSS",
+      "github_date": "2019-09-24",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-09-24-Web-HTML.md",
+      "github_title": "Web - HTML",
+      "github_date": "2019-09-24",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-09-26-블록체인-개념적-구현-javascript-.md",
+      "github_title": "블록체인 개념적 구현(javascript)",
+      "github_date": "2019-09-26",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-09-28-JavaScript-식-그리고-문.md",
+      "github_title": "JavaScript - 식, 그리고 문",
+      "github_date": "2019-09-28",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-05-JavaScript-6-원칙.md",
+      "github_title": "JavaScript - 6 원칙",
+      "github_date": "2019-10-05",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-08-JavaScript-객체와-동적-바인딩-값의-이동.md",
+      "github_title": "JavaScript - 객체와 동적 바인딩, 값의 이동",
+      "github_date": "2019-10-08",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-19-JavaScript-Scope와-Closer.md",
+      "github_title": "JavaScript - Scope와 Closer",
+      "github_date": "2019-10-19",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-20-JavaScript-DOM-Document-Object-Model-제어.md",
+      "github_title": "JavaScript - DOM(Document Object Model) 제어",
+      "github_date": "2019-10-20",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-21-JavaScript-객체와-Prototype.md",
+      "github_title": "JavaScript - 객체와 Prototype",
+      "github_date": "2019-10-21",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-25-JavaScript-constructor-instance.md",
+      "github_title": "JavaScript - constructor, instance",
+      "github_date": "2019-10-25",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-26-JavaScript-const-freeze-.md",
+      "github_title": "JavaScript - const(), freeze()",
+      "github_date": "2019-10-26",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-10-26-JavaScript-객체-참조-concat-.md",
+      "github_title": "JavaScript - 객체 참조, concat()",
+      "github_date": "2019-10-26",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-11-02-JavaScript-가변인자-클래스-배열-순회.md",
+      "github_title": "JavaScript - 가변인자, 클래스, 배열 순회",
+      "github_date": "2019-11-02",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-11-02-JavaScript-함수-Parameter-vs-Argument.md",
+      "github_title": "JavaScript - 함수 Parameter  vs Argument",
+      "github_date": "2019-11-02",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-11-05-JavaScript-콜백.md",
+      "github_title": "JavaScript - 콜백",
+      "github_date": "2019-11-05",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2019-11-10-JavaScript-객체-참조-assign-.md",
+      "github_title": "JavaScript - '객체 참조', assign()",
+      "github_date": "2019-11-10",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2020-05-10-맥-Mac-터미널-경로설정-아나콘다-Anaconda-2020년-5월-10일-기준-.md",
+      "github_title": "맥(Mac) 터미널 경로설정 - 아나콘다(Anaconda), 2020년 5월 10일 기준 updated",
+      "github_date": "2020-05-10",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2020-05-16-맥-zsh-conda-install-에러-pip-install로-대체.md",
+      "github_title": "맥 zsh - conda install 에러, pip install로 대체",
+      "github_date": "2020-05-16",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2020-05-16-맥에-Django-설치.md",
+      "github_title": "맥에 Django 설치",
+      "github_date": "2020-05-16",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2020-05-17-Python-Django-blog-admin.md",
+      "github_title": "Python Django - blog, admin",
+      "github_date": "2020-05-17",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2020-05-17-pythonanywhere-장고-서버-구축.md",
+      "github_title": "pythonanywhere - 장고 서버 구축",
+      "github_date": "2020-05-17",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2020-05-17-맥-homebrew-깃-설치-및-깃허브-연동.md",
+      "github_title": "맥 homebrew - 깃 설치 및 깃허브 연동",
+      "github_date": "2020-05-17",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2021-08-12-커머스-연간-지출액을-통한-매출-개선-시뮬레이션-파이썬-프로덕트-데이터-분석.md",
+      "github_title": "커머스 연간 지출액을 통한 매출 개선 시뮬레이션 - 파이썬 프로덕트 데이터 분석",
+      "github_date": "2021-08-12",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2021-09-02-넷플릭스의-콘텐츠-보유-현황과-수급-전략-분석-파이썬-비즈니스-데이터-분석.md",
+      "github_title": "넷플릭스의 콘텐츠 보유 현황과 수급 전략 분석 - 파이썬 비즈니스 데이터 분석",
+      "github_date": "2021-09-02",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2021-09-02-키움증권-API를-활용한-비-실시간-주가-정보-수집-파이썬-데이터-수집-자동화.md",
+      "github_title": "키움증권 API를 활용한 비 실시간 주가 정보 수집 - 파이썬 데이터 수집 자동화",
+      "github_date": "2021-09-02",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2021-09-07-존버-vs-자동매매-백테스팅-수익률-비교-카카오-파이썬-금융-데이터-분석.md",
+      "github_title": "존버 vs 자동매매 백테스팅 수익률 비교(카카오) - 파이썬 금융 데이터 분석",
+      "github_date": "2021-09-07",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2021-09-11-광고-프로모션-효율-증진을-위한-커머스-고객-세분화-1-문제-상황-가정-및-데이터-.md",
+      "github_title": "광고 프로모션 효율 증진을 위한 커머스 고객 세분화 - (1) 문제 상황 가정 및 데이터 전처리",
+      "github_date": "2021-09-11",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2021-09-15-광고-프로모션-효율-증진을-위한-커머스-고객-세분화-2-고객-군집-분석.md",
+      "github_title": "광고 프로모션 효율 증진을 위한 커머스 고객 세분화 - (2) 고객 군집 분석",
+      "github_date": "2021-09-15",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2021-09-16-과거-주가-데이터로-미래-주가를-예측할-수-있을까-파이썬-시계열-패턴-검색.md",
+      "github_title": "과거 주가 데이터로 미래 주가를 예측할 수 있을까? - 파이썬 시계열 패턴 검색",
+      "github_date": "2021-09-16",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-02-08-이진-분류를-위한-머신러닝-예측-성능-비교-로지스틱-회귀-랜덤포레스트-부스팅-신경.md",
+      "github_title": "이진 분류를 위한 머신러닝 예측 성능 비교 - 로지스틱 회귀, 랜덤포레스트, 부스팅, 신경망",
+      "github_date": "2022-02-08",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-05-31-Elastic-Search-외부-호스팅-개방.md",
+      "github_title": "Elastic Search - 외부 호스팅 개방",
+      "github_date": "2022-05-31",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-05-31-GCP-VM-이미지-생성-인스턴스-복제.md",
+      "github_title": "GCP - VM 이미지 생성, 인스턴스 복제",
+      "github_date": "2022-05-31",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-05-31-Kibana-모니터링-멈추기.md",
+      "github_title": "Kibana - 모니터링 멈추기",
+      "github_date": "2022-05-31",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-05-31-linux-파일-인코딩-변경.md",
+      "github_title": "linux - 파일 인코딩 변경",
+      "github_date": "2022-05-31",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-01-Docker-명령어-모음.md",
+      "github_title": "Docker 명령어 모음",
+      "github_date": "2022-06-01",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-01-Elastic-Stack-활용-서울시-상권-매출-대시보드-구축-1-beats-lo.md",
+      "github_title": "Elastic Stack 활용 서울시 상권 매출 대시보드 구축 - (1) beats, logstash",
+      "github_date": "2022-06-01",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-01-git-branch.md",
+      "github_title": "git - branch",
+      "github_date": "2022-06-01",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-01-딥러닝-Multiple-Object-Detection.md",
+      "github_title": "딥러닝 Multiple-Object Detection",
+      "github_date": "2022-06-01",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-02-sklearn-numeric-encoding.md",
+      "github_title": "sklearn - numeric encoding",
+      "github_date": "2022-06-02",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-03-Elastic-Stack-활용-서울시-상권-매출-대시보드-구축-1-elastic-s.md",
+      "github_title": "Elastic Stack 활용 서울시 상권 매출 대시보드 구축 - (1) elastic search, kibana",
+      "github_date": "2022-06-03",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-03-pandas-reset-index-.md",
+      "github_title": "pandas - reset_index()",
+      "github_date": "2022-06-03",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-04-git-원격-저장소-변경.md",
+      "github_title": "git 원격 저장소 변경",
+      "github_date": "2022-06-04",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-04-tmux-명령어-단축키.md",
+      "github_title": "tmux 명령어, 단축키",
+      "github_date": "2022-06-04",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-05-Docker-삭제-명령어.md",
+      "github_title": "Docker - 삭제 명령어",
+      "github_date": "2022-06-05",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-05-GCP-firestore.md",
+      "github_title": "GCP - firestore",
+      "github_date": "2022-06-05",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-05-sklearn-confusion-matrix-.md",
+      "github_title": "sklearn - confusion_matrix()",
+      "github_date": "2022-06-05",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-06-pandas-forward-fill.md",
+      "github_title": "pandas - forward fill",
+      "github_date": "2022-06-06",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-06-파이썬을-활용한-코스피-달러-환율정보-수집부터-차트-시각화까지.md",
+      "github_title": "파이썬을 활용한 코스피, 달러 환율정보 수집부터 차트 시각화까지",
+      "github_date": "2022-06-06",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-08-pandas-melt-.md",
+      "github_title": "pandas - melt()",
+      "github_date": "2022-06-08",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-09-sklearn-RandomForestClassifier.md",
+      "github_title": "sklearn - RandomForestClassifier",
+      "github_date": "2022-06-09",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-10-sklearn-RFE.md",
+      "github_title": "sklearn - RFE",
+      "github_date": "2022-06-10",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-11-파이썬으로-최적의-포트폴리오-비율-찾기-한국-주식-국채-미국-주식-국채-.md",
+      "github_title": "파이썬으로 최적의 포트폴리오 비율 찾기 (한국 주식,국채 + 미국 주식,국채)",
+      "github_date": "2022-06-11",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-12-Precision-vs-Recall.md",
+      "github_title": "Precision vs Recall",
+      "github_date": "2022-06-12",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-13-K-Nearest-Neighbor-Algorithm.md",
+      "github_title": "K-Nearest Neighbor Algorithm",
+      "github_date": "2022-06-13",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-13-파이썬-퀀트-분석-패키지-ffn-Financial-Functions-for-Python.md",
+      "github_title": "파이썬 퀀트 분석 패키지 - ffn(Financial Functions for Python)",
+      "github_date": "2022-06-13",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-14-sklearn-GradientBoostingClassifier.md",
+      "github_title": "sklearn - GradientBoostingClassifier",
+      "github_date": "2022-06-14",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-14-파이썬-퀀트-분석-패키지-bt.md",
+      "github_title": "파이썬 퀀트 분석 패키지 - bt",
+      "github_date": "2022-06-14",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-15-sklearn-GridSearchCV.md",
+      "github_title": "sklearn - GridSearchCV",
+      "github_date": "2022-06-15",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-16-xgboost.md",
+      "github_title": "xgboost",
+      "github_date": "2022-06-16",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-17-LGBM.md",
+      "github_title": "LGBM",
+      "github_date": "2022-06-17",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-19-ROC-Curve.md",
+      "github_title": "ROC Curve",
+      "github_date": "2022-06-19",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-20-GAN.md",
+      "github_title": "GAN",
+      "github_date": "2022-06-20",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-22-StarGAN.md",
+      "github_title": "StarGAN",
+      "github_date": "2022-06-22",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-23-Scheduling.md",
+      "github_title": "Scheduling",
+      "github_date": "2022-06-23",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-24-GAN-Unpaired-Image-to-Image-Translation.md",
+      "github_title": "GAN - Unpaired Image to Image Translation",
+      "github_date": "2022-06-24",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-27-StarGAN-v2.md",
+      "github_title": "StarGAN v2",
+      "github_date": "2022-06-27",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-27-StyleGAN-v2-ada.md",
+      "github_title": "StyleGAN v2-ada",
+      "github_date": "2022-06-27",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-06-29-CycleGAN-vs-StarGAN.md",
+      "github_title": "CycleGAN vs StarGAN",
+      "github_date": "2022-06-29",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-07-04-범주형-연속형-변수-조합에-따른-가설-검정-방법.md",
+      "github_title": "범주형/연속형 변수 조합에 따른 가설 검정 방법",
+      "github_date": "2022-07-04",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-07-05-statsmodels-ols.md",
+      "github_title": "statsmodels - ols",
+      "github_date": "2022-07-05",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-07-07-Kolmogorov-Smirnov.md",
+      "github_title": "Kolmogorov Smirnov",
+      "github_date": "2022-07-07",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-07-08-pandas-corr-.md",
+      "github_title": "pandas - corr()",
+      "github_date": "2022-07-08",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-07-11-sklearn-classification-report-.md",
+      "github_title": "sklearn - classification_report()",
+      "github_date": "2022-07-11",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2022-07-13-Feature-Importance.md",
+      "github_title": "Feature Importance",
+      "github_date": "2022-07-13",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-07-Elastic-Stack을-활용한-글로벌-경제-매크로-대시보드-구축.md",
+      "github_title": "Elastic Stack을 활용한 글로벌 경제 매크로 대시보드 구축",
+      "github_date": "2023-01-07",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-08-파이썬-비트코인-가격-예측-1차-2차-3차-지수-평활.md",
+      "github_title": "파이썬 비트코인 가격 예측 - 1차, 2차, 3차 지수 평활",
+      "github_date": "2023-01-08",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-09-파이썬-이더리움-가격-예측-회귀모형.md",
+      "github_title": "파이썬 이더리움 가격 예측 - 회귀모형",
+      "github_date": "2023-01-09",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-10-주식-가격과-뉴스-기사의-상관-관계에-대하여-NVIDIA-뉴스-감성-분석.md",
+      "github_title": "주식 가격과 뉴스 기사의 상관 관계에 대하여 - NVIDIA 뉴스 감성 분석",
+      "github_date": "2023-01-10",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-12-파이썬-주식-시장-동향-분석-자연어처리-감성분석.md",
+      "github_title": "파이썬 주식 시장 동향 분석 - 자연어처리 감성분석",
+      "github_date": "2023-01-12",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-13-Google-Firestore로-경제-매크로-데이터-올리기.md",
+      "github_title": "Google Firestore로 경제 매크로 데이터 올리기",
+      "github_date": "2023-01-13",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-30-금융-분석을-위한-파이썬-프로그래밍-01-라이브러리-데이터프레임-인덱싱.md",
+      "github_title": "금융 분석을 위한 파이썬 프로그래밍 - 01. 라이브러리, 데이터프레임, 인덱싱",
+      "github_date": "2023-01-30",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-01-31-금융-분석을-위한-파이썬-프로그래밍-02-차트-시각화-시계열-분해-자기상관분석.md",
+      "github_title": "금융 분석을 위한 파이썬 프로그래밍 - 02. 차트 시각화, 시계열 분해, 자기상관분석",
+      "github_date": "2023-01-31",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-02-01-금융-분석을-위한-파이썬-프로그래밍-03-회귀-분석-정규성-검정-상관-분석-쌍체.md",
+      "github_title": "금융 분석을 위한 파이썬 프로그래밍 - 03. 회귀 분석, 정규성 검정, 상관 분석, 쌍체 검정",
+      "github_date": "2023-02-01",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-02-02-금융-분석을-위한-파이썬-프로그래밍-04-머신러닝-예측-모델링.md",
+      "github_title": "금융 분석을 위한 파이썬 프로그래밍 - 04. 머신러닝 예측 모델링",
+      "github_date": "2023-02-02",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-02-03-금융-분석을-위한-파이썬-프로그래밍-보충자료-01-파이썬-기초-문법-자료형-Data.md",
+      "github_title": "금융 분석을 위한 파이썬 프로그래밍 - 보충자료 01. 파이썬 기초 문법(자료형, Data type)",
+      "github_date": "2023-02-03",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-02-04-금융-분석을-위한-파이썬-프로그래밍-보충자료-02-파이썬-데이터-시계열-차트-시각화-.md",
+      "github_title": "금융 분석을 위한 파이썬 프로그래밍 - 보충자료 02. 파이썬 데이터 시계열 차트 시각화(matplotlib, subplots)",
+      "github_date": "2023-02-04",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-02-08-벡터자기회귀-모형-VAR-을-활용한-다변량-예측-모델링-국내-주요-기업-주가-및-거래량.md",
+      "github_title": "벡터자기회귀 모형(VAR)을 활용한 다변량 예측 모델링 - 국내 주요 기업 주가 및 거래량 예측",
+      "github_date": "2023-02-08",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-02-11-단어의-의미를-고려한-문장-유사도-측정-방법-기저-벡터와-선형-변환.md",
+      "github_title": "단어의 의미를 고려한 문장 유사도 측정 방법 - 기저 벡터와 선형 변환",
+      "github_date": "2023-02-11",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-02-17-TF-IDF-행렬의-특이값-분해를-통한-LSA-Latent-Semantic-Analysis.md",
+      "github_title": "TF-IDF 행렬의 특이값 분해를 통한 LSA(Latent Semantic Analysis)의 구현과 빈도 기반 토픽 모델의 한계",
+      "github_date": "2023-02-17",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-04-06-주가-데이터-분석을-위한-로그-변환의-의미-ln-1-return-과-return의-실질적.md",
+      "github_title": "주가 데이터 분석을 위한 로그 변환의 의미, ln(1+return)과 return의 실질적 근사(+파이썬 코드)",
+      "github_date": "2023-04-06",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-04-14-주식-차트만-보는-기술적-분석의-무용론.md",
+      "github_title": "주식 차트만 보는 기술적 분석의 무용론",
+      "github_date": "2023-04-14",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-04-19-기업-상대가치평가를-위한-핵심-주가배수모형-4가지-용어-정리-PER-PBR-PSR-.md",
+      "github_title": "기업 상대가치평가를 위한 핵심 주가배수모형 4가지 용어 정리 - PER, PBR, PSR, PCR",
+      "github_date": "2023-04-19",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-04-19-자산-내재가치평가-기본-모형-수식-정리-채권-우선주-보통주-배당성장모형.md",
+      "github_title": "자산 내재가치평가 기본 모형 수식 정리 - 채권, 우선주, 보통주, 배당성장모형",
+      "github_date": "2023-04-19",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-04-20-콜옵션-풋옵션-기초-개념-내가격-ITM-등가격-ATM-외가격-OTM-.md",
+      "github_title": "콜옵션/풋옵션 기초 개념 + 내가격(ITM), 등가격(ATM), 외가격(OTM)",
+      "github_date": "2023-04-20",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-04-24-파이썬을-활용한-애플-주가수익률-예측-분석-1-데이터-확인-및-예측-안정성-확보.md",
+      "github_title": "파이썬을 활용한 애플 주가수익률 예측 분석 - (1). 데이터 확인 및 예측 안정성 확보",
+      "github_date": "2023-04-24",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-04-30-파이썬을-활용한-애플-주가수익률-예측-분석-2-변수간-상관분석-및-예측변수-정상성.md",
+      "github_title": "파이썬을 활용한 애플 주가수익률 예측 분석 - (2). 변수간 상관분석 및 예측변수 정상성 검정",
+      "github_date": "2023-04-30",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-05-02-파이썬을-활용한-애플-주가수익률-예측-분석-3-교차-검증-및-모델-선택.md",
+      "github_title": "파이썬을 활용한 애플 주가수익률 예측 분석 - (3). 교차 검증 및 모델 선택",
+      "github_date": "2023-05-02",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-05-26-Activation-퍼널이-아닌-고객-여정의-관점에서.md",
+      "github_title": "Activation,퍼널이 아닌 고객 여정의 관점에서",
+      "github_date": "2023-05-26",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-09-10-더-나은-비즈니스-전략을-위한-데이터-활용-방법-4가지.md",
+      "github_title": "더 나은 비즈니스 전략을 위한 데이터 활용 방법 4가지",
+      "github_date": "2023-09-10",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-10-17-FRED-주요-경제-지표-신용-스프레드-ICE-BofA-US-High-Yield-Ind.md",
+      "github_title": "FRED 주요 경제 지표 - 신용 스프레드(ICE BofA US High Yield Index Option-Adjusted Spread)",
+      "github_date": "2023-10-17",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2023-12-05-미국-근원-소비자물가지수-Core-Consumer-Price-Index-변화율-추정-.md",
+      "github_title": "미국 근원 소비자물가지수(Core Consumer Price Index) 변화율 추정 - Python 활용",
+      "github_date": "2023-12-05",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2024-12-28-파이썬-금융-데이터-분석-디플레이션-국면의-나스닥-환헤지-전략-평가.md",
+      "github_title": "파이썬 금융 데이터 분석 - 디플레이션 국면의 나스닥 환헤지 전략 평가",
+      "github_date": "2024-12-28",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2024-12-29-미-장단기-국채-금리차-기반-경기-침체-예측-분석-ARIMA-Probit-.md",
+      "github_title": "미 장단기 국채 금리차 기반 경기 침체 예측 분석(ARIMA + Probit)",
+      "github_date": "2024-12-29",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2025-01-12-파이썬-금융-데이터-분석-미국-부채사이클-기반-2025년-리세션-리스크-평가.md",
+      "github_title": "[파이썬 금융 데이터 분석] 미국 부채사이클 기반 2025년 리세션 리스크 평가",
+      "github_date": "2025-01-12",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2025-01-26-달러-통화량과-유동성-비율을-활용한-금-비트코인-가치평가.md",
+      "github_title": "달러 통화량과 유동성 비율을 활용한 금, 비트코인 가치평가",
+      "github_date": "2025-01-26",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2025-02-12-2025년-장단기-국채금리-기반-마켓-베타-국면-분석-단기-금리-급락시-기저-원인을-포.md",
+      "github_title": "2025년 장단기 국채금리 기반 마켓 베타 국면 분석 - 단기 금리 급락시 기저 원인을 포착할 것",
+      "github_date": "2025-02-12",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2025-04-29-파이썬-퀀트-투자-시장은-정말-효율적일까-통계적-차익거래-Statistical-A.md",
+      "github_title": "[파이썬 퀀트 투자] 시장은 정말 효율적일까? - 통계적 차익거래(Statistical Arbitrage) 백테스팅 시뮬레이션",
+      "github_date": "2025-04-29",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2025-05-04-파이썬-퀀트-투자-좋은-기업을-찾아보자-미국-기술주-멀티플-EDA.md",
+      "github_title": "[파이썬 퀀트 투자] 좋은 기업을 찾아보자 - 미국 기술주 멀티플 EDA",
+      "github_date": "2025-05-04",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2025-05-08-파이썬-퀀트-투자-벨류에이션-멀티플-기반-피어-그룹-스크리닝.md",
+      "github_title": "[파이썬 퀀트 투자] 벨류에이션 멀티플 기반 피어 그룹 스크리닝",
+      "github_date": "2025-05-08",
+      "reason": "No good match found"
+    },
+    {
+      "github_file": "2026-01-11-Tistory에서-GitHub-Pages로-블로그-마이그레이션-완전-가이드.md",
+      "github_title": "Tistory에서 GitHub Pages로 블로그 마이그레이션 완전 가이드",
+      "github_date": "2026-01-11",
+      "reason": "No good match found"
+    }
+  ],
+  "category_distribution": {
+    "1. 기술/머신러닝, 딥러닝": 2
+  }
+}
